@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><title>Painel Vitrino</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#14213D">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14213D;--coral:#FF5A36;--coral-t:#B8371A;--street:#EEF2F7;--line:#D9E0EA;--muted:#4A5670}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Instrument Sans',system-ui,sans-serif;background:var(--street);color:var(--ink);font-size:16px;line-height:1.5}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:3px solid var(--coral);outline-offset:2px;border-radius:8px}
+.wrap{width:min(860px,100% - 28px);margin-inline:auto}
+header{background:var(--ink);color:#fff;padding:22px 0 26px}
+header img{height:30px;width:auto;margin-bottom:14px}
+h1{font:800 30px/1.05 'Bricolage Grotesque',sans-serif;letter-spacing:-.02em}
+header p{color:#C2CBDC;margin-top:6px}
+.quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:-14px 0 24px}
+.quick a{background:#fff;border-radius:16px;padding:14px 16px;box-shadow:0 1px 0 var(--line),0 8px 20px rgba(20,33,61,.08);font-weight:700;min-height:64px;display:flex;flex-direction:column;justify-content:center}
+.quick a small{font-weight:500;color:var(--muted);font-size:13px}
+.quick a.hl{background:var(--coral);color:#fff}.quick a.hl small{color:#FFE4DC}
+h2{font:800 22px 'Bricolage Grotesque',sans-serif;margin:8px 0 12px}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tools input{flex:1 1 220px;min-height:48px;border:1.5px solid var(--line);border-radius:14px;padding:0 14px;font:inherit;background:#fff}
+.f{min-height:48px;padding:0 14px;border-radius:14px;border:1.5px solid var(--line);background:#fff;font-weight:600}
+.f[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+ol{list-style:none;display:grid;gap:10px;padding-bottom:40px}
+.c{background:#fff;border-radius:18px;padding:16px;box-shadow:0 1px 0 var(--line)}
+.top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:start}
+.n{width:32px;height:32px;border-radius:10px;background:var(--street);display:grid;place-items:center;font-weight:700;font-size:14px}
+.c[data-t="p"] .n{background:var(--coral);color:#fff}
+h3{font:700 18px/1.2 'Bricolage Grotesque',sans-serif}
+.top p{color:var(--muted);font-size:14px}
+.tag{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;white-space:nowrap}
+.t-básico{background:#FFE4DC;color:#8A2A12}.t-loja{background:#DDF3EF;color:#0F5B54}.t-premium{background:#E3E8F7;color:#24346B}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.b{min-height:44px;padding:0 14px;border-radius:12px;border:1.5px solid var(--line);display:inline-flex;align-items:center;font-weight:600;font-size:15px}
+.b.main{background:var(--ink);color:#fff;border-color:var(--ink)}
+.b:active{transform:scale(.98)}
+.empty{color:var(--muted);padding:20px 0}
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,80px);opacity:0;background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-weight:600;transition:.25s;pointer-events:none}
+.toast.show{transform:translate(-50%,0);opacity:1}
+footer{color:var(--muted);font-size:14px;padding:0 0 40px}
+</style></head><body>
+<header><div class="wrap"><img src="../assets/logo-branco.svg" alt="Vitrino" width="426" height="120"><h1>Painel de visitas</h1><p>As 30 lojas da Várzea, com as prévias e os modelos pra mostrar.</p></div></header>
+<main class="wrap">
+  <div class="quick">
+    <a class="hl" href="../index.html">Site da Vitrino<small>pra mostrar os planos</small></a>
+    <a href="../templates/basico/index.html">Modelo Básico<small>hamburgueria</small></a>
+    <a href="../templates/loja/index.html">Modelo Loja<small>moda</small></a>
+    <a href="../templates/premium/index.html">Modelo Premium<small>pet shop</small></a>
+    <a href="https://claude.ai/artifact/2LMaLkJU12kuL6XZr3YK9s" target="_blank" rel="noopener">Planilha<small>status e vendas</small></a>
+  </div>
+  <h2>Lojas</h2>
+  <div class="tools"><input id="q" type="search" placeholder="Buscar loja ou ramo" aria-label="Buscar loja ou ramo">
+    <button class="f" data-f="all" aria-pressed="true">Todas</button><button class="f" data-f="p" aria-pressed="false">Com prévia</button><button class="f" data-f="m" aria-pressed="false">Mostrar modelo</button></div>
+  <ol id="list">
+<li class="c" data-k="sr. chapa burger hamburgueria básico prévia" data-t="p">
+  <div class="top"><span class="n">1</span><div><h3>Sr. Chapa Burger</h3><p>Hamburgueria · R. Nilza Chiapeta Fadigas, 290</p></div><span class="tag t-básico">Básico</span></div>
+  <div class="acts"><a class="b main" href="../p-1a7f2448/sr-chapa-burger.html">Abrir prévia</a><button class="b" data-copy="../p-1a7f2448/sr-chapa-burger.html">Copiar link</button><a class="b" href="https://wa.me/5521992787802" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Sr.+Chapa+Burger+R.+Nilza+Chiapeta+Fadigas,+290+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="johnny pepe pizza e massas pizzaria (delivery) básico prévia" data-t="p">
+  <div class="top"><span class="n">2</span><div><h3>Johnny Pepe Pizza e Massas</h3><p>Pizzaria (delivery) · Av. Lúcio Meira, 855, loja 3</p></div><span class="tag t-básico">Básico</span></div>
+  <div class="acts"><a class="b main" href="../p-1a7f2448/johnny-pepe-pizza.html">Abrir prévia</a><button class="b" data-copy="../p-1a7f2448/johnny-pepe-pizza.html">Copiar link</button><a class="b" href="https://wa.me/5521995031020" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Johnny+Pepe+Pizza+e+Massas+Av.+Lúcio+Meira,+855,+loja+3+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="tbb hamburgueria hamburgueria básico prévia" data-t="p">
+  <div class="top"><span class="n">3</span><div><h3>TBB Hamburgueria</h3><p>Hamburgueria · R. Nilza Chiapeta Fadigas, 596</p></div><span class="tag t-básico">Básico</span></div>
+  <div class="acts"><a class="b main" href="../p-1a7f2448/tbb-hamburgueria.html">Abrir prévia</a><button class="b" data-copy="../p-1a7f2448/tbb-hamburgueria.html">Copiar link</button><a class="b" href="https://wa.me/5521971333919" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=TBB+Hamburgueria+R.+Nilza+Chiapeta+Fadigas,+596+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="bella ragazza pizzas &amp; massas pizzaria básico prévia" data-t="p">
+  <div class="top"><span class="n">4</span><div><h3>Bella Ragazza Pizzas &amp; Massas</h3><p>Pizzaria · R. Nilza Chiapeta Fadigas, 347, loja 5</p></div><span class="tag t-básico">Básico</span></div>
+  <div class="acts"><a class="b main" href="../p-1a7f2448/bella-ragazza.html">Abrir prévia</a><button class="b" data-copy="../p-1a7f2448/bella-ragazza.html">Copiar link</button><a class="b" href="https://wa.me/5521981803399" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Bella+Ragazza+Pizzas+&+Massas+R.+Nilza+Chiapeta+Fadigas,+347,+loja+5+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="btf butterfly fit moda fitness loja prévia" data-t="p">
+  <div class="top"><span class="n">5</span><div><h3>BTF Butterfly Fit</h3><p>Moda fitness · R. Monte Líbano, 62</p></div><span class="tag t-loja">Loja</span></div>
+  <div class="acts"><a class="b main" href="../p-1a7f2448/btf-butterfly-fit.html">Abrir prévia</a><button class="b" data-copy="../p-1a7f2448/btf-butterfly-fit.html">Copiar link</button><a class="b" href="https://wa.me/5521977550440" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=BTF+Butterfly+Fit+R.+Monte+Líbano,+62+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="barbearia firmados barbearia premium prévia" data-t="p">
+  <div class="top"><span class="n">6</span><div><h3>Barbearia Firmados</h3><p>Barbearia · Shopping New Fashion, R. Pref. Sebastião Teixeira, 20</p></div><span class="tag t-premium">Premium</span></div>
+  <div class="acts"><a class="b main" href="../p-1a7f2448/barbearia-firmados.html">Abrir prévia</a><button class="b" data-copy="../p-1a7f2448/barbearia-firmados.html">Copiar link</button><a class="b" href="https://wa.me/5521984468209" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Barbearia+Firmados+Shopping+New+Fashion,+R.+Pref.+Sebastião+Teixeira,+20+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="lavest moda feminina loja prévia" data-t="p">
+  <div class="top"><span class="n">7</span><div><h3>Lavest</h3><p>Moda feminina · R. Monte Líbano, 101</p></div><span class="tag t-loja">Loja</span></div>
+  <div class="acts"><a class="b main" href="../p-1a7f2448/lavest.html">Abrir prévia</a><button class="b" data-copy="../p-1a7f2448/lavest.html">Copiar link</button><a class="b" href="https://wa.me/5521975229598" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Lavest+R.+Monte+Líbano,+101+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="toca das flores floricultura loja prévia" data-t="p">
+  <div class="top"><span class="n">8</span><div><h3>Toca das Flores</h3><p>Floricultura · Av. Lúcio Meira, 587</p></div><span class="tag t-loja">Loja</span></div>
+  <div class="acts"><a class="b main" href="../p-1a7f2448/toca-das-flores.html">Abrir prévia</a><button class="b" data-copy="../p-1a7f2448/toca-das-flores.html">Copiar link</button><a class="b" href="https://wa.me/5521966249665" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Toca+das+Flores+Av.+Lúcio+Meira,+587+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="terê açaí petiscaria açaí e lanches básico prévia" data-t="p">
+  <div class="top"><span class="n">9</span><div><h3>Terê Açaí Petiscaria</h3><p>Açaí e lanches · R. Edmundo Bitencourt, 139, loja 143</p></div><span class="tag t-básico">Básico</span></div>
+  <div class="acts"><a class="b main" href="../p-1a7f2448/tere-acai-petiscaria.html">Abrir prévia</a><button class="b" data-copy="../p-1a7f2448/tere-acai-petiscaria.html">Copiar link</button><a class="b" href="https://wa.me/5521973592264" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Terê+Açaí+Petiscaria+R.+Edmundo+Bitencourt,+139,+loja+143+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="let&#x27;s doce mania doceria básico prévia" data-t="p">
+  <div class="top"><span class="n">10</span><div><h3>Let&#x27;s Doce Mania</h3><p>Doceria · R. José Augusto da Costa, 97, loja 8</p></div><span class="tag t-básico">Básico</span></div>
+  <div class="acts"><a class="b main" href="../p-1a7f2448/lets-doce-mania.html">Abrir prévia</a><button class="b" data-copy="../p-1a7f2448/lets-doce-mania.html">Copiar link</button><a class="b" href="https://wa.me/5521996773847" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Let's+Doce+Mania+R.+José+Augusto+da+Costa,+97,+loja+8+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="loving moda feminina moda feminina loja prévia" data-t="p">
+  <div class="top"><span class="n">11</span><div><h3>Loving Moda Feminina</h3><p>Moda feminina · Av. Lúcio Meira, 512</p></div><span class="tag t-loja">Loja</span></div>
+  <div class="acts"><a class="b main" href="../p-1a7f2448/loving-moda-feminina.html">Abrir prévia</a><button class="b" data-copy="../p-1a7f2448/loving-moda-feminina.html">Copiar link</button><a class="b" href="https://wa.me/5521976862749" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Loving+Moda+Feminina+Av.+Lúcio+Meira,+512+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="vista rosa moda feminina loja prévia" data-t="p">
+  <div class="top"><span class="n">12</span><div><h3>Vista Rosa</h3><p>Moda feminina · Shopping Várzea, loja 20</p></div><span class="tag t-loja">Loja</span></div>
+  <div class="acts"><a class="b main" href="../p-1a7f2448/vista-rosa.html">Abrir prévia</a><button class="b" data-copy="../p-1a7f2448/vista-rosa.html">Copiar link</button><a class="b" href="https://wa.me/5521968802464" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Vista+Rosa+Shopping+Várzea,+loja+20+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="parada dos pets pet shop premium prévia" data-t="p">
+  <div class="top"><span class="n">13</span><div><h3>Parada dos Pets</h3><p>Pet shop · Av. Feliciano Sodré, 900</p></div><span class="tag t-premium">Premium</span></div>
+  <div class="acts"><a class="b main" href="../p-1a7f2448/parada-dos-pets.html">Abrir prévia</a><button class="b" data-copy="../p-1a7f2448/parada-dos-pets.html">Copiar link</button><a class="b" href="https://wa.me/5521970826831" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Parada+dos+Pets+Av.+Feliciano+Sodré,+900+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="espaço sempre bella salão de beleza premium prévia" data-t="p">
+  <div class="top"><span class="n">14</span><div><h3>Espaço Sempre Bella</h3><p>Salão de beleza · Av. Feliciano Sodré, 978</p></div><span class="tag t-premium">Premium</span></div>
+  <div class="acts"><a class="b main" href="../p-1a7f2448/espaco-sempre-bella.html">Abrir prévia</a><button class="b" data-copy="../p-1a7f2448/espaco-sempre-bella.html">Copiar link</button><a class="b" href="https://wa.me/5521985789845" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Espaço+Sempre+Bella+Av.+Feliciano+Sodré,+978+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="aura make up maquiagem loja prévia" data-t="p">
+  <div class="top"><span class="n">15</span><div><h3>Aura Make up</h3><p>Maquiagem · R. Francisco Sá (Várzea)</p></div><span class="tag t-loja">Loja</span></div>
+  <div class="acts"><a class="b main" href="../p-1a7f2448/aura-make-up.html">Abrir prévia</a><button class="b" data-copy="../p-1a7f2448/aura-make-up.html">Copiar link</button><a class="b" href="https://wa.me/5521976404311" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Aura+Make+up+R.+Francisco+Sá+(Várzea)+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="açaí casa bella açaí básico modelo" data-t="m">
+  <div class="top"><span class="n">16</span><div><h3>Açaí Casa Bella</h3><p>Açaí · Av. José Joaquim de Araújo Regadas, 37</p></div><span class="tag t-básico">Básico</span></div>
+  <div class="acts"><a class="b main" href="../templates/basico/index.html">Abrir modelo Básico</a><button class="b" data-copy="../templates/basico/index.html">Copiar link</button><a class="b" href="https://wa.me/5521999784552" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Açaí+Casa+Bella+Av.+José+Joaquim+de+Araújo+Regadas,+37+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="cavana burguer hamburgueria básico modelo" data-t="m">
+  <div class="top"><span class="n">17</span><div><h3>Cavana Burguer</h3><p>Hamburgueria · R. Emile Ducumunn, 163, loja B13</p></div><span class="tag t-básico">Básico</span></div>
+  <div class="acts"><a class="b main" href="../templates/basico/index.html">Abrir modelo Básico</a><button class="b" data-copy="../templates/basico/index.html">Copiar link</button><a class="b" href="https://wa.me/5521987971561" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Cavana+Burguer+R.+Emile+Ducumunn,+163,+loja+B13+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="sir joe rock n&#x27;roll food hamburgueria básico modelo" data-t="m">
+  <div class="top"><span class="n">18</span><div><h3>Sir Joe Rock n&#x27;Roll Food</h3><p>Hamburgueria · Av. Feliciano Sodré, 777</p></div><span class="tag t-básico">Básico</span></div>
+  <div class="acts"><a class="b main" href="../templates/basico/index.html">Abrir modelo Básico</a><button class="b" data-copy="../templates/basico/index.html">Copiar link</button><a class="b" href="https://wa.me/5521968602536" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Sir+Joe+Rock+n'Roll+Food+Av.+Feliciano+Sodré,+777+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="o burguês hamburgueria básico modelo" data-t="m">
+  <div class="top"><span class="n">19</span><div><h3>O Burguês</h3><p>Hamburgueria · R. Djalma Monteiro, 90, loja 01</p></div><span class="tag t-básico">Básico</span></div>
+  <div class="acts"><a class="b main" href="../templates/basico/index.html">Abrir modelo Básico</a><button class="b" data-copy="../templates/basico/index.html">Copiar link</button><a class="b" href="https://www.google.com/maps/search/?api=1&query=O+Burguês+R.+Djalma+Monteiro,+90,+loja+01+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="quero mais doceria e cafeteria doceria e café básico modelo" data-t="m">
+  <div class="top"><span class="n">20</span><div><h3>Quero Mais Doceria e Cafeteria</h3><p>Doceria e café · R. Duque de Caxias, 114</p></div><span class="tag t-básico">Básico</span></div>
+  <div class="acts"><a class="b main" href="../templates/basico/index.html">Abrir modelo Básico</a><button class="b" data-copy="../templates/basico/index.html">Copiar link</button><a class="b" href="https://wa.me/5521971664513" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Quero+Mais+Doceria+e+Cafeteria+R.+Duque+de+Caxias,+114+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="lumme for you moda feminina loja modelo" data-t="m">
+  <div class="top"><span class="n">21</span><div><h3>LUMME FOR YOU</h3><p>Moda feminina · Av. Delfim Moreira, 584, sala 303</p></div><span class="tag t-loja">Loja</span></div>
+  <div class="acts"><a class="b main" href="../templates/loja/index.html">Abrir modelo Loja</a><button class="b" data-copy="../templates/loja/index.html">Copiar link</button><a class="b" href="https://wa.me/5521997783213" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=LUMME+FOR+YOU+Av.+Delfim+Moreira,+584,+sala+303+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="corpo e ação moda fitness e dança loja modelo" data-t="m">
+  <div class="top"><span class="n">22</span><div><h3>Corpo e Ação</h3><p>Moda fitness e dança · R. Monte Líbano, 79</p></div><span class="tag t-loja">Loja</span></div>
+  <div class="acts"><a class="b main" href="../templates/loja/index.html">Abrir modelo Loja</a><button class="b" data-copy="../templates/loja/index.html">Copiar link</button><a class="b" href="https://wa.me/5521992812539" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Corpo+e+Ação+R.+Monte+Líbano,+79+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="fytta fitness moda fitness loja modelo" data-t="m">
+  <div class="top"><span class="n">23</span><div><h3>Fytta Fitness</h3><p>Moda fitness · Av. Feliciano Sodré, 668</p></div><span class="tag t-loja">Loja</span></div>
+  <div class="acts"><a class="b main" href="../templates/loja/index.html">Abrir modelo Loja</a><button class="b" data-copy="../templates/loja/index.html">Copiar link</button><a class="b" href="https://wa.me/5521965801125" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Fytta+Fitness+Av.+Feliciano+Sodré,+668+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="arco íris moda infantil moda infantil loja modelo" data-t="m">
+  <div class="top"><span class="n">24</span><div><h3>Arco Íris Moda Infantil</h3><p>Moda infantil · R. Edmundo Bitencourt, 135</p></div><span class="tag t-loja">Loja</span></div>
+  <div class="acts"><a class="b main" href="../templates/loja/index.html">Abrir modelo Loja</a><button class="b" data-copy="../templates/loja/index.html">Copiar link</button><a class="b" href="https://wa.me/5521982414694" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Arco+Íris+Moda+Infantil+R.+Edmundo+Bitencourt,+135+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="maha kids moda infantil loja modelo" data-t="m">
+  <div class="top"><span class="n">25</span><div><h3>Maha Kids</h3><p>Moda infantil · Av. Delfim Moreira, 584</p></div><span class="tag t-loja">Loja</span></div>
+  <div class="acts"><a class="b main" href="../templates/loja/index.html">Abrir modelo Loja</a><button class="b" data-copy="../templates/loja/index.html">Copiar link</button><a class="b" href="https://wa.me/5521966515222" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Maha+Kids+Av.+Delfim+Moreira,+584+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="barbearia vianna barbearia premium modelo" data-t="m">
+  <div class="top"><span class="n">26</span><div><h3>Barbearia Vianna</h3><p>Barbearia · Av. Delfim Moreira, 1243</p></div><span class="tag t-premium">Premium</span></div>
+  <div class="acts"><a class="b main" href="../templates/premium/index.html">Abrir modelo Premium</a><button class="b" data-copy="../templates/premium/index.html">Copiar link</button><a class="b" href="https://wa.me/5521975316866" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Barbearia+Vianna+Av.+Delfim+Moreira,+1243+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="barbearia dom quim barbearia premium modelo" data-t="m">
+  <div class="top"><span class="n">27</span><div><h3>Barbearia Dom Quim</h3><p>Barbearia · Av. José Joaquim de Araújo Regadas, 210, D-5</p></div><span class="tag t-premium">Premium</span></div>
+  <div class="acts"><a class="b main" href="../templates/premium/index.html">Abrir modelo Premium</a><button class="b" data-copy="../templates/premium/index.html">Copiar link</button><a class="b" href="https://wa.me/5521995381637" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Barbearia+Dom+Quim+Av.+José+Joaquim+de+Araújo+Regadas,+210,+D-5+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="la belle de jour studio salão de beleza premium modelo" data-t="m">
+  <div class="top"><span class="n">28</span><div><h3>La Belle de Jour Studio</h3><p>Salão de beleza · R. Monte Líbano, 53</p></div><span class="tag t-premium">Premium</span></div>
+  <div class="acts"><a class="b main" href="../templates/premium/index.html">Abrir modelo Premium</a><button class="b" data-copy="../templates/premium/index.html">Copiar link</button><a class="b" href="https://wa.me/5521964471760" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=La+Belle+de+Jour+Studio+R.+Monte+Líbano,+53+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="vogue calçados calçados loja modelo" data-t="m">
+  <div class="top"><span class="n">29</span><div><h3>Vogue Calçados</h3><p>Calçados · R. Francisco Sá, 94</p></div><span class="tag t-loja">Loja</span></div>
+  <div class="acts"><a class="b main" href="../templates/loja/index.html">Abrir modelo Loja</a><button class="b" data-copy="../templates/loja/index.html">Copiar link</button><a class="b" href="https://wa.me/5521980911253" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Vogue+Calçados+R.+Francisco+Sá,+94+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+<li class="c" data-k="tudo em casa marmitas fitness básico modelo" data-t="m">
+  <div class="top"><span class="n">30</span><div><h3>Tudo em Casa</h3><p>Marmitas fitness · R. Estado de Israel, 15</p></div><span class="tag t-básico">Básico</span></div>
+  <div class="acts"><a class="b main" href="../templates/basico/index.html">Abrir modelo Básico</a><button class="b" data-copy="../templates/basico/index.html">Copiar link</button><a class="b" href="https://wa.me/5521979856855" target="_blank" rel="noopener">WhatsApp da loja</a><a class="b" href="https://www.google.com/maps/search/?api=1&query=Tudo+em+Casa+R.+Estado+de+Israel,+15+Teresópolis" target="_blank" rel="noopener">Mapa</a></div>
+</li>
+  </ol>
+  <p class="empty" id="empty" hidden>Nenhuma loja com esse nome.</p>
+</main>
+<footer class="wrap">Página fora do Google. As prévias usam fotos e preços ilustrativos e não são o site oficial das lojas.</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const items=[...document.querySelectorAll('.c')];let f='all';
+function apply(){const q=document.getElementById('q').value.trim().toLowerCase();let n=0;
+  items.forEach(c=>{const ok=(f==='all'||c.dataset.t===f)&&(!q||c.dataset.k.includes(q));c.hidden=!ok;if(ok)n++});
+  document.getElementById('empty').hidden=n>0}
+document.getElementById('q').oninput=apply;
+document.querySelectorAll('.f').forEach(b=>b.onclick=()=>{f=b.dataset.f;document.querySelectorAll('.f').forEach(x=>x.setAttribute('aria-pressed',x===b));apply()});
+document.getElementById('list').onclick=e=>{const b=e.target.closest('[data-copy]');if(!b)return;
+  const url=new URL(b.dataset.copy,location.href).href;const t=document.getElementById('toast');
+  const done=m=>{t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1600)};
+  (navigator.clipboard?navigator.clipboard.writeText(url):Promise.reject()).then(()=>done('Link copiado'),()=>{prompt('Copie o link:',url)})};
+</script></body></html>

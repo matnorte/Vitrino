@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /Vitrino/painel/
+Disallow: /Vitrino/p-1a7f2448/
+Disallow: /painel/
+Disallow: /p-1a7f2448/
