@@ -3,324 +3,360 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vitrino — Sites que vendem para lojas</title>
-<meta name="description" content="Site próprio pra sua loja: catálogo, sacola e pedido pronto no WhatsApp com Pix, sem comissão por venda. Pronto em poucos dias.">
-<meta property="og:title" content="Vitrino — Sua loja vendendo no WhatsApp">
-<meta property="og:description" content="Catálogo, sacola e pedido com Pix direto no seu WhatsApp. Sem comissão por venda.">
-<meta property="og:image" content="assets/img/prev-loja.webp">
-<meta name="theme-color" content="#FF5A36">
+<title>Vitrino — Site próprio pra sua loja vender pelo WhatsApp</title>
+<meta name="description" content="Site com catálogo, sacola e Pix pra lojas, restaurantes e serviços. O pedido chega pronto no seu WhatsApp, sem comissão de aplicativo. Atendimento presencial.">
+<meta property="og:title" content="Vitrino — Sua loja aberta o dia todo, no celular de cada cliente">
+<meta property="og:description" content="Catálogo, sacola e Pix. O pedido chega pronto no seu WhatsApp, sem comissão.">
+<meta property="og:image" content="assets/img/og.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#14213D">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="modulepreload" href="assets/js/three.module.min.js">
+<script type="importmap">{"imports":{"three":"./assets/js/three.module.min.js"}}</script>
 <style>
 :root{
-  --coral:#FF5A36; --coral-d:#E2431F; --coral-ink:#C2381A; --ink:#14213D; --ink-2:#1E2C4D; --cream:#FFF7EE; --card:#FFFFFF;
-  --mint:#2EC4B6; --mint-d:#0F766E; --muted:#525C70; --line:#EADFD2; --radius:22px; --ease:cubic-bezier(.2,.8,.2,1);
-  --head:Poppins,system-ui,sans-serif; --body:Inter,system-ui,sans-serif;
+  --ink:#14213D; --ink-2:#1D2C4F; --coral:#FF5A36; --coral-d:#E2431F; --coral-t:#B8371A;
+  --street:#EEF2F7; --paper:#FFFFFF; --sun:#FFC93C; --mint:#2EC4B6; --wa:#25D366;
+  --muted:#4A5670; --line:#D9E0EA;
+  --display:'Bricolage Grotesque',system-ui,sans-serif; --body:'Instrument Sans',system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:var(--body);font-size:17px;background:var(--cream);color:var(--ink);line-height:1.6;overflow-x:hidden}
+body{font-family:var(--body);font-size:18px;line-height:1.6;background:var(--street);color:var(--ink);overflow-x:hidden}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-h1,h2,h3{font-family:var(--head);line-height:1.08;letter-spacing:-.025em}
-.ic{width:20px;height:20px;flex-shrink:0;fill:none;stroke:currentColor}
-:focus-visible{outline:3px solid var(--coral);outline-offset:3px;border-radius:8px}
-.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
-.kicker{display:inline-flex;align-items:center;gap:8px;font:600 13px var(--head);letter-spacing:.14em;text-transform:uppercase;color:var(--coral-ink)}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1}
+.ic{width:20px;height:20px;flex-shrink:0}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px;border-radius:10px}
+.wrap{width:min(1200px,100% - 48px);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;z-index:100}
+.skip:focus{top:12px}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border-radius:999px;font:600 16px var(--head);transition:transform .2s var(--ease),background-color .2s,box-shadow .2s,color .2s}
-.btn:active{transform:scale(.97)}
-.btn-coral{background:var(--coral);color:#fff;box-shadow:0 12px 28px rgba(255,90,54,.3)}.btn-coral:hover{background:var(--coral-d);transform:translateY(-2px)}
-.btn-ink{background:var(--ink);color:#fff}.btn-ink:hover{background:#0B1426;transform:translateY(-2px)}
-.btn-line{border:1.5px solid var(--ink)}.btn-line:hover{background:var(--ink);color:#fff}
-.btn .ic{width:20px;height:20px}
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 28px;border-radius:16px;font:600 17px var(--body);transition:transform .18s var(--ease),background-color .18s,box-shadow .18s}
+.btn:active{transform:translateY(1px) scale(.98)}
+.btn-wa{background:var(--coral);color:#fff;box-shadow:0 6px 0 var(--coral-t)}
+.btn-wa:hover{background:var(--coral-d);transform:translateY(-2px);box-shadow:0 8px 0 var(--coral-t)}
+.btn-wa:active{box-shadow:0 2px 0 var(--coral-t)}
+.btn-quiet{background:var(--paper);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn-quiet:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn .ic{width:22px;height:22px}
 
-header{position:sticky;top:0;z-index:40;background:rgba(255,247,238,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-header .wrap{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-header .logo img{height:38px;width:auto}
-nav{display:flex;align-items:center;gap:28px;font-weight:500;font-size:15px;color:var(--muted)}
-nav a.lk:hover{color:var(--ink)}
-nav .btn{min-height:46px;padding:0 18px;font-size:15px}
-@media(max-width:860px){nav a.lk{display:none}}
+/* cabeçalho */
+header{position:sticky;top:0;z-index:50;background:rgba(238,242,247,.82);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px)}
+header .wrap{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+header .logo img{height:36px;width:auto}
+nav{display:flex;align-items:center;gap:30px;font-weight:500;font-size:16px}
+nav .lk{color:var(--muted);transition:color .15s}
+nav .lk:hover{color:var(--ink)}
+nav .btn{min-height:46px;padding:0 18px;font-size:15px;border-radius:12px;box-shadow:0 4px 0 var(--coral-t)}
+@media(max-width:900px){nav .lk{display:none}}
+@media(max-width:700px){nav .btn{display:none}}
 
-/* hero */
-.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:clamp(40px,6vw,80px) 0 clamp(56px,7vw,96px)}
-.hero h1{font-size:clamp(42px,6.4vw,78px);font-weight:800;margin:18px 0 20px}
-.hero h1 em{font-style:normal;color:var(--coral);position:relative;white-space:nowrap}
-.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.14em;background:rgba(255,90,54,.18);border-radius:4px;z-index:-1}
-.hero .lead{font-size:clamp(17px,1.5vw,20px);color:var(--muted);max-width:540px;margin-bottom:30px}
-.ctas{display:flex;gap:12px;flex-wrap:wrap}
-.proof{display:flex;align-items:center;gap:14px;margin-top:30px;color:var(--muted);font-size:15px}
-.proof .dot{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;flex-shrink:0}
-.proof b{color:var(--ink)}
-.stage{position:relative;justify-self:center;width:100%;max-width:340px}
-.phone{position:relative;aspect-ratio:9/19;background:var(--ink);border-radius:46px;padding:12px;box-shadow:0 50px 90px rgba(20,33,61,.28),inset 0 0 0 2px #2A3A60}
+/* topo com a cena 3D */
+.hero{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:center;gap:24px;min-height:calc(100svh - 76px);max-height:900px;padding:24px 0 56px}
+.hero h1{font-size:clamp(44px,5.4vw,84px);font-variation-settings:"opsz" 96;max-width:12ch}
+.hero .lead{font-size:clamp(18px,1.5vw,21px);color:var(--muted);max-width:30em;margin:26px 0 34px}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero .visit{display:flex;align-items:center;gap:12px;margin-top:30px;font-size:16px;color:var(--muted);max-width:30em}
+.hero .visit .ic{color:var(--coral-t);width:24px;height:24px}
+.stage{position:relative;height:min(78vh,700px);min-height:420px;margin-right:calc((100vw - min(1200px,100vw - 48px)) / -2)}
+#vitrine{width:100%;height:100%;display:block;touch-action:pan-y}
+.stage .fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none}
+.no3d #vitrine{display:none}.no3d .stage .fallback{display:block}
+.intro{animation:rise .9s var(--ease) both}
+.intro:nth-child(2){animation-delay:.08s}.intro:nth-child(3){animation-delay:.16s}.intro:nth-child(4){animation-delay:.24s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:0;max-height:none;padding-top:0;gap:0}
+  .stage{order:-1;height:56vw;min-height:300px;max-height:460px;margin:0 -24px}
+}
 
-.phone iframe{width:100%;height:100%;border:0;border-radius:36px;background:#fff}
-.note{position:absolute;background:#fff;border-radius:18px;padding:12px 14px;box-shadow:0 18px 40px rgba(20,33,61,.16);display:flex;gap:10px;align-items:center;font-size:14px;font-weight:600;white-space:nowrap;animation:floaty 6s ease-in-out infinite}
-.note small{display:block;color:var(--muted);font-weight:500;font-size:12px}
-.note .ib{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;flex-shrink:0}
-.n1{left:-90px;top:18%}.n1 .ib{background:#DCFCE7;color:#15803D}
-.n2{right:-70px;bottom:20%;animation-delay:-3s}.n2 .ib{background:#FFE4DC;color:var(--coral-ink)}
-@keyframes floaty{50%{transform:translateY(-8px)}}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.stage{max-width:290px}.n1{left:-40px}.n2{right:-30px}}
-@media(max-width:420px){.n1{left:-12px;top:10%}.n2{right:-12px}}
+/* faixa de nichos */
+.niches{background:var(--ink);color:#fff;overflow:hidden}
+.niches ul{list-style:none;display:flex;justify-content:space-between;gap:28px;padding:26px 0;flex-wrap:wrap}
+.niches li{display:flex;align-items:center;gap:10px;font:600 17px var(--body)}
+.niches .ic{color:var(--sun)}
+@media(max-width:700px){.niches ul{justify-content:flex-start;gap:14px 24px}}
 
-/* faixa nichos */
-.niches{border-block:1px solid var(--line);background:var(--card);padding:22px 0}
-.niches .wrap{display:flex;align-items:center;justify-content:center;gap:clamp(18px,4vw,48px);flex-wrap:wrap;color:var(--muted);font-weight:600;font-size:15px}
-.niches span{display:inline-flex;align-items:center;gap:8px}
-.niches .ic{color:var(--coral)}
+section{scroll-margin-top:84px}
+.block{padding:clamp(80px,11vw,140px) 0}
+.sec-title{font-size:clamp(38px,5.2vw,72px);max-width:16ch}
+.sec-lead{font-size:20px;color:var(--muted);max-width:34em;margin-top:20px}
 
-section{padding:clamp(64px,9vw,112px) 0;scroll-margin-top:72px}
-.sh{text-align:center;max-width:720px;margin:0 auto 48px}
-.sh h2{font-size:clamp(34px,4.8vw,56px);font-weight:800;margin:12px 0 14px}
-.sh p{color:var(--muted);font-size:18px}
+/* o pedido chega assim */
+.order{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(40px,7vw,100px);align-items:center}
+.order dl{margin-top:36px;display:grid;gap:22px}
+.order dt{font:700 20px var(--display);letter-spacing:-.01em}
+.order dd{color:var(--muted)}
+.wa-phone{justify-self:center;width:min(360px,100%);background:#0B141A;border-radius:44px;padding:12px;box-shadow:0 40px 80px rgba(20,33,61,.25)}
+.wa-screen{border-radius:34px;overflow:hidden;background:#EFE7DD}
+.wa-top{background:#075E54;color:#fff;display:flex;align-items:center;gap:12px;padding:18px 18px 14px}
+.wa-top .av{width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.wa-top .av img{width:26px;height:26px}
+.wa-top b{display:block;font-size:16px}.wa-top small{font-size:13px;opacity:.8}
+.wa-body{padding:20px 14px 26px;display:grid;gap:10px;font-size:15px;line-height:1.45;min-height:420px;align-content:end}
+.msg{max-width:88%;padding:10px 12px 18px;border-radius:12px;position:relative;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.msg.in{background:#fff;justify-self:start;border-top-left-radius:2px}
+.msg.out{background:#D9FDD3;justify-self:end;border-top-right-radius:2px}
+.msg time{position:absolute;right:10px;bottom:4px;font-size:11px;color:#667781}
+.msg ul{list-style:none;margin:6px 0}
+.msg b{font-weight:700}
+
+@media(max-width:860px){.order{grid-template-columns:1fr}}
+/* vitrines (modelos) */
+.windows{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:56px}
+.win{display:flex;flex-direction:column;perspective:900px}
+.win .tilt{transition:transform .5s var(--ease);transform-style:preserve-3d;will-change:transform}
+.awn{height:34px;border-radius:10px 10px 0 0;background:repeating-linear-gradient(90deg,var(--a) 0 32px,#fff 32px 64px);position:relative}
+.awn::after{content:"";position:absolute;left:0;right:0;top:100%;height:16px;background:radial-gradient(circle at 16px 0,var(--a) 15.5px,transparent 16px) 0 0/64px 16px repeat-x,radial-gradient(circle at 48px 0,#fff 15.5px,transparent 16px) 0 0/64px 16px repeat-x;filter:drop-shadow(0 3px 2px rgba(20,33,61,.15))}
+.glass{background:var(--paper);border:10px solid var(--paper);border-top:0;border-radius:0 0 18px 18px;box-shadow:0 30px 60px rgba(20,33,61,.12)}
+.glass figure{aspect-ratio:4/3;overflow:hidden;border-radius:8px;background:#ddd}
+.glass img{width:100%;height:100%;object-fit:cover;object-position:top}
+.win .meta{padding:22px 4px 0;display:flex;flex-direction:column;gap:6px;flex:1}
+.win .plan{font:600 15px var(--body);color:var(--coral-t)}
+.win h3{font-size:30px}
+.win p{color:var(--muted);font-size:16px;flex:1}
+.win .btn{align-self:flex-start;margin-top:12px;min-height:50px;font-size:16px}
+@media(max-width:960px){.windows{grid-template-columns:1fr;max-width:520px}}
 
 /* comparação */
-.compare{background:var(--card);border:1px solid var(--line);border-radius:28px;overflow:hidden;max-width:960px;margin:0 auto}
-.compare table{width:100%;border-collapse:collapse;font-size:16px}
-.compare th,.compare td{padding:18px 20px;text-align:center;border-bottom:1px solid var(--line)}
-.compare th:first-child,.compare td:first-child{text-align:left;font-weight:600}
-.compare thead th{font:600 15px var(--head);background:#FBF5EE}
-.compare thead th.us{background:var(--ink);color:#fff}
-.compare td.us{background:#FFF1EA;font-weight:700}
-.compare tr:last-child td{border-bottom:0}
-.yes{color:var(--mint-d);display:inline-flex;align-items:center;gap:6px}
-.no{color:#B42318;display:inline-flex;align-items:center;gap:6px}
-.compare .ic{width:22px;height:22px}
-@media(max-width:640px){.compare{border-radius:20px;overflow-x:auto}.compare table{min-width:560px;font-size:15px}.compare th,.compare td{padding:14px 12px}}
+.cmp{margin-top:56px;background:var(--paper);border-radius:28px;overflow:hidden;box-shadow:0 1px 0 var(--line)}
+.cmp table{width:100%;border-collapse:collapse;font-size:17px}
+.cmp th,.cmp td{padding:20px 24px;text-align:left;border-bottom:1px solid var(--line)}
+.cmp thead th{font:700 18px var(--display);letter-spacing:-.01em;vertical-align:bottom}
+.cmp thead th.us{background:var(--ink);color:#fff}
+.cmp td.us{background:#FFF3EE;font-weight:600}
+.cmp tbody th{font-weight:600}
+.cmp tr:last-child>*{border-bottom:0}
+.cmp .y,.cmp .n{display:inline-flex;align-items:center;gap:8px}
+.cmp .y .ic{color:#0F766E}.cmp .n .ic{color:#B42318}
+.cmp-wrap{overflow-x:auto}
+@media(max-width:700px){.cmp table{min-width:620px;font-size:16px}.cmp th,.cmp td{padding:16px}}
 
-/* passo a passo */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
-.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;position:relative}
-.step .ib{width:52px;height:52px;border-radius:16px;background:var(--ink);color:#fff;display:grid;place-items:center;margin-bottom:18px}
-.step .ib .ic{width:24px;height:24px}
-.step::after{counter-increment:s;content:"0" counter(s);position:absolute;top:22px;right:22px;font:700 15px var(--head);color:var(--line)}
-.step h3{font-size:20px;margin-bottom:6px}
-.step p{color:var(--muted);font-size:15px}
-@media(max-width:960px){.steps{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.steps{grid-template-columns:1fr}}
+/* como funciona: linha do tempo */
+.timeline{list-style:none;margin-top:60px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;position:relative;counter-reset:s}
+.timeline::before{content:"";position:absolute;left:0;right:0;top:27px;height:2px;background:repeating-linear-gradient(90deg,var(--ink) 0 10px,transparent 10px 18px);opacity:.3}
+.timeline li{position:relative;counter-increment:s}
+.timeline li::before{content:counter(s);display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--street);box-shadow:inset 0 0 0 2px var(--ink);font:800 22px var(--display);margin-bottom:22px;position:relative}
+.timeline li:last-child::before{background:var(--coral);color:#fff;box-shadow:none}
+.timeline h3{font-size:24px;margin-bottom:8px;letter-spacing:-.02em}
+.timeline p{color:var(--muted);font-size:16px}
+@media(max-width:900px){.timeline{grid-template-columns:1fr;gap:28px}.timeline::before{left:27px;right:auto;top:0;bottom:0;width:2px;height:auto;background:repeating-linear-gradient(180deg,var(--ink) 0 10px,transparent 10px 18px)}.timeline li{padding-left:80px}.timeline li::before{position:absolute;left:0;top:-6px}}
 
-/* modelos */
-.tpls{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.tpl{background:var(--card);border:1px solid var(--line);border-radius:26px;overflow:hidden;display:flex;flex-direction:column;transition:transform .35s var(--ease),box-shadow .35s}
-.tpl:hover{transform:translateY(-6px);box-shadow:0 30px 60px rgba(20,33,61,.12)}
-.tpl figure{aspect-ratio:4/3;overflow:hidden;border-bottom:1px solid var(--line);background:#eee}
-.tpl figure img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 1.2s var(--ease)}
-.tpl:hover figure img{transform:scale(1.04)}
-.tpl .in{padding:22px;display:flex;flex-direction:column;gap:6px;flex:1}
-.tpl .lb{font:600 12px var(--head);letter-spacing:.12em;text-transform:uppercase;color:var(--coral-ink)}
-.tpl h3{font-size:22px}
-.tpl p{color:var(--muted);font-size:15px;flex:1;margin-bottom:12px}
-.tpl .btn{align-self:flex-start;min-height:48px;padding:0 20px;font-size:15px}
-@media(max-width:960px){.tpls{grid-template-columns:1fr;max-width:520px;margin:0 auto}}
+/* planos como etiquetas de preço */
+.plans{background:var(--ink);color:#fff;overflow:hidden}
+.plans .sec-lead{color:#C2CBDC}
+.tags{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin-top:80px;align-items:start}
+.tag{position:relative;background:var(--paper);color:var(--ink);border-radius:22px 22px 26px 26px;padding:58px 30px 32px;transform:rotate(var(--r,0deg));transform-origin:50% -40px;transition:transform .5s var(--ease)}
+.tag:hover,.tag:focus-within{transform:rotate(0)}
+.tag::before{content:"";position:absolute;top:22px;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--ink);box-shadow:inset 0 2px 3px rgba(0,0,0,.4)}
+.tag::after{content:"";position:absolute;bottom:100%;left:50%;width:2px;height:48px;margin-bottom:-31px;background:#8592AD;transform-origin:bottom}
+.tag.hot{background:var(--sun)}
+.tag h3{font-size:34px}
+.tag .for{color:var(--muted);font-size:16px;margin-top:4px}
+.tag.hot .for{color:#5A4A1A}
+.price{display:flex;align-items:baseline;gap:8px;margin:26px 0 4px}
+.price b{font:800 clamp(48px,5vw,64px)/1 var(--display);letter-spacing:-.04em}
+.price span{font-size:16px;color:var(--muted)}
+.tag.hot .price span,.tag.hot .monthly{color:#5A4A1A}
+.monthly{font-size:16px;color:var(--muted);padding-bottom:22px;border-bottom:2px dashed rgba(20,33,61,.18);margin-bottom:22px}
+.tag ul{list-style:none;display:grid;gap:10px;font-size:16px;margin-bottom:28px}
+.tag li{display:flex;gap:10px;align-items:flex-start}
+.tag li .ic{width:20px;height:20px;margin-top:3px;color:#0F766E}
+.tag.hot li .ic{color:var(--ink)}
+.tag .acts{display:grid;gap:10px}
+.tag .btn{width:100%;min-height:52px;font-size:16px}
+.tag.hot .btn-quiet{background:transparent;box-shadow:inset 0 0 0 1.5px rgba(20,33,61,.35)}
+.most{position:absolute;top:-16px;right:22px;background:var(--coral);color:#fff;font:700 14px var(--body);padding:7px 14px;border-radius:999px}
+.plans .fine{margin-top:56px;color:#C2CBDC;font-size:16px;max-width:46em}
+@media(max-width:960px){.tags{grid-template-columns:1fr;max-width:460px;gap:64px}}
 
-/* planos */
-.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
-.plan{background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:32px;display:flex;flex-direction:column;position:relative}
-.plan.hot{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:0 30px 70px rgba(20,33,61,.25)}
-.plan .badge{position:absolute;top:-14px;left:32px;background:var(--coral);color:#fff;font:600 13px var(--head);padding:6px 14px;border-radius:999px}
-.plan h3{font-size:26px}
-.plan .for{font-size:15px;color:var(--muted);margin:4px 0 22px}
-.plan.hot .for,.plan.hot .mo,.plan.hot li{color:#D3DAE8}
-.plan .pr{font:800 46px/1 var(--head);letter-spacing:-.03em}
-.plan .pr small{font:600 15px var(--body);letter-spacing:0;color:var(--muted);margin-left:4px}
-.plan.hot .pr small{color:#B8C2D6}
-.plan .mo{font-size:15px;color:var(--muted);margin:8px 0 24px}
-.plan ul{list-style:none;display:grid;gap:11px;margin-bottom:28px;flex:1;font-size:15px}
-.plan li{display:flex;gap:10px;align-items:flex-start}
-.plan li .ic{color:var(--mint-d);width:20px;height:20px;margin-top:2px}
-.plan.hot li .ic{color:var(--mint)}
-.plan .acts{display:grid;gap:10px}
-.plan.hot .btn-line{border-color:#fff;color:#fff}.plan.hot .btn-line:hover{background:#fff;color:var(--ink)}
-@media(max-width:960px){.plans{grid-template-columns:1fr;max-width:480px;margin:0 auto}}
-
-/* pedido no celular */
-.order{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center}
-.order figure{border-radius:28px;overflow:hidden;position:relative;aspect-ratio:4/3.4}
-.order figure img{width:100%;height:100%;object-fit:cover}
-.chat{position:absolute;right:18px;bottom:18px;width:min(280px,72%);background:#E7FFDB;border-radius:18px 18px 4px 18px;padding:14px 16px;box-shadow:0 16px 40px rgba(0,0,0,.25);font-size:13.5px;line-height:1.5;color:#111}
-.chat b{display:block;margin-bottom:4px}
-.chat .t{display:block;text-align:right;color:#667;font-size:11px;margin-top:6px}
-.order h2{font-size:clamp(32px,4.4vw,52px);font-weight:800;margin:12px 0 16px}
-.order p{color:var(--muted);font-size:18px}
-.order ul{list-style:none;display:grid;gap:12px;margin-top:22px}
-.order li{display:flex;gap:12px;align-items:center;font-weight:600}
-.order li .ib{width:40px;height:40px;border-radius:12px;background:#FFE4DC;color:var(--coral-ink);display:grid;place-items:center;flex-shrink:0}
-@media(max-width:860px){.order{grid-template-columns:1fr}}
-
-/* faq */
-.faq{max-width:780px;margin:0 auto}
-.faq details{background:var(--card);border:1px solid var(--line);border-radius:18px;margin-bottom:10px}
-.faq summary{list-style:none;cursor:pointer;padding:20px 22px;font:600 17px var(--head);display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:60px}
+/* dúvidas */
+.faq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,80px);align-items:start}
+.faq details{border-bottom:1.5px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px 0;font:700 21px var(--display);letter-spacing:-.01em;min-height:64px}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary .ic{color:var(--coral);transition:transform .25s var(--ease)}
+.faq summary .ic{width:26px;height:26px;color:var(--coral-t);transition:transform .25s var(--ease)}
 .faq details[open] summary .ic{transform:rotate(45deg)}
-.faq p{padding:0 22px 20px;color:var(--muted)}
+.faq details p{color:var(--muted);padding:0 0 24px;max-width:38em}
+@media(max-width:900px){.faq{grid-template-columns:1fr}}
 
-/* CTA final */
-.final{background:var(--ink);color:#fff;border-radius:36px;padding:clamp(40px,6vw,80px);display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center;position:relative;overflow:hidden}
-.final::before{content:"";position:absolute;right:-80px;bottom:-120px;width:360px;height:360px;border-radius:80px;background:var(--coral);transform:rotate(18deg);opacity:.95}
-.final h2{font-size:clamp(34px,4.8vw,58px);font-weight:800}
-.final p{color:#C9D1E3;font-size:18px;margin-top:14px}
-.final .side{position:relative;z-index:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(6px);border-radius:24px;padding:26px;display:grid;gap:14px}
-.final .side .row{display:flex;gap:12px;align-items:center;font-weight:600}
-.final .side .row .ic{color:var(--mint)}
-.final .side .btn{width:100%}
-@media(max-width:860px){.final{grid-template-columns:1fr}}
+/* final */
+.final{background:var(--coral);color:#fff;position:relative;overflow:hidden}
+.final .wrap{position:relative}
+.final h2{font-size:clamp(40px,6vw,84px);max-width:13ch}
+.final p{font-size:20px;max-width:30em;margin:22px 0 40px;color:#FFE9E2}
+.final .num{display:inline-flex;align-items:center;gap:18px;font:800 clamp(34px,6.6vw,96px)/1 var(--display);letter-spacing:-.04em;color:#fff;border-bottom:6px solid #fff;padding-bottom:8px;transition:gap .3s var(--ease)}
+.final .num:hover{gap:26px}
+.final .num .ic{width:.8em;height:.8em}
+.final .note{margin-top:28px;font-size:17px;color:#FFE9E2}
+.final .stripes{position:absolute;top:0;left:0;right:0;height:26px;background:repeating-linear-gradient(90deg,#fff 0 40px,var(--coral) 40px 80px);opacity:.9}
 
-footer{padding:40px 0 110px;color:var(--muted);font-size:15px}
-footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+footer{background:var(--ink);color:#C2CBDC;padding:40px 0 120px;font-size:16px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
 footer img{height:30px;width:auto}
-footer a{display:inline-flex;gap:8px;align-items:center;font-weight:600}
-footer a:hover{color:var(--coral-ink)}
+footer a:hover{color:#fff}
 
 .mbar{display:none}
-@media(max-width:760px){.mbar{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:50;padding:8px;background:rgba(20,33,61,.94);backdrop-filter:blur(10px);border-radius:999px;box-shadow:0 16px 40px rgba(20,33,61,.35)}.mbar .btn{flex:1;min-height:50px}}
+@media(max-width:700px){.mbar{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60}.mbar .btn{flex:1;min-height:58px}footer{padding-bottom:120px}}
 
-.rv{opacity:0;transform:translateY(24px);transition:opacity .75s var(--ease),transform .75s var(--ease);transition-delay:calc(var(--i,0)*80ms)}
-.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none}*{transition-duration:0s!important;animation:none!important}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol><symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol><symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol><symbol id="i-layout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></symbol><symbol id="i-msg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol><symbol id="i-paw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/></symbol><symbol id="i-percent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" x2="5" y1="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></symbol><symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></symbol><symbol id="i-scissors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></symbol><symbol id="i-store" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2 2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"/></symbol><symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol><symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol><symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol><symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></symbol><symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.8-4.2-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.4Z"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol><symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol><symbol id="i-paw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/></symbol><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol><symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></symbol><symbol id="i-scissors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol><symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.8-4.2-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.4Z"/></symbol></svg>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
 <header><div class="wrap">
   <a class="logo" href="#" aria-label="Vitrino, início"><img src="assets/logo.svg" alt="Vitrino" width="426" height="120"></a>
-  <nav aria-label="Principal"><a class="lk" href="#como">Como funciona</a><a class="lk" href="#modelos">Modelos</a><a class="lk" href="#planos">Planos</a><a class="lk" href="#duvidas">Dúvidas</a>
-    <a class="btn btn-coral js-wa" href="#"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Falar comigo</a></nav>
+  <nav aria-label="Principal">
+    <a class="lk" href="#pedido">Como chega o pedido</a><a class="lk" href="#modelos">Modelos</a><a class="lk" href="#planos">Planos</a><a class="lk" href="#duvidas">Dúvidas</a>
+    <a class="btn btn-wa js-wa" href="#"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
+  </nav>
 </div></header>
 
-<main>
+<main id="conteudo">
 <div class="wrap hero">
   <div>
-    <span class="kicker rv"><svg class="ic" aria-hidden="true"><use href="#i-store"/></svg>Sites para lojas e pequenos negócios</span>
-    <h1 class="rv" style="--i:1">Sua loja vendendo <em>no WhatsApp</em>, sem pagar comissão.</h1>
-    <p class="lead rv" style="--i:2">Eu crio o site da sua loja com catálogo, sacola e Pix. O cliente escolhe sozinho e o pedido chega pronto no seu celular. No ar em poucos dias.</p>
-    <div class="ctas rv" style="--i:3"><a class="btn btn-coral js-wa" href="#"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Quero meu site</a><a class="btn btn-line" href="#modelos">Ver modelos funcionando</a></div>
-    <div class="proof rv" style="--i:4"><span class="dot"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></span><span><b>Atendimento olho no olho.</b> Vou até a sua loja, mostro os modelos e a gente decide junto.</span></div>
+    <h1 class="intro">Sua loja aberta o dia todo, no celular de cada cliente.</h1>
+    <p class="lead intro">Eu crio o site da sua loja com catálogo, sacola e Pix. O cliente escolhe sozinho e o pedido chega pronto no seu WhatsApp, sem comissão de aplicativo.</p>
+    <div class="ctas intro">
+      <a class="btn btn-wa js-wa" href="#"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
+      <a class="btn btn-quiet" href="#modelos">Ver os modelos</a>
+    </div>
+    <p class="visit intro"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Atendimento presencial: levo os modelos até a sua loja e a gente monta a proposta junto.</p>
   </div>
-  <div class="stage rv" style="--i:2">
-    <div class="phone"><iframe src="templates/loja/index.html" title="Exemplo de loja funcionando no celular" loading="eager"></iframe></div>
-    <div class="note n1"><span class="ib"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg></span><span>Novo pedido<small>2 itens · R$ 349,80</small></span></div>
-    <div class="note n2"><span class="ib"><svg class="ic" aria-hidden="true"><use href="#i-zap"/></svg></span><span>Pix recebido<small>sem taxa de app</small></span></div>
+  <div class="stage">
+    <canvas id="vitrine" role="img" aria-label="Ilustração 3D de uma lojinha com toldo listrado e um celular mostrando o site da loja"></canvas>
+    <img class="fallback" src="assets/img/vitrine-3d.webp" alt="Ilustração de uma lojinha com toldo listrado e um celular mostrando o site da loja" width="1200" height="900">
   </div>
 </div>
 
-<div class="niches"><div class="wrap">
-  <span><svg class="ic" aria-hidden="true"><use href="#i-flame"/></svg>Restaurantes e delivery</span>
-  <span><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg>Lojas de roupa</span>
-  <span><svg class="ic" aria-hidden="true"><use href="#i-paw"/></svg>Pet shops</span>
-  <span><svg class="ic" aria-hidden="true"><use href="#i-scissors"/></svg>Salões e estética</span>
-  <span><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg>Docerias e presentes</span>
-</div></div>
+<div class="niches"><div class="wrap"><ul aria-label="Feito para">
+  <li><svg class="ic" aria-hidden="true"><use href="#i-flame"/></svg>Restaurantes e delivery</li>
+  <li><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg>Lojas de roupa</li>
+  <li><svg class="ic" aria-hidden="true"><use href="#i-paw"/></svg>Pet shops</li>
+  <li><svg class="ic" aria-hidden="true"><use href="#i-scissors"/></svg>Salões e estética</li>
+  <li><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg>Docerias e presentes</li>
+</ul></div></div>
 
-<section aria-labelledby="t-cmp"><div class="wrap">
-  <div class="sh rv"><span class="kicker">Por que ter um site</span><h2 id="t-cmp">O Instagram mostra. O app cobra. O site vende.</h2><p>Os apps de delivery cobram comissão em cada pedido. O Instagram não tem carrinho. Com um site seu, o cliente compra direto com você.</p></div>
-  <div class="compare rv">
-    <table>
-      <thead><tr><th scope="col"><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden">Recurso</span></th><th scope="col">App de delivery</th><th scope="col">Só Instagram</th><th scope="col" class="us">Site Vitrino</th></tr></thead>
-      <tbody>
-        <tr><th scope="row">Comissão por pedido</th><td><span class="no"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg>Sim</span></td><td><span class="yes"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Não</span></td><td class="us"><span class="yes"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Zero</span></td></tr>
-        <tr><th scope="row">Catálogo com preço e sacola</th><td><span class="yes"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Sim</span></td><td><span class="no"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg>Não</span></td><td class="us"><span class="yes"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Sim</span></td></tr>
-        <tr><th scope="row">Contato do cliente fica com você</th><td><span class="no"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg>Não</span></td><td><span class="yes"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Sim</span></td><td class="us"><span class="yes"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Sim</span></td></tr>
-        <tr><th scope="row">Sua marca, suas cores</th><td><span class="no"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg>Não</span></td><td><span class="yes"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Em parte</span></td><td class="us"><span class="yes"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Total</span></td></tr>
-        <tr><th scope="row">Aparece no Google</th><td><span class="no"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg>Não</span></td><td><span class="no"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg>Pouco</span></td><td class="us"><span class="yes"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Sim</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-</div></section>
-
-<section id="como" style="padding-top:0" aria-labelledby="t-como"><div class="wrap">
-  <div class="sh rv"><span class="kicker">Como funciona</span><h2 id="t-como">Do primeiro papo ao site no ar</h2><p>Você não precisa entender nada de tecnologia. Eu cuido de tudo.</p></div>
-  <div class="steps">
-    <div class="step rv"><span class="ib"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></span><h3>A gente conversa</h3><p>Pessoalmente na sua loja ou pelo WhatsApp. Você me mostra o que vende.</p></div>
-    <div class="step rv" style="--i:1"><span class="ib"><svg class="ic" aria-hidden="true"><use href="#i-layout"/></svg></span><h3>Eu monto o site</h3><p>Com suas cores, fotos, produtos e preços. Em poucos dias você recebe o link.</p></div>
-    <div class="step rv" style="--i:2"><span class="ib"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><h3>Você aprova</h3><p>Até 2 rodadas de ajuste até ficar do seu jeito.</p></div>
-    <div class="step rv" style="--i:3"><span class="ib"><svg class="ic" aria-hidden="true"><use href="#i-trend"/></svg></span><h3>Vende direto</h3><p>Publico no seu endereço e te mostro como os pedidos chegam.</p></div>
-  </div>
-</div></section>
-
-<section id="modelos" style="background:var(--card);border-block:1px solid var(--line)" aria-labelledby="t-mod"><div class="wrap">
-  <div class="sh rv"><span class="kicker">Modelos</span><h2 id="t-mod">Veja funcionando de verdade</h2><p>Abra no celular, coloque na sacola e finalize. O pedido de teste chega no meu WhatsApp.</p></div>
-  <div class="tpls">
-    <article class="tpl rv"><figure><img src="assets/img/prev-basico.webp" alt="Prévia do modelo Básico: hamburgueria Brasa e Pão" width="1280" height="960" loading="lazy"></figure>
-      <div class="in"><span class="lb">Plano Básico</span><h3>Brasa &amp; Pão</h3><p>Hamburgueria com cardápio por categoria, botão de pedido em cada item e status de aberto ou fechado.</p><a class="btn btn-ink" href="templates/basico/index.html">Abrir modelo<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></div></article>
-    <article class="tpl rv" style="--i:1"><figure><img src="assets/img/prev-loja.webp" alt="Prévia do modelo Loja: boutique Flor de Lis" width="1280" height="960" loading="lazy"></figure>
-      <div class="in"><span class="lb">Plano Loja</span><h3>Flor de Lis</h3><p>Moda com filtros, escolha de tamanho, sacola, desconto no Pix e pedido pronto no WhatsApp.</p><a class="btn btn-ink" href="templates/loja/index.html">Abrir modelo<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></div></article>
-    <article class="tpl rv" style="--i:2"><figure><img src="assets/img/prev-premium.webp" alt="Prévia do modelo Premium: pet shop Patas e Cia" width="1280" height="960" loading="lazy"></figure>
-      <div class="in"><span class="lb">Plano Premium</span><h3>Patas &amp; Cia</h3><p>Pet shop com busca, carrinho, frete grátis progressivo, agendamento de banho e tosa, blog e LGPD.</p><a class="btn btn-ink" href="templates/premium/index.html">Abrir modelo<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></div></article>
-  </div>
-</div></section>
-
-<section id="planos" aria-labelledby="t-pl"><div class="wrap">
-  <div class="sh rv"><span class="kicker">Planos</span><h2 id="t-pl">Preço justo, sem surpresa</h2><p>Você paga a criação uma vez e uma mensalidade que cobre hospedagem, suporte e atualizações. Sem fidelidade.</p></div>
-  <div class="plans">
-    <div class="plan rv">
-      <h3>Básico</h3><p class="for">Pra marcar presença e receber pedidos</p>
-      <div class="pr">R$ 497<small>criação</small></div><p class="mo">+ R$ 49 por mês</p>
-      <ul><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Site de uma página</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Cardápio ou lista de serviços</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Pedido pelo WhatsApp em cada item</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Endereço, horários e redes</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Domínio .com.br configurado</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Pronto em até 5 dias úteis</li></ul>
-      <div class="acts"><a class="btn btn-line" href="templates/basico/index.html">Ver modelo</a><a class="btn btn-ink js-wa" data-plano="Básico" href="#">Quero o Básico</a></div>
-    </div>
-    <div class="plan hot rv" style="--i:1"><span class="badge">Mais escolhido</span>
-      <h3>Loja</h3><p class="for">Pra vender pelo site todo dia</p>
-      <div class="pr">R$ 997<small>criação</small></div><p class="mo">+ R$ 99 por mês</p>
-      <ul><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Tudo do Básico</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Catálogo com até 60 produtos</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Filtros, tamanhos e sacola</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Pedido pronto no WhatsApp + Pix</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>4 trocas de produtos por mês</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Pronto em até 7 dias úteis</li></ul>
-      <div class="acts"><a class="btn btn-line" href="templates/loja/index.html">Ver modelo</a><a class="btn btn-coral js-wa" data-plano="Loja" href="#">Quero o Loja</a></div>
-    </div>
-    <div class="plan rv" style="--i:2">
-      <h3>Premium</h3><p class="for">Pra crescer e aparecer no Google</p>
-      <div class="pr">R$ 1.997<small>criação</small></div><p class="mo">+ R$ 179 por mês</p>
-      <ul><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Tudo do plano Loja</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Produtos ilimitados + busca</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Agendamento de serviços</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Blog, depoimentos e dúvidas</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>SEO local + Google Meu Negócio</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Política de privacidade (LGPD)</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Relatório mensal de visitas</li></ul>
-      <div class="acts"><a class="btn btn-line" href="templates/premium/index.html">Ver modelo</a><a class="btn btn-ink js-wa" data-plano="Premium" href="#">Quero o Premium</a></div>
-    </div>
-  </div>
-</div></section>
-
-<section style="padding-top:0" aria-labelledby="t-ord"><div class="wrap order">
-  <figure class="rv"><img src="assets/img/v-celular.webp" alt="Dono de restaurante de avental olhando o celular" width="1200" height="800" loading="lazy">
-    <div class="chat" aria-hidden="true"><b>Novo pedido pelo site</b>• 1x Vestido Midi Floral (M)<br>• 1x Bolsa Tiracolo Cinza<br><b style="margin-top:6px">Total no Pix: R$ 360,81</b><span class="t">14:32 ✓✓</span></div></figure>
+<section id="pedido" class="block" aria-labelledby="t-pedido"><div class="wrap order">
   <div>
-    <span class="kicker rv">Na prática</span>
-    <h2 id="t-ord" class="rv" style="--i:1">O pedido chega pronto no seu celular.</h2>
-    <p class="rv" style="--i:2">Nada de perguntar tamanho, endereço e forma de pagamento um por um. A mensagem já vem com tudo, é só confirmar e mandar a chave Pix.</p>
-    <ul>
-      <li class="rv" style="--i:3"><span class="ib"><svg class="ic" aria-hidden="true"><use href="#i-msg"/></svg></span>Itens, quantidades e total calculados</li>
-      <li class="rv" style="--i:4"><span class="ib"><svg class="ic" aria-hidden="true"><use href="#i-truck"/></svg></span>Entrega ou retirada já escolhida</li>
-      <li class="rv" style="--i:5"><span class="ib"><svg class="ic" aria-hidden="true"><use href="#i-percent"/></svg></span>Desconto no Pix aplicado automaticamente</li>
-    </ul>
+    <h2 id="t-pedido" class="sec-title">O pedido chega pronto. Você só confirma.</h2>
+    <p class="sec-lead">Nada de perguntar tamanho, endereço e forma de pagamento um por um. O site monta a mensagem completa e manda pro seu WhatsApp.</p>
+    <dl>
+      <div><dt>Itens e total calculados</dt><dd>Quantidade, tamanho, preço de cada peça e o desconto no Pix já aplicado.</dd></div>
+      <div><dt>Entrega ou retirada</dt><dd>O cliente escolhe e informa o endereço antes de enviar.</dd></div>
+      <div><dt>Sem comissão</dt><dd>O pagamento cai direto na sua chave Pix. Nenhum aplicativo fica com uma parte.</dd></div>
+    </dl>
+  </div>
+  <div class="wa-phone" role="img" aria-label="Exemplo de conversa no WhatsApp com um pedido vindo do site">
+    <div class="wa-screen">
+      <div class="wa-top"><span class="av"><img src="assets/icone.svg" alt=""></span><span><b>Pedidos da loja</b><small>online</small></span></div>
+      <div class="wa-body">
+        <div class="msg out">Olá, Flor de Lis! Quero fazer um pedido:
+          <ul><li>1x Vestido Midi Floral (tam. M) — R$ 189,90</li><li>1x Bolsa Tiracolo Cinza — R$ 189,90</li></ul>
+          <b>Total: R$ 360,81</b> (5% off no Pix)<br>Entrega: Rua das Flores, 120<br>Pagamento: Pix<time>14:32</time></div>
+        <div class="msg in">Oi, Ana! Pedido recebido. Segue a chave Pix pra finalizar. Entregamos hoje à tarde.<time>14:33</time></div>
+      </div>
+    </div>
   </div>
 </div></section>
 
-<section id="duvidas" style="padding-top:0" aria-labelledby="t-faq"><div class="wrap">
-  <div class="sh rv"><span class="kicker">Dúvidas</span><h2 id="t-faq">Perguntas frequentes</h2></div>
-  <div class="faq">
-    <details><summary>O que a mensalidade cobre?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Hospedagem, cadeado de segurança, suporte pelo WhatsApp e atualizações de produtos, preços e textos conforme o plano.</p></details>
-    <details><summary>O domínio está incluso?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Eu registro e configuro no seu nome. A anuidade do domínio no Registro.br é paga por você, direto, e o domínio é seu.</p></details>
-    <details><summary>Tenho fidelidade?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Não. Você pode cancelar a mensalidade quando quiser, com aviso de 30 dias.</p></details>
-    <details><summary>Já vendo no iFood. Vale a pena?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Vale. O app traz clientes novos; o site é pra quem já te conhece pedir direto com você, sem comissão.</p></details>
-    <details><summary>Como funciona o pagamento?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Metade pra começar e metade na entrega, no Pix. A mensalidade começa no mês em que o site vai ao ar.</p></details>
-    <details><summary>Posso trocar de plano depois?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Pode. Você paga só a diferença da criação e passa pra nova mensalidade.</p></details>
+<section id="modelos" class="block" style="padding-top:0" aria-labelledby="t-mod"><div class="wrap">
+  <h2 id="t-mod" class="sec-title">Três vitrines prontas pra você testar.</h2>
+  <p class="sec-lead">Abra no celular, coloque produtos na sacola e finalize. O pedido de teste chega no meu WhatsApp, do jeito que chegaria no seu.</p>
+  <div class="windows">
+    <article class="win" style="--a:#DC2626"><div class="tilt"><div class="awn" aria-hidden="true"></div><div class="glass"><figure><img src="assets/img/prev-basico.webp" alt="Página inicial do modelo da hamburgueria Brasa e Pão" width="1280" height="960" loading="lazy"></figure></div></div>
+      <div class="meta"><span class="plan">Plano Básico</span><h3>Brasa &amp; Pão</h3><p>Hamburgueria com cardápio por categoria, pedido em cada item e aviso de aberto ou fechado.</p><a class="btn btn-quiet" href="templates/basico/index.html">Abrir a hamburgueria</a></div></article>
+    <article class="win" style="--a:#9C4A2A"><div class="tilt"><div class="awn" aria-hidden="true"></div><div class="glass"><figure><img src="assets/img/prev-loja.webp" alt="Página inicial do modelo da boutique Flor de Lis" width="1280" height="960" loading="lazy"></figure></div></div>
+      <div class="meta"><span class="plan">Plano Loja</span><h3>Flor de Lis</h3><p>Boutique com filtros, escolha de tamanho, sacola e desconto no Pix.</p><a class="btn btn-quiet" href="templates/loja/index.html">Abrir a boutique</a></div></article>
+    <article class="win" style="--a:#047857"><div class="tilt"><div class="awn" aria-hidden="true"></div><div class="glass"><figure><img src="assets/img/prev-premium.webp" alt="Página inicial do modelo do pet shop Patas e Cia" width="1280" height="960" loading="lazy"></figure></div></div>
+      <div class="meta"><span class="plan">Plano Premium</span><h3>Patas &amp; Cia</h3><p>Pet shop com busca, frete grátis progressivo, agendamento de banho e tosa e blog.</p><a class="btn btn-quiet" href="templates/premium/index.html">Abrir o pet shop</a></div></article>
   </div>
 </div></section>
 
-<section style="padding-top:0"><div class="wrap"><div class="final rv">
-  <div><h2>Bora colocar sua loja no ar?</h2><p>Me chama no WhatsApp. Se preferir, eu vou até a sua loja mostrar os modelos e montar a proposta com você.</p></div>
-  <div class="side">
-    <div class="row"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Proposta no mesmo dia</div>
-    <div class="row"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Atendimento presencial</div>
-    <div class="row"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Sem fidelidade</div>
-    <a class="btn btn-coral js-wa" href="#"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>(21) 99454-2037</a>
+<section class="block" style="padding-top:0" aria-labelledby="t-cmp"><div class="wrap">
+  <h2 id="t-cmp" class="sec-title">O Instagram mostra. O aplicativo cobra. O site vende.</h2>
+  <div class="cmp"><div class="cmp-wrap"><table>
+    <thead><tr><th scope="col"><span class="sr">Recurso</span></th><th scope="col">App de delivery</th><th scope="col">Só Instagram</th><th scope="col" class="us">Site Vitrino</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Comissão por pedido</th><td><span class="n"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg>Cobra</span></td><td><span class="y"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Não cobra</span></td><td class="us"><span class="y"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Zero</span></td></tr>
+      <tr><th scope="row">Catálogo com preço e sacola</th><td><span class="y"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Tem</span></td><td><span class="n"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg>Não tem</span></td><td class="us"><span class="y"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Tem</span></td></tr>
+      <tr><th scope="row">Contato do cliente fica com você</th><td><span class="n"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg>Fica com o app</span></td><td><span class="y"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Fica</span></td><td class="us"><span class="y"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Fica</span></td></tr>
+      <tr><th scope="row">Sua marca e suas cores</th><td><span class="n"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg>Padrão do app</span></td><td><span class="y"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Em parte</span></td><td class="us"><span class="y"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Do seu jeito</span></td></tr>
+      <tr><th scope="row">Aparece no Google</th><td><span class="n"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg>Não</span></td><td><span class="n"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg>Pouco</span></td><td class="us"><span class="y"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Sim</span></td></tr>
+    </tbody>
+  </table></div></div>
+</div></section>
+
+<section id="como" class="block" style="padding-top:0" aria-labelledby="t-como"><div class="wrap">
+  <h2 id="t-como" class="sec-title">Do primeiro papo ao site no ar.</h2>
+  <p class="sec-lead">Você não precisa entender nada de tecnologia. Eu cuido de tudo e te mostro cada etapa.</p>
+  <ol class="timeline">
+    <li><h3>A gente conversa</h3><p>Na sua loja ou pelo WhatsApp. Você me mostra o que vende e como atende hoje.</p></li>
+    <li><h3>Eu monto o site</h3><p>Com seu logo, suas cores, fotos e preços. Em poucos dias você recebe o link.</p></li>
+    <li><h3>Você ajusta</h3><p>Até duas rodadas de mudanças até ficar do seu jeito.</p></li>
+    <li><h3>Começa a vender</h3><p>Publico no seu endereço .com.br e te mostro como os pedidos chegam.</p></li>
+  </ol>
+</div></section>
+
+<section id="planos" class="block plans" aria-labelledby="t-pl"><div class="wrap">
+  <h2 id="t-pl" class="sec-title">Preço na etiqueta, sem surpresa.</h2>
+  <p class="sec-lead">Você paga a criação uma vez e uma mensalidade que cobre hospedagem, suporte e atualizações. Pode cancelar quando quiser.</p>
+  <div class="tags">
+    <div class="tag" style="--r:-2deg">
+      <h3>Básico</h3><p class="for">Pra marcar presença e receber pedidos</p>
+      <div class="price"><b>R$ 497</b><span>de criação</span></div><p class="monthly">mais R$ 49 por mês</p>
+      <ul><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Site de uma página com seu cardápio ou serviços</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Botão de pedido no WhatsApp em cada item</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Endereço, horários e redes sociais</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Seu endereço .com.br configurado</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>No ar em até 5 dias úteis</li></ul>
+      <div class="acts"><a class="btn btn-wa js-wa" data-plano="Básico" href="#">Quero o Básico</a><a class="btn btn-quiet" href="templates/basico/index.html">Ver o modelo</a></div>
+    </div>
+    <div class="tag hot" style="--r:1.5deg"><span class="most">Mais escolhido</span>
+      <h3>Loja</h3><p class="for">Pra vender pelo site todo dia</p>
+      <div class="price"><b>R$ 997</b><span>de criação</span></div><p class="monthly">mais R$ 99 por mês</p>
+      <ul><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Tudo do Básico</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Catálogo com até 60 produtos</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Filtros, tamanhos e sacola</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Pedido pronto no WhatsApp com Pix</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>4 trocas de produtos por mês</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>No ar em até 7 dias úteis</li></ul>
+      <div class="acts"><a class="btn btn-wa js-wa" data-plano="Loja" href="#">Quero o Loja</a><a class="btn btn-quiet" href="templates/loja/index.html">Ver o modelo</a></div>
+    </div>
+    <div class="tag" style="--r:-1deg">
+      <h3>Premium</h3><p class="for">Pra crescer e aparecer no Google</p>
+      <div class="price"><b>R$ 1.997</b><span>de criação</span></div><p class="monthly">mais R$ 179 por mês</p>
+      <ul><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Tudo do plano Loja</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Produtos sem limite, com busca</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Agendamento de serviços</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Blog, depoimentos e dúvidas</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Google Meu Negócio configurado</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Política de privacidade (LGPD)</li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Relatório mensal de visitas</li></ul>
+      <div class="acts"><a class="btn btn-wa js-wa" data-plano="Premium" href="#">Quero o Premium</a><a class="btn btn-quiet" href="templates/premium/index.html">Ver o modelo</a></div>
+    </div>
   </div>
-</div></div></section>
+  <p class="fine">Pagamento: metade pra começar e metade na entrega, no Pix. A mensalidade começa no mês em que o site vai ao ar. O domínio .com.br fica no seu nome e a anuidade é paga direto ao Registro.br.</p>
+</div></section>
+
+<section id="duvidas" class="block" aria-labelledby="t-faq"><div class="wrap faq">
+  <h2 id="t-faq" class="sec-title">Dúvidas de quem tem loja.</h2>
+  <div>
+    <details><summary>Preciso entender de internet?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Não. Você me passa as fotos, os produtos e os preços, eu faço o resto. Depois é só responder os pedidos no WhatsApp, como você já faz.</p></details>
+    <details><summary>Já vendo no iFood. Ainda vale a pena?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Vale. O aplicativo traz gente nova; o site é pra quem já te conhece pedir direto com você, sem pagar comissão.</p></details>
+    <details><summary>O que a mensalidade cobre?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Hospedagem, cadeado de segurança, suporte pelo WhatsApp e as trocas de produtos, preços e textos incluídas no seu plano.</p></details>
+    <details><summary>Tem fidelidade?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Não. Você cancela quando quiser, avisando com 30 dias.</p></details>
+    <details><summary>Posso mudar de plano depois?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Pode. Você paga só a diferença da criação e passa a pagar a nova mensalidade.</p></details>
+  </div>
+</div></section>
+
+<section class="block final" aria-labelledby="t-final"><div class="stripes" aria-hidden="true"></div><div class="wrap">
+  <h2 id="t-final">Bora colocar sua loja no ar?</h2>
+  <p>Me chama no WhatsApp. Se preferir, eu vou até a sua loja mostrar os modelos e montar a proposta com você no mesmo dia.</p>
+  <a class="num js-wa" href="#"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>(21) 99454-2037</a>
+  <p class="note">Sem fidelidade. Metade do pagamento só na entrega.</p>
+</div></section>
 </main>
 
-<footer><div class="wrap"><img src="assets/logo.svg" alt="Vitrino" width="426" height="120"><a class="js-wa" href="#"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>(21) 99454-2037</a><span>© <span id="ano"></span> Vitrino · Sites que vendem</span></div></footer>
-<div class="mbar"><a class="btn btn-coral js-wa" href="#"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Quero meu site</a></div>
+<footer><div class="wrap"><img src="assets/logo-branco.svg" alt="Vitrino" width="426" height="120"><span>Sites que vendem para lojas e pequenos negócios</span><a class="js-wa" href="#">(21) 99454-2037</a></div></footer>
+<div class="mbar"><a class="btn btn-wa js-wa" href="#"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Chamar no WhatsApp</a></div>
 
 <script>
 // ====== CONFIGURE AQUI ======
@@ -330,9 +366,21 @@ document.querySelectorAll('.js-wa').forEach(a=>{
   const msg=p?`Olá! Vi o site da Vitrino e tenho interesse no plano ${p}.`:'Olá! Vi o site da Vitrino e quero saber mais sobre um site pra minha loja.';
   a.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;a.target='_blank';a.rel='noopener';
 });
-const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{rootMargin:'0px 0px -8% 0px'}):null;
-document.querySelectorAll('.rv').forEach(el=>io?io.observe(el):el.classList.add('in'));
-document.getElementById('ano').textContent=new Date().getFullYear();
+// vitrines inclinam acompanhando o dedo ou o mouse
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  document.querySelectorAll('.win').forEach(w=>{
+    const t=w.querySelector('.tilt');
+    w.addEventListener('pointermove',e=>{const r=w.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;t.style.transform=`rotateY(${x*10}deg) rotateX(${-y*8}deg)`});
+    w.addEventListener('pointerleave',()=>{t.style.transform=''});
+  });
+}
 </script>
+<script type="module">
+import { startVitrine } from './assets/js/vitrine3d.js';
+const ok = startVitrine(document.getElementById('vitrine'), { logo: 'assets/img/logo-branco.png', screen: 'assets/img/tela-loja.webp' });
+if (!ok) document.documentElement.classList.add('no3d');
+</script>
+<script nomodule>document.documentElement.classList.add('no3d')</script>
+<script>setTimeout(()=>{if(!document.getElementById('vitrine').dataset.ready)document.documentElement.classList.add('no3d')},6000)</script>
 </body>
 </html>

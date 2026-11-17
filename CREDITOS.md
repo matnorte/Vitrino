@@ -44,3 +44,5 @@ Fotos dos modelos de demonstração: Unsplash (licença Unsplash, uso comercial 
 - v-celular: https://unsplash.com/photos/1687422808248-f807f4ea2a2e
 
 Ícones: Lucide (licença ISC).
+
+Cena 3D: three.js (licença MIT, ver assets/js/THREE-LICENSE.txt).
