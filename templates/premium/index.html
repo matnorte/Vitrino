@@ -3,351 +3,469 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Patas &amp; Cia — Pet Shop, Banho e Tosa</title>
-<meta name="description" content="Pet shop completo: rações, petiscos, acessórios e banho e tosa com agendamento online. Entrega rápida na cidade.">
-<!-- SEO / redes sociais -->
-<meta property="og:title" content="Patas & Cia — Pet Shop, Banho e Tosa">
-<meta property="og:description" content="Tudo pro seu pet, com entrega rápida e agendamento de banho e tosa online.">
+<title>Patas &amp; Cia — Pet shop, banho e tosa</title>
+<meta name="description" content="Rações, petiscos e acessórios com entrega no mesmo dia. Banho e tosa com agendamento online.">
+<meta property="og:title" content="Patas & Cia — Pet shop, banho e tosa">
+<meta property="og:description" content="Tudo pro seu pet com entrega rápida e agendamento de banho e tosa em 30 segundos.">
+<meta property="og:image" content="img/hero.webp">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#0E7C6B">
+<meta name="theme-color" content="#047857">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"PetStore","name":"Patas & Cia","telephone":"+55-00-00000-0000",
  "address":{"@type":"PostalAddress","streetAddress":"Av. Exemplo, 789","addressLocality":"Sua Cidade","addressRegion":"UF","addressCountry":"BR"},
  "openingHours":["Mo-Fr 08:00-19:00","Sa 08:00-14:00"],"priceRange":"$$"}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* ====== CONFIGURE AQUI (cores do cliente) ====== */
-:root{--bg:#F7FBFA;--ink:#0F2A26;--muted:#5D746F;--main:#0E7C6B;--main2:#0A5D50;--sun:#FFC845;--soft:#E3F3EF;--line:#DCEBE7;--radius:18px}
+/* ====== CONFIGURE AQUI: cores do cliente ====== */
+:root{
+  --bg:#F4FBF8; --card:#FFFFFF; --soft:#E3F4EC; --ink:#0B2A22; --muted:#4B635C; --line:#D5E8DF;
+  --main:#047857; --main-d:#065F46; --accent:#C2410C; --sun:#FDE68A; --star:#B45309;
+  --radius:20px; --ease:cubic-bezier(.2,.8,.2,1);
+  --head:Rubik,system-ui,sans-serif; --body:'Nunito Sans',system-ui,sans-serif;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
-h1,h2,h3{font-family:Poppins,sans-serif;line-height:1.15}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--body);font-size:16px;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
-button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
-input,select,textarea{font:inherit}
-.demo{background:#FF5A36;color:#fff;font-size:13px;text-align:center;padding:8px 12px}
-.demo a{text-decoration:underline;font-weight:600}
-.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-.announce{background:var(--sun);text-align:center;font-size:14px;font-weight:600;padding:8px}
-header{position:sticky;top:0;z-index:20;background:rgba(247,251,250,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-header .wrap{height:70px;display:flex;align-items:center;gap:20px}
-.brand{font-family:Poppins;font-weight:800;font-size:22px;display:flex;align-items:center;gap:8px;white-space:nowrap}
-.brand .paw{width:36px;height:36px;border-radius:12px;background:var(--main);display:grid;place-items:center;font-size:18px}
-nav{display:flex;gap:22px;font-size:15px;color:var(--muted);margin-left:auto}
+button,input,select{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+h1,h2,h3{font-family:var(--head);line-height:1.1;letter-spacing:-.02em}
+.ic{width:20px;height:20px;flex-shrink:0}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{width:min(1220px,100% - 40px);margin-inline:auto}
+.demo{background:#FF5A36;color:#14213D;font-size:13px;font-weight:700;text-align:center;padding:8px 16px}
+.demo a{text-decoration:underline}
+.announce{background:var(--sun);font-size:14px;font-weight:700;text-align:center;padding:9px 16px;display:flex;justify-content:center;gap:8px;align-items:center}
+.announce .ic{width:18px;height:18px}
+.kicker{font:600 13px var(--head);letter-spacing:.14em;text-transform:uppercase;color:var(--main)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font:600 16px var(--head);transition:transform .2s var(--ease),background-color .2s,box-shadow .2s}
+.btn:active{transform:scale(.97)}
+.btn-main{background:var(--main);color:#fff;box-shadow:0 10px 24px rgba(4,120,87,.25)}.btn-main:hover{background:var(--main-d);transform:translateY(-2px)}
+.btn-sun{background:var(--sun);color:var(--ink)}.btn-sun:hover{background:#FCD34D;transform:translateY(-2px)}
+.btn-white{background:#fff;color:var(--ink);border:1.5px solid var(--line)}.btn-white:hover{border-color:var(--main)}
+
+header{position:sticky;top:0;z-index:30;background:rgba(244,251,248,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header .wrap{height:72px;display:flex;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font:800 22px var(--head);white-space:nowrap}
+.logo .paw{width:40px;height:40px;border-radius:12px;background:var(--main);color:#fff;display:grid;place-items:center}
+.search{flex:1;max-width:380px;position:relative;margin-left:8px}
+.search .ic{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);width:18px;height:18px}
+.search input{width:100%;min-height:46px;padding:0 14px 0 42px;border-radius:999px;border:1.5px solid var(--line);background:#fff}
+.search input:focus{border-color:var(--main);outline:none}
+nav{display:flex;gap:22px;margin-left:auto;font-weight:700;font-size:15px;color:var(--muted)}
 nav a:hover{color:var(--ink)}
-.search{flex:1;max-width:320px;position:relative}
-.search input{width:100%;padding:10px 14px 10px 38px;border:1.5px solid var(--line);border-radius:999px;background:#fff}
-.search::before{content:"🔎";position:absolute;left:13px;top:9px;font-size:14px}
-.bag{display:flex;align-items:center;gap:8px;background:var(--main);color:#fff;padding:10px 16px;border-radius:999px;font-weight:600;font-size:14px}
-.bag .n{background:var(--sun);color:var(--ink);border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:12px}
-@media(max-width:900px){nav{display:none}.search{max-width:none}}
-@media(max-width:560px){.brand span.t{display:none}}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--main);color:#fff;font-weight:600;padding:13px 22px;border-radius:999px;font-size:15px;transition:transform .15s}
-.btn:hover{transform:translateY(-2px)}
-.btn.sun{background:var(--sun);color:var(--ink)}
-.btn.line{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
-.hero{background:linear-gradient(135deg,var(--main),var(--main2));color:#fff;border-radius:32px;margin:24px 0;padding:56px 48px;display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;overflow:hidden;position:relative}
-.hero h1{font-size:clamp(34px,5vw,58px);font-weight:800;letter-spacing:-1px}
-.hero p{opacity:.9;font-size:18px;margin:16px 0 26px;max-width:480px}
-.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
-.hero .art{font-size:clamp(110px,16vw,190px);text-align:center;filter:drop-shadow(0 20px 30px rgba(0,0,0,.25))}
-@media(max-width:780px){.hero{grid-template-columns:1fr;padding:36px 24px}.hero .art{order:-1;font-size:110px}}
-.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:56px}
-.benefits div{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;font-size:14px;color:var(--muted)}
-.benefits b{display:block;color:var(--ink);font-size:15px}
-@media(max-width:780px){.benefits{grid-template-columns:1fr 1fr}}
-section{margin-bottom:64px}
-.head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px;flex-wrap:wrap}
-.head h2{font-size:clamp(26px,3.5vw,36px);font-weight:800}
+.cartbtn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 16px;border-radius:999px;background:var(--main);color:#fff;font:600 15px var(--head);transition:background-color .2s}
+.cartbtn:hover{background:var(--main-d)}
+.cartbtn .n{background:var(--sun);color:var(--ink);border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:12px;padding:0 6px}
+@media(max-width:980px){nav{display:none}.cartbtn{margin-left:auto}}
+@media(max-width:600px){.logo .t{display:none}.search{margin-left:0}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:clamp(32px,5vw,64px) 0}
+.hero h1{font-size:clamp(42px,6vw,76px);font-weight:800;margin:14px 0 18px}
+.hero h1 span{color:var(--main)}
+.hero p{font-size:18px;color:var(--muted);max-width:500px;margin-bottom:28px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:28px;color:var(--muted);font-weight:700;font-size:14px}
+.trust span{display:inline-flex;align-items:center;gap:8px}.trust .ic{color:var(--main)}
+.hero-art{position:relative;aspect-ratio:4/5;max-height:600px;justify-self:center;width:100%;max-width:470px}
+.hero-art .blob{position:absolute;inset:6% -4% -2% 8%;background:var(--sun);border-radius:42% 58% 52% 48%/48% 42% 58% 52%}
+.hero-art figure{position:absolute;inset:0 6% 4% 0;border-radius:32px;overflow:hidden;box-shadow:0 30px 60px rgba(11,42,34,.18)}
+.hero-art img{width:100%;height:100%;object-fit:cover}
+.float{position:absolute;background:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 12px 30px rgba(11,42,34,.14);display:flex;gap:10px;align-items:center;font-size:14px;font-weight:700}
+.float .ic{color:var(--main)}
+.float small{display:block;font-weight:600;color:var(--muted);font-size:12px}
+.f1{left:-24px;bottom:18%}.f2{right:-10px;top:12%}
+@media(max-width:860px){.hero{grid-template-columns:1fr}.hero-art{max-width:380px}.f1{left:0}.f2{right:0}}
+
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:clamp(56px,8vw,88px)}
+.benefits>div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;gap:12px;align-items:flex-start}
+.benefits .ic{width:26px;height:26px;color:var(--main);margin-top:2px}
+.benefits b{display:block;font-family:var(--head);font-weight:600}.benefits span{font-size:14px;color:var(--muted)}
+@media(max-width:900px){.benefits{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.benefits{grid-template-columns:1fr}}
+
+section{margin-bottom:clamp(64px,9vw,104px);scroll-margin-top:80px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:26px}
+.head h2{font-size:clamp(32px,4.2vw,48px);font-weight:800;margin-top:6px}
 .head p{color:var(--muted)}
-.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
-.cats button{background:#fff;border:1.5px solid var(--line);border-radius:var(--radius);padding:18px 8px;text-align:center;font-weight:600;font-size:14px;transition:.15s}
-.cats button span{display:block;font-size:34px;margin-bottom:4px}
-.cats button.on,.cats button:hover{border-color:var(--main);background:var(--soft)}
-@media(max-width:780px){.cats{grid-template-columns:repeat(3,1fr)}}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
-@media(max-width:520px){.grid{grid-template-columns:1fr 1fr;gap:12px}}
-.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
-.card .img{aspect-ratio:1;background:var(--soft);display:grid;place-items:center;font-size:64px;position:relative}
-.tag{position:absolute;top:10px;left:10px;background:var(--sun);font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px}
-.card .body{padding:14px;display:flex;flex-direction:column;flex:1}
-.card h3{font-family:Inter;font-size:15px;font-weight:600}
-.card .stars{font-size:12px;color:#E0A800}
-.card .price{font-size:18px;font-weight:700;margin:6px 0 2px}
-.card .pix{font-size:12px;color:var(--main);font-weight:600;margin-bottom:12px}
-.card .add{margin-top:auto;background:var(--main);color:#fff;border-radius:999px;padding:10px;font-weight:600;font-size:14px}
-.noresult{grid-column:1/-1;color:var(--muted);text-align:center;padding:30px}
-.groom{display:grid;grid-template-columns:1fr 1fr;gap:28px;background:#fff;border:1px solid var(--line);border-radius:28px;padding:40px}
-.groom ul{list-style:none;margin-top:16px;display:grid;gap:10px}
-.groom li{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:8px}
-.groom form{display:grid;gap:12px;background:var(--soft);padding:24px;border-radius:20px}
-.groom input,.groom select{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:12px;background:#fff}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:780px){.groom{grid-template-columns:1fr;padding:24px}}
+
+.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.cat{display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px 6px;border-radius:20px;font:600 15px var(--head);border:2px solid transparent;transition:border-color .2s,background-color .2s}
+.cat img{width:100%;max-width:112px;aspect-ratio:1;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 8px 20px rgba(11,42,34,.1);transition:transform .3s var(--ease)}
+.cat:hover img{transform:scale(1.05)}
+.cat[aria-pressed="true"]{border-color:var(--main);background:var(--soft)}
+@media(max-width:760px){.cats{grid-template-columns:repeat(3,1fr)}}
+
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+@media(max-width:1020px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+.prod{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s}
+.prod:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(11,42,34,.1)}
+.prod figure{aspect-ratio:1;overflow:hidden;position:relative;background:var(--soft)}
+.prod img{width:100%;height:100%;object-fit:cover}
+.tag{position:absolute;top:10px;left:10px;background:var(--sun);font:700 12px var(--head);padding:5px 10px;border-radius:999px}
+.prod .b{padding:14px;display:flex;flex-direction:column;gap:4px;flex:1}
+.stars{display:flex;align-items:center;gap:2px;color:var(--star);font-size:13px;font-weight:700}
+.stars .ic{width:14px;height:14px;fill:currentColor}
+.prod h3{font:600 15px/1.35 var(--head);letter-spacing:0}
+.prod .price{font:700 19px var(--head);margin-top:4px}
+.prod .pix{font-size:13px;color:var(--main);font-weight:700;margin-bottom:10px}
+.add{margin-top:auto;min-height:44px;border-radius:999px;background:var(--soft);color:var(--main-d);font:600 15px var(--head);display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:background-color .2s,color .2s}
+.add:hover{background:var(--main);color:#fff}
+.add .ic{width:18px;height:18px}
+.none{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px;background:#fff;border-radius:var(--radius);border:1px dashed var(--line)}
+
+/* banho e tosa */
+.groom{display:grid;grid-template-columns:1fr 1fr;background:#fff;border:1px solid var(--line);border-radius:32px;overflow:hidden}
+.groom figure{position:relative;min-height:320px}
+.groom figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.groom .in{padding:clamp(24px,4vw,48px);display:flex;flex-direction:column;gap:18px}
+.prices{list-style:none;display:grid;gap:8px}
+.prices li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+.prices b{font-family:var(--head)}
+form.ag{display:grid;gap:12px;background:var(--soft);border-radius:20px;padding:20px}
+.fld{display:grid;gap:6px}
+.fld label{font-size:14px;font-weight:700}
+.fld input,.fld select{min-height:48px;border:1.5px solid var(--line);border-radius:12px;padding:0 14px;background:#fff}
+.fld input:focus,.fld select:focus{border-color:var(--main);outline:none}
+.fld .err{color:#B91C1C;font-size:13px;font-weight:700;display:none}
+.fld.bad input{border-color:#B91C1C}.fld.bad .err{display:block}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.check{display:flex;gap:10px;align-items:center;font-size:15px;font-weight:600;min-height:44px}
+.check input{width:22px;height:22px;accent-color:var(--main)}
+@media(max-width:860px){.groom{grid-template-columns:1fr}.groom figure{min-height:260px}}
+@media(max-width:420px){.row2{grid-template-columns:1fr}}
+
 .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.reviews div{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;font-size:15px}
-.reviews b{display:block;margin-top:12px;font-size:14px}
-.reviews small{color:var(--muted)}
-@media(max-width:780px){.reviews{grid-template-columns:1fr}}
-.faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:10px}
-.faq summary{font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between}
-.faq summary::after{content:"+";font-size:20px;color:var(--main)}
-.faq details[open] summary::after{content:"−"}
-.faq p{color:var(--muted);margin-top:10px}
-.blog{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.blog a{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-.blog .th{height:130px;display:grid;place-items:center;font-size:52px}
-.blog h3{font-family:Inter;font-size:16px;padding:16px 16px 4px}
-.blog p{font-size:13px;color:var(--muted);padding:0 16px 16px}
-@media(max-width:780px){.blog{grid-template-columns:1fr}}
-.insta{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
-.insta div{aspect-ratio:1;border-radius:12px;display:grid;place-items:center;font-size:40px}
-@media(max-width:780px){.insta{grid-template-columns:repeat(3,1fr)}}
-.news{background:var(--ink);color:#fff;border-radius:28px;padding:40px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.news h2{font-size:28px}
-.news form{display:flex;gap:10px;flex:1 1 280px;max-width:460px;min-width:0}
-.news input{flex:1;min-width:0;padding:13px 16px;border-radius:999px;border:0}
-footer{background:#fff;border-top:1px solid var(--line);padding:48px 0 28px;font-size:14px;color:var(--muted)}
+.review{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:12px}
+.review p{font-size:17px}
+.review .who{display:flex;align-items:center;gap:10px;margin-top:auto}
+.review .av{width:40px;height:40px;border-radius:50%;background:var(--soft);display:grid;place-items:center;color:var(--main);font:700 15px var(--head)}
+.review small{color:var(--muted);display:block}
+@media(max-width:860px){.reviews{grid-template-columns:1fr}}
+
+.blog{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.post{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .3s var(--ease)}
+.post:hover{transform:translateY(-4px)}
+.post figure{aspect-ratio:16/10;overflow:hidden}
+.post img{width:100%;height:100%;object-fit:cover}
+.post div{padding:18px}
+.post small{color:var(--main);font-weight:700}
+.post h3{font-size:19px;margin:6px 0}
+.post p{color:var(--muted);font-size:15px}
+@media(max-width:860px){.blog{grid-template-columns:1fr}}
+
+.insta{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.insta a{aspect-ratio:1;border-radius:16px;overflow:hidden;position:relative}
+.insta img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.insta a:hover img{transform:scale(1.08)}
+@media(max-width:760px){.insta{grid-template-columns:repeat(3,1fr)}}
+
+.faq{max-width:820px}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:10px}
+.faq summary{list-style:none;cursor:pointer;padding:18px 20px;font:600 17px var(--head);display:flex;justify-content:space-between;gap:12px;align-items:center;min-height:56px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ic{transition:transform .25s var(--ease);color:var(--main)}
+.faq details[open] summary .ic{transform:rotate(180deg)}
+.faq details p{padding:0 20px 18px;color:var(--muted)}
+
+.news{background:var(--ink);color:#fff;border-radius:32px;padding:clamp(28px,5vw,56px);display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.news h2{font-size:clamp(28px,3.5vw,40px)}
+.news p{color:#B8CFC7}
+.news form{display:flex;gap:10px;flex:1 1 320px;max-width:480px;min-width:0}
+.news input{flex:1;min-width:0;min-height:52px;border-radius:999px;border:0;padding:0 18px;color:var(--ink)}
+
+footer{background:#fff;border-top:1px solid var(--line);padding:48px 0 32px;color:var(--muted);font-size:15px}
 footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px;margin-bottom:28px}
-footer h4{color:var(--ink);margin-bottom:10px;font-family:Poppins}
-footer a{display:block;margin-bottom:6px}
-@media(max-width:780px){footer .cols{grid-template-columns:1fr 1fr}}
-.pays{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.pays span{border:1px solid var(--line);border-radius:8px;padding:3px 9px;font-size:12px;font-weight:600}
-/* sacola */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:.2s;z-index:57}
-.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:#fff;transform:translateX(100%);transition:.25s;display:flex;flex-direction:column;z-index:58}
-.open .overlay{opacity:1;pointer-events:auto}.open .drawer{transform:none}
-.drawer .dh{padding:0 20px;display:flex;justify-content:space-between;align-items:center;height:64px;border-bottom:1px solid var(--line)}
-.lines{flex:1;overflow:auto;padding:8px 20px}
-.lineitem{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
-.lineitem .th{width:52px;height:52px;border-radius:12px;background:var(--soft);display:grid;place-items:center;font-size:26px}
-.qty{display:flex;align-items:center;gap:6px}
-.qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line)}
-.ship{font-size:13px;background:var(--soft);border-radius:10px;padding:8px 10px}
-.bar{height:6px;background:#fff;border-radius:9px;margin-top:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--main)}
-.checkout{padding:16px 20px 22px;border-top:1px solid var(--line);display:grid;gap:10px}
-.checkout input,.checkout select{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:12px}
-.total{display:flex;justify-content:space-between;font-weight:700;font-size:18px}
-.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(90px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:14px;transition:.25s;z-index:60;pointer-events:none;white-space:nowrap}
-.toast.show{transform:translateX(-50%)}
-.cookie{position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;margin:0 auto;background:#fff;border:1px solid var(--line);box-shadow:0 10px 40px rgba(0,0,0,.15);border-radius:18px;padding:16px 18px;display:none;gap:12px;align-items:center;z-index:55;font-size:14px}
+footer h4{font-family:var(--head);color:var(--ink);margin-bottom:10px}
+footer a{display:block;margin-bottom:6px;min-height:28px}
+footer a:hover{color:var(--main)}
+.pays{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.pays span{border:1px solid var(--line);border-radius:8px;padding:3px 9px;font-size:12px;font-weight:700;color:var(--ink)}
+@media(max-width:760px){footer .cols{grid-template-columns:1fr 1fr}}
+
+/* carrinho */
+.overlay{position:fixed;inset:0;background:rgba(11,42,34,.45);opacity:0;pointer-events:none;transition:opacity .25s;z-index:57}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(440px,100%);background:#fff;z-index:58;transform:translateX(100%);transition:transform .3s var(--ease);display:flex;flex-direction:column}
+body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:0 20px;height:68px;border-bottom:1px solid var(--line)}
+.dh h2{font-size:22px}
+.iconbtn{width:44px;height:44px;border-radius:50%;display:grid;place-items:center}.iconbtn:hover{background:var(--soft)}
+.lines{flex:1;overflow:auto;padding:6px 20px}
+.line{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.line img{width:56px;height:56px;border-radius:12px;object-fit:cover}
+.line b{font-size:14px;line-height:1.3;display:block}.line small{color:var(--muted)}
+.qty{display:flex;align-items:center;gap:4px;font-weight:700}
+.qty button{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center}
+.qty .ic{width:16px;height:16px}
+.empty{text-align:center;color:var(--muted);padding:56px 0}
+.ship{background:var(--soft);border-radius:12px;padding:10px 12px;font-size:14px}
+.bar{height:8px;background:#fff;border-radius:9px;margin-top:8px;overflow:hidden}.bar i{display:block;height:100%;background:var(--main);transition:width .4s var(--ease)}
+form.co{border-top:1px solid var(--line);padding:16px 20px 20px;display:grid;gap:12px}
+.total{display:flex;justify-content:space-between;align-items:baseline;font:700 19px var(--head)}
+.total small{display:block;font:700 13px var(--body);color:var(--main);text-align:right}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:999px;font-weight:700;font-size:14px;z-index:70;transition:transform .3s var(--ease),opacity .3s;opacity:0;pointer-events:none;white-space:nowrap;display:flex;gap:8px;align-items:center}
+.toast.show{transform:translate(-50%,0);opacity:1}.toast .ic{width:18px;height:18px;color:#86EFAC}
+.cookie{position:fixed;left:16px;right:16px;bottom:16px;max-width:620px;margin:0 auto;background:#fff;border:1px solid var(--line);box-shadow:0 16px 40px rgba(11,42,34,.18);border-radius:20px;padding:16px 18px;display:none;gap:14px;align-items:center;z-index:55;font-size:14px}
 .cookie.show{display:flex}
-.wa{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:25}
-.wa svg{width:30px;height:30px;fill:#fff}
-dialog{border:0;border-radius:20px;padding:28px;max-width:560px;width:calc(100% - 32px)}
-dialog::backdrop{background:rgba(0,0,0,.4)}
-dialog h3{margin-bottom:10px}dialog p{color:var(--muted);font-size:14px;margin-bottom:10px}
+.cookie .btn{min-height:44px;padding:0 18px;font-size:14px}
+@media(max-width:520px){.cookie{flex-direction:column;align-items:stretch}}
+.fab{position:fixed;right:18px;bottom:18px;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px rgba(0,0,0,.2);z-index:25;transition:transform .2s var(--ease)}
+.fab:hover{transform:scale(1.06)}.fab .ic{width:30px;height:30px}
+dialog{border:0;border-radius:24px;padding:28px;max-width:560px;width:calc(100% - 32px);color:var(--ink)}
+dialog::backdrop{background:rgba(11,42,34,.45)}
+dialog h2{margin-bottom:12px}dialog p{color:var(--muted);margin-bottom:10px;font-size:15px}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(var(--i,0)*70ms)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none}*{transition-duration:0s!important;animation:none!important}}
 </style>
 </head>
 <body>
-<div class="demo">Template de demonstração · <b>Plano Premium</b> · feito pela Vitrino · <a href="../../index.html">voltar</a></div>
-<div class="announce">🚚 Entrega no mesmo dia em pedidos até 16h · Frete grátis acima de R$ 150</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></symbol><symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol><symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol><symbol id="i-insta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol><symbol id="i-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></symbol><symbol id="i-paw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/></symbol><symbol id="i-percent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" x2="5" y1="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></symbol><symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></symbol><symbol id="i-scissors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></symbol><symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol><symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="i-star" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol><symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol><symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.8-4.2-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.4Z"/></symbol></svg>
+<div class="demo">Modelo de demonstração · <b>Plano Premium</b> · Vitrino · <a href="../../index.html">voltar para os planos</a></div>
+<div class="announce"><svg class="ic" aria-hidden="true"><use href="#i-truck"/></svg>Entrega no mesmo dia em pedidos até 16h · Frete grátis acima de R$ 150</div>
 <header><div class="wrap">
-  <a class="brand" href="#"><span class="paw">🐾</span><span class="t">Patas &amp; Cia</span></a>
-  <label class="search"><input id="q" type="search" placeholder="Buscar ração, petisco..." aria-label="Buscar produtos"></label>
-  <nav><a href="#loja">Loja</a><a href="#banho">Banho &amp; Tosa</a><a href="#dicas">Dicas</a><a href="#faq">Dúvidas</a></nav>
-  <button class="bag" id="openBag">🛒 <span class="n" id="count">0</span></button>
+  <a class="logo" href="#" aria-label="Patas e Cia, início"><span class="paw"><svg class="ic" aria-hidden="true"><use href="#i-paw"/></svg></span><span class="t">Patas &amp; Cia</span></a>
+  <label class="search"><span class="sr">Buscar produtos</span><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><input id="q" type="search" placeholder="Buscar ração, petisco…" autocomplete="off"></label>
+  <nav aria-label="Principal"><a href="#loja">Loja</a><a href="#banho">Banho &amp; Tosa</a><a href="#dicas">Dicas</a><a href="#faq">Dúvidas</a></nav>
+  <button class="cartbtn" id="openBag" aria-label="Abrir carrinho"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg><span class="n" id="count">0</span></button>
 </div></header>
 
 <main class="wrap">
-  <section class="hero" style="margin-bottom:24px">
+  <div class="hero">
     <div>
-      <h1>Tudo pro seu pet, sem sair de casa.</h1>
-      <p>Rações, petiscos e acessórios com entrega no mesmo dia. E banho &amp; tosa com agendamento em 30 segundos.</p>
-      <div class="ctas"><a href="#loja" class="btn sun">Comprar agora</a><a href="#banho" class="btn line">Agendar banho</a></div>
+      <p class="kicker rv">Pet shop · banho e tosa</p>
+      <h1 class="rv" style="--i:1">Tudo pro seu pet, <span>sem sair de casa.</span></h1>
+      <p class="rv" style="--i:2">Rações, petiscos e acessórios com entrega no mesmo dia. E banho e tosa com agendamento em 30 segundos.</p>
+      <div class="ctas rv" style="--i:3"><a href="#loja" class="btn btn-main"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg>Comprar agora</a><a href="#banho" class="btn btn-white"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg>Agendar banho</a></div>
+      <div class="trust rv" style="--i:4"><span><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg>Compra segura</span><span><svg class="ic" aria-hidden="true"><use href="#i-percent"/></svg>5% off no Pix</span><span><svg class="ic" aria-hidden="true"><use href="#i-card"/></svg>3x sem juros</span></div>
     </div>
-    <div class="art">🐶</div>
-  </section>
-
-  <div class="benefits">
-    <div><b>🚚 Entrega rápida</b>No mesmo dia na cidade</div>
-    <div><b>💚 5% off no Pix</b>Desconto automático</div>
-    <div><b>💳 Até 3x sem juros</b>No cartão</div>
-    <div><b>🔒 Compra segura</b>Dados protegidos</div>
+    <div class="hero-art rv" style="--i:2">
+      <div class="blob" aria-hidden="true"></div>
+      <figure><img src="img/hero.webp" alt="Golden retriever segurando um brinquedo de pelúcia" width="1200" height="1800" fetchpriority="high"></figure>
+      <div class="float f1"><svg class="ic" aria-hidden="true"><use href="#i-truck"/></svg><div>Chega hoje<small>pedidos até 16h</small></div></div>
+      <div class="float f2"><svg class="ic" aria-hidden="true"><use href="#i-scissors"/></svg><div>Banho &amp; tosa<small>a partir de R$ 55</small></div></div>
+    </div>
   </div>
 
-  <section id="loja">
-    <div class="head"><div><h2>Compre por categoria</h2><p>Escolha uma categoria ou use a busca.</p></div></div>
-    <div class="cats" id="cats"></div>
+  <div class="benefits">
+    <div class="rv"><svg class="ic" aria-hidden="true"><use href="#i-truck"/></svg><div><b>Entrega rápida</b><span>No mesmo dia na cidade</span></div></div>
+    <div class="rv" style="--i:1"><svg class="ic" aria-hidden="true"><use href="#i-percent"/></svg><div><b>5% off no Pix</b><span>Desconto automático</span></div></div>
+    <div class="rv" style="--i:2"><svg class="ic" aria-hidden="true"><use href="#i-card"/></svg><div><b>Até 3x sem juros</b><span>No cartão</span></div></div>
+    <div class="rv" style="--i:3"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg><div><b>Atendimento de verdade</b><span>A gente conhece seu pet pelo nome</span></div></div>
+  </div>
+
+  <section id="loja" aria-labelledby="t-cat">
+    <div class="head"><div><p class="kicker">Loja</p><h2 id="t-cat">Compre por categoria</h2></div><p>Toque numa categoria ou use a busca.</p></div>
+    <div class="cats" id="cats" role="group" aria-label="Categorias"></div>
   </section>
 
-  <section>
-    <div class="head"><div><h2 id="gridTitle">Mais vendidos</h2></div></div>
-    <div class="grid" id="grid"></div>
+  <section aria-labelledby="gridTitle">
+    <div class="head"><h2 id="gridTitle">Mais vendidos</h2><p id="gridCount"></p></div>
+    <div class="grid" id="grid" aria-live="polite"></div>
   </section>
 
-  <section id="banho">
-    <div class="groom">
-      <div>
-        <div class="head" style="margin-bottom:6px"><h2>Banho &amp; Tosa 🛁</h2></div>
-        <p style="color:var(--muted)">Profissionais carinhosos, produtos hipoalergênicos e leva-e-traz opcional.</p>
-        <ul>
+  <section id="banho" aria-labelledby="t-banho">
+    <div class="groom rv">
+      <figure><img src="img/tosa.webp" alt="Cachorro branco sendo tosado com tesoura" width="1000" height="667" loading="lazy"></figure>
+      <div class="in">
+        <div><p class="kicker">Serviços</p><h2 id="t-banho" style="font-size:clamp(30px,3.6vw,42px);margin-top:6px">Banho &amp; Tosa</h2>
+        <p style="color:var(--muted);margin-top:8px">Profissionais carinhosos, produtos hipoalergênicos e leva-e-traz opcional.</p></div>
+        <ul class="prices">
           <li><span>Banho (pequeno porte)</span><b>R$ 55</b></li>
           <li><span>Banho (médio porte)</span><b>R$ 70</b></li>
           <li><span>Banho + tosa higiênica</span><b>R$ 85</b></li>
           <li><span>Tosa completa</span><b>R$ 110</b></li>
-          <li><span>Leva-e-traz</span><b>R$ 15</b></li>
         </ul>
+        <form class="ag" id="agenda" novalidate>
+          <div class="row2">
+            <div class="fld"><label for="aTutor">Seu nome</label><input id="aTutor" autocomplete="name" required><span class="err">Digite seu nome</span></div>
+            <div class="fld"><label for="aPet">Nome e raça do pet</label><input id="aPet" required><span class="err">Conte quem é o pet</span></div>
+          </div>
+          <div class="fld"><label for="aServ">Serviço</label><select id="aServ"><option>Banho</option><option>Banho + tosa higiênica</option><option>Tosa completa</option></select></div>
+          <div class="row2">
+            <div class="fld"><label for="aData">Data</label><input id="aData" type="date" required><span class="err" id="aDataErr">Escolha uma data</span></div>
+            <div class="fld"><label for="aHora">Horário</label><select id="aHora"><option>08:00</option><option>10:00</option><option>13:00</option><option>15:00</option><option>17:00</option></select></div>
+          </div>
+          <label class="check"><input type="checkbox" id="aLeva"> Quero leva-e-traz (+ R$ 15)</label>
+          <button class="btn btn-main" type="submit"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Confirmar pelo WhatsApp</button>
+        </form>
       </div>
-      <form id="agenda">
-        <h3>Agende agora</h3>
-        <input id="aTutor" placeholder="Seu nome" required>
-        <input id="aPet" placeholder="Nome e raça do pet" required>
-        <select id="aServ"><option>Banho</option><option>Banho + tosa higiênica</option><option>Tosa completa</option></select>
-        <div class="row"><input id="aData" type="date" required aria-label="Data"><select id="aHora"><option>08:00</option><option>10:00</option><option>13:00</option><option>15:00</option><option>17:00</option></select></div>
-        <label style="font-size:14px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="aLeva" style="width:auto"> Quero leva-e-traz</label>
-        <button class="btn" type="submit">Confirmar pelo WhatsApp</button>
-      </form>
     </div>
   </section>
 
-  <section>
-    <div class="head"><div><h2>Quem é cliente, volta</h2><p>Depoimentos de exemplo — troque pelos reais do cliente.</p></div></div>
+  <section aria-labelledby="t-dep">
+    <div class="head"><div><p class="kicker">Depoimentos</p><h2 id="t-dep">Quem é cliente, volta</h2></div><p>Textos de exemplo: troque pelos depoimentos reais.</p></div>
     <div class="reviews">
-      <div>⭐⭐⭐⭐⭐<br>“Entregaram a ração em 2 horas e ainda mandaram um petisco de brinde.”<b>Cliente exemplo</b><small>Tutor do Thor</small></div>
-      <div>⭐⭐⭐⭐⭐<br>“A Mel voltou cheirosa e calma. Agendar pelo site é muito prático.”<b>Cliente exemplo</b><small>Tutora da Mel</small></div>
-      <div>⭐⭐⭐⭐⭐<br>“Preço justo e atendimento que conhece o meu gato pelo nome.”<b>Cliente exemplo</b><small>Tutor do Frajola</small></div>
+      <figure class="review rv"><div class="stars" aria-label="5 de 5 estrelas"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></div><p>“A ração chegou em duas horas e ainda veio um petisco de brinde.”</p><figcaption class="who"><span class="av">C</span><span><b>Cliente exemplo</b><small>Tutor do Thor</small></span></figcaption></figure>
+      <figure class="review rv" style="--i:1"><div class="stars" aria-label="5 de 5 estrelas"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></div><p>“A Mel voltou cheirosa e calma. Agendar pelo site é muito prático.”</p><figcaption class="who"><span class="av">C</span><span><b>Cliente exemplo</b><small>Tutora da Mel</small></span></figcaption></figure>
+      <figure class="review rv" style="--i:2"><div class="stars" aria-label="5 de 5 estrelas"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></div><p>“Preço justo e um atendimento que conhece meu gato pelo nome.”</p><figcaption class="who"><span class="av">C</span><span><b>Cliente exemplo</b><small>Tutor do Frajola</small></span></figcaption></figure>
     </div>
   </section>
 
-  <section id="dicas">
-    <div class="head"><div><h2>Dicas do blog</h2><p>Conteúdo que ajuda o Google a encontrar a loja.</p></div></div>
+  <section id="dicas" aria-labelledby="t-blog">
+    <div class="head"><div><p class="kicker">Blog</p><h2 id="t-blog">Dicas pro seu pet</h2></div><p>Conteúdo que ajuda a loja a aparecer no Google.</p></div>
     <div class="blog">
-      <a href="#"><div class="th" style="background:#FFF1C9">🦴</div><h3>Como escolher a ração ideal</h3><p>Idade, porte e rotina: o que considerar.</p></a>
-      <a href="#"><div class="th" style="background:#E3F3EF">🛁</div><h3>De quanto em quanto tempo dar banho?</h3><p>A frequência certa para cada tipo de pelo.</p></a>
-      <a href="#"><div class="th" style="background:#F1E6FA">🐱</div><h3>Gatos e arranhadores</h3><p>Por que eles precisam e como escolher.</p></a>
+      <a class="post rv" href="#"><figure><img src="img/blog1.webp" alt="Dois cachorros correndo numa estrada de terra" width="800" height="534" loading="lazy"></figure><div><small>Saúde · 4 min</small><h3>Quanto exercício seu cão precisa por dia?</h3><p>Porte, idade e energia: um guia rápido.</p></div></a>
+      <a class="post rv" href="#" style="--i:1"><figure><img src="img/blog2.webp" alt="Filhote de gato brincando com bolinha" width="800" height="533" loading="lazy"></figure><div><small>Gatos · 3 min</small><h3>Brinquedos que gatos realmente usam</h3><p>O que estimula o instinto de caça em casa.</p></div></a>
+      <a class="post rv" href="#" style="--i:2"><figure><img src="img/blog3.webp" alt="Filhote de corgi sentado em fundo laranja" width="800" height="1180" loading="lazy"></figure><div><small>Filhotes · 5 min</small><h3>Primeira semana do filhote em casa</h3><p>Lista do que comprar e como adaptar a rotina.</p></div></a>
     </div>
   </section>
 
-  <section>
-    <div class="head"><div><h2>@patasecia no Instagram</h2></div><a class="btn line" href="#">Seguir</a></div>
+  <section aria-labelledby="t-insta">
+    <div class="head"><h2 id="t-insta">@patasecia no Instagram</h2><a class="btn btn-white" href="#"><svg class="ic" aria-hidden="true"><use href="#i-insta"/></svg>Seguir</a></div>
     <div class="insta">
-      <div style="background:#FFF1C9">🐕</div><div style="background:#E3F3EF">🐈</div><div style="background:#FDE2E4">🐩</div>
-      <div style="background:#E8EEFB">🐾</div><div style="background:#F1E6FA">🐇</div><div style="background:#E3F3EF">🦮</div>
+      <a href="#" aria-label="Post do Instagram 1"><img src="img/i1.webp" alt="" width="500" height="500" loading="lazy"></a>
+      <a href="#" aria-label="Post do Instagram 2"><img src="img/i2.webp" alt="" width="500" height="500" loading="lazy"></a>
+      <a href="#" aria-label="Post do Instagram 3"><img src="img/i3.webp" alt="" width="500" height="500" loading="lazy"></a>
+      <a href="#" aria-label="Post do Instagram 4"><img src="img/i4.webp" alt="" width="500" height="500" loading="lazy"></a>
+      <a href="#" aria-label="Post do Instagram 5"><img src="img/i5.webp" alt="" width="500" height="500" loading="lazy"></a>
+      <a href="#" aria-label="Post do Instagram 6"><img src="img/i6.webp" alt="" width="500" height="500" loading="lazy"></a>
     </div>
   </section>
 
-  <section id="faq" class="faq">
-    <div class="head"><h2>Dúvidas frequentes</h2></div>
-    <details><summary>Qual o prazo de entrega?</summary><p>Pedidos feitos até 16h são entregues no mesmo dia dentro da cidade. Depois disso, no dia seguinte pela manhã.</p></details>
-    <details><summary>Quais formas de pagamento vocês aceitam?</summary><p>Pix (com 5% de desconto), cartão de crédito em até 3x sem juros e débito.</p></details>
-    <details><summary>Posso trocar um produto?</summary><p>Sim, em até 7 dias, com o produto lacrado e a nota.</p></details>
-    <details><summary>Vocês atendem gatos no banho e tosa?</summary><p>Sim! Temos horários exclusivos pra felinos, num ambiente mais calmo.</p></details>
+  <section id="faq" class="faq" aria-labelledby="t-faq">
+    <div class="head"><h2 id="t-faq">Dúvidas frequentes</h2></div>
+    <details><summary>Qual o prazo de entrega?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>Pedidos feitos até 16h chegam no mesmo dia dentro da cidade. Depois disso, no dia seguinte pela manhã.</p></details>
+    <details><summary>Quais formas de pagamento vocês aceitam?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>Pix com 5% de desconto, cartão de crédito em até 3x sem juros e débito.</p></details>
+    <details><summary>Posso trocar um produto?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>Sim, em até 7 dias, com o produto lacrado.</p></details>
+    <details><summary>Vocês atendem gatos no banho e tosa?<svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>Sim! Temos horários exclusivos pra felinos, num ambiente mais calmo.</p></details>
   </section>
 
-  <section class="news">
-    <div><h2>Ganhe 10% na primeira compra</h2><p style="opacity:.8">Receba ofertas e lembretes de vacina no seu WhatsApp.</p></div>
-    <form id="newsForm"><input id="newsTel" type="tel" placeholder="Seu WhatsApp" required aria-label="Seu WhatsApp"><button class="btn sun" type="submit">Quero</button></form>
+  <section class="news rv" aria-labelledby="t-news">
+    <div><h2 id="t-news">Ganhe 10% na primeira compra</h2><p>Receba ofertas e lembretes de vacina no seu WhatsApp.</p></div>
+    <form id="newsForm"><label class="sr" for="newsTel">Seu WhatsApp</label><input id="newsTel" type="tel" inputmode="tel" placeholder="(00) 00000-0000" required><button class="btn btn-sun" type="submit">Quero</button></form>
   </section>
 </main>
 
 <footer><div class="wrap">
   <div class="cols">
-    <div><h4>Patas &amp; Cia</h4><p>Av. Exemplo, 789 — Centro, Sua Cidade/UF<br>Seg a Sex 8h–19h · Sáb 8h–14h<br>(00) 00000-0000</p>
-      <div class="pays"><span>Pix</span><span>Visa</span><span>Master</span><span>Elo</span></div></div>
+    <div><h4>Patas &amp; Cia</h4><p>Av. Exemplo, 789 — Centro, Sua Cidade/UF<br>Seg a sex 8h–19h · Sáb 8h–14h</p><div class="pays"><span>Pix</span><span>Visa</span><span>Master</span><span>Elo</span></div></div>
     <div><h4>Loja</h4><a href="#loja">Cães</a><a href="#loja">Gatos</a><a href="#loja">Petiscos</a></div>
     <div><h4>Serviços</h4><a href="#banho">Banho &amp; Tosa</a><a href="#banho">Leva-e-traz</a></div>
-    <div><h4>Institucional</h4><a href="#" id="openPriv">Política de privacidade</a><a href="#faq">Trocas</a></div>
+    <div><h4>Institucional</h4><a href="#" class="js-priv">Política de privacidade</a><a href="#faq">Trocas</a></div>
   </div>
   <p>© <span id="ano"></span> Patas &amp; Cia · CNPJ 00.000.000/0001-00 · Site por Vitrino</p>
 </div></footer>
 
 <div class="overlay" id="overlay"></div>
-<aside class="drawer" aria-label="Carrinho">
-  <div class="dh"><h3>Seu carrinho</h3><button id="closeBag" aria-label="Fechar" style="font-size:26px">×</button></div>
+<aside class="drawer" id="drawer" aria-label="Carrinho" aria-hidden="true">
+  <div class="dh"><h2>Seu carrinho</h2><button class="iconbtn" id="closeBag" aria-label="Fechar carrinho"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button></div>
   <div class="lines" id="lines"></div>
-  <form class="checkout" id="checkout">
+  <form class="co" id="co" novalidate>
     <div class="ship" id="ship"></div>
-    <div class="total"><span>Total</span><span id="total">R$ 0,00</span></div>
-    <input id="nome" placeholder="Seu nome" required>
-    <input id="endereco" placeholder="Endereço de entrega" required>
-    <select id="pag"><option>Pix (5% off)</option><option>Cartão de crédito</option><option>Débito na entrega</option></select>
-    <button class="btn" type="submit">Finalizar pedido</button>
+    <div class="total"><span>Total</span><span><span id="total">R$ 0,00</span><small id="totalPix"></small></span></div>
+    <div class="fld"><label for="nome">Seu nome</label><input id="nome" autocomplete="name"></div>
+    <div class="fld"><label for="endereco">Endereço de entrega</label><input id="endereco" autocomplete="street-address"></div>
+    <div class="fld"><label for="pag">Pagamento</label><select id="pag"><option>Pix (5% off)</option><option>Cartão de crédito</option><option>Débito na entrega</option></select></div>
+    <button class="btn btn-main" type="submit"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Finalizar pedido</button>
   </form>
 </aside>
 
-<div class="cookie" id="cookie"><span>Usamos cookies para melhorar sua experiência. Veja nossa <a href="#" id="openPriv2" style="text-decoration:underline">política de privacidade</a>.</span><button class="btn" id="okCookie" style="padding:9px 16px">Aceitar</button></div>
-<dialog id="priv"><h3>Política de privacidade</h3>
-  <p>Modelo de texto: coletamos apenas os dados necessários para processar seus pedidos e agendamentos (nome, telefone e endereço), em conformidade com a LGPD (Lei 13.709/2018).</p>
-  <p>Você pode pedir a exclusão dos seus dados a qualquer momento pelo WhatsApp. Não vendemos nem compartilhamos seus dados com terceiros, exceto para entrega e pagamento.</p>
+<div class="cookie" id="cookie" role="region" aria-label="Aviso de cookies"><span>Usamos cookies pra melhorar sua experiência. Veja a <a href="#" class="js-priv" style="text-decoration:underline">política de privacidade</a>.</span><button class="btn btn-main" id="okCookie">Entendi</button></div>
+<dialog id="priv"><h2>Política de privacidade</h2>
+  <p>Texto-modelo: coletamos só os dados necessários pra processar pedidos e agendamentos (nome, telefone e endereço), conforme a LGPD (Lei 13.709/2018).</p>
+  <p>Você pode pedir a exclusão dos seus dados a qualquer momento pelo WhatsApp. Não vendemos seus dados; compartilhamos apenas o necessário pra entrega e pagamento.</p>
   <p><b>Revise este texto com o cliente antes de publicar.</b></p>
-  <button class="btn" onclick="this.closest('dialog').close()">Fechar</button></dialog>
-<div class="toast" id="toast"></div>
-<a class="wa js-wa" href="#" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.8-4.2-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.4Z"/></svg></a>
+  <form method="dialog"><button class="btn btn-main">Fechar</button></form></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<a class="fab js-wa" href="#" aria-label="Falar no WhatsApp"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg></a>
 
 <script>
 // ====== CONFIGURE AQUI ======
 const WHATSAPP = "5521994542037";
 const LOJA = "Patas & Cia";
 const FRETE_GRATIS = 150;
-const CATEGORIAS = [["Cães","🐕"],["Gatos","🐈"],["Rações","🥣"],["Petiscos","🦴"],["Brinquedos","🧸"],["Higiene","🧴"]];
+const CATEGORIAS = [["Cães","bolinha"],["Gatos","gato"],["Rações","racao"],["Petiscos","petisco"],["Brinquedos","brinquedo"],["Higiene","banho"]];
 const PRODUTOS = [
-  {id:1,nome:"Ração Premium Cães Adultos 15kg",cat:["Cães","Rações"],preco:229.9,em:"🥣",tag:"Mais vendido"},
-  {id:2,nome:"Ração Gatos Castrados 10kg",cat:["Gatos","Rações"],preco:189.9,em:"🥣"},
-  {id:3,nome:"Bifinho Sabor Carne 500g",cat:["Cães","Petiscos"],preco:29.9,em:"🦴"},
-  {id:4,nome:"Sachê Gatos Salmão (cx 12)",cat:["Gatos","Rações"],preco:39.9,em:"🐟",tag:"Oferta"},
-  {id:5,nome:"Bolinha Mordedor Resistente",cat:["Cães","Brinquedos"],preco:24.9,em:"🎾"},
-  {id:6,nome:"Arranhador Torre 70cm",cat:["Gatos","Brinquedos"],preco:149.9,em:"🐈"},
-  {id:7,nome:"Shampoo Neutro Hipoalergênico",cat:["Higiene","Cães","Gatos"],preco:34.9,em:"🧴"},
-  {id:8,nome:"Areia Sanitária 12kg",cat:["Gatos","Higiene"],preco:44.9,em:"🪣"},
-  {id:9,nome:"Coleira Peitoral Ajustável",cat:["Cães"],preco:59.9,em:"🦮"},
-  {id:10,nome:"Petisco Gatos Crocante",cat:["Gatos","Petiscos"],preco:14.9,em:"🍪",tag:"Novo"}
+  {id:1,nome:"Ração Premium Cães Adultos 15 kg",cat:["Cães","Rações"],preco:229.9,img:"racao",nota:4.9,tag:"Mais vendido"},
+  {id:2,nome:"Ração Gatos Castrados 10 kg",cat:["Gatos","Rações"],preco:189.9,img:"gato",nota:4.8},
+  {id:3,nome:"Bifinho Sabor Carne 500 g",cat:["Cães","Petiscos"],preco:29.9,img:"petisco",nota:4.9},
+  {id:4,nome:"Arranhador Torre 70 cm",cat:["Gatos","Brinquedos"],preco:149.9,img:"arranhador",nota:4.7,tag:"Oferta"},
+  {id:5,nome:"Varinha com Penas",cat:["Gatos","Brinquedos"],preco:24.9,img:"brinquedo",nota:4.8},
+  {id:6,nome:"Bolinha Interativa",cat:["Gatos","Brinquedos"],preco:19.9,img:"areia",nota:4.6,tag:"Novo"},
+  {id:7,nome:"Shampoo Neutro Hipoalergênico",cat:["Higiene","Cães","Gatos"],preco:34.9,img:"banho",nota:4.9},
+  {id:8,nome:"Coleira Peitoral Ajustável",cat:["Cães"],preco:59.9,img:"coleira",nota:4.7}
 ];
 // ============================
-const $ = id => document.getElementById(id);
-const brl = v => v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
-let cart = {}; try{cart = JSON.parse(localStorage.getItem('cart_'+LOJA))||{}}catch(e){}
-const save = () => {try{localStorage.setItem('cart_'+LOJA,JSON.stringify(cart))}catch(e){}};
-let cat = null, q = "";
-const wa = msg => window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank');
-function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1800)}
-function renderCats(){ $('cats').innerHTML = CATEGORIAS.map(([c,e])=>`<button class="${c===cat?'on':''}" data-c="${c}"><span>${e}</span>${c}</button>`).join(''); }
+const $=id=>document.getElementById(id);
+const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const wa=m=>`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(m)}`;
+const go=m=>window.open(wa(m),'_blank');
+document.querySelectorAll('.js-wa').forEach(a=>{a.href=wa(`Olá, ${LOJA}! Vim pelo site.`);a.target='_blank';a.rel='noopener'});
+let cart={}; try{cart=JSON.parse(localStorage.getItem('cart_'+LOJA))||{}}catch(e){}
+Object.keys(cart).forEach(id=>{if(!PRODUTOS.some(p=>p.id==id)||cart[id]<1)delete cart[id]});
+const save=()=>{try{localStorage.setItem('cart_'+LOJA,JSON.stringify(cart))}catch(e){}};
+let cat=null,q="";
+function toast(t){$('toast').innerHTML=`<svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>${t}`;$('toast').classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>$('toast').classList.remove('show'),2000)}
+const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+
+function renderCats(){$('cats').innerHTML=CATEGORIAS.map(([c,img])=>`<button class="cat" aria-pressed="${c===cat}" data-c="${c}"><img src="img/${img}.webp" alt="" width="112" height="112" loading="lazy">${c}</button>`).join('')}
 function renderGrid(){
-  const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
-  const list = PRODUTOS.filter(p=>(!cat||p.cat.includes(cat)) && (!q||norm(p.nome).includes(norm(q))));
-  $('gridTitle').textContent = q ? `Resultados para “${q}”` : cat ? cat : 'Mais vendidos';
-  $('grid').innerHTML = list.length ? list.map(p=>`<div class="card"><div class="img">${p.tag?`<span class="tag">${p.tag}</span>`:''}${p.em}</div>
-    <div class="body"><span class="stars">★★★★★</span><h3>${p.nome}</h3><div class="price">${brl(p.preco)}</div>
-    <div class="pix">${brl(p.preco*.95)} no Pix</div><button class="add" data-id="${p.id}">Adicionar</button></div></div>`).join('')
-    : '<p class="noresult">Nada encontrado. Tente outra busca ou chame no WhatsApp 😉</p>';
+  const l=PRODUTOS.filter(p=>(!cat||p.cat.includes(cat))&&(!q||norm(p.nome).includes(norm(q))));
+  $('gridTitle').textContent=q?`Resultados para “${q}”`:cat||'Mais vendidos';
+  $('gridCount').textContent=`${l.length} ${l.length===1?'produto':'produtos'}`;
+  $('grid').innerHTML=l.length?l.map((p,n)=>`<article class="prod rv in" style="--i:${n%4}">
+    <figure>${p.tag?`<span class="tag">${p.tag}</span>`:''}<img src="img/${p.img}.webp" alt="${p.nome}" width="400" height="400" loading="lazy"></figure>
+    <div class="b"><span class="stars" aria-label="Nota ${p.nota} de 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg>${p.nota.toLocaleString('pt-BR')}</span>
+    <h3>${p.nome}</h3><div class="price">${brl(p.preco)}</div><div class="pix">${brl(p.preco*.95)} no Pix</div>
+    <button class="add" data-id="${p.id}"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg>Adicionar</button></div></article>`).join('')
+    :`<p class="none">Nada encontrado pra “${q}”. Tente outra palavra ou <a href="${wa(`Olá! Vocês têm ${q}?`)}" target="_blank" rel="noopener" style="color:var(--main);font-weight:700;text-decoration:underline">pergunte no WhatsApp</a>.</p>`;
 }
 function renderCart(){
-  const ids = Object.keys(cart).filter(id=>cart[id]>0 && PRODUTOS.find(x=>x.id==id));
-  let total=0,n=0;
-  $('lines').innerHTML = ids.length ? ids.map(id=>{const p=PRODUTOS.find(x=>x.id==id);total+=p.preco*cart[id];n+=cart[id];
-    return `<div class="lineitem"><div class="th">${p.em}</div><div><b style="font-size:14px">${p.nome}</b><br><small style="color:var(--muted)">${brl(p.preco)}</small></div>
-    <div class="qty"><button data-m="${id}">−</button>${cart[id]}<button data-p="${id}">+</button></div></div>`}).join('')
-    : '<p style="color:var(--muted);text-align:center;padding:40px 0">Carrinho vazio 🐾</p>';
-  const falta = FRETE_GRATIS-total;
-  $('ship').innerHTML = (falta>0?`Faltam <b>${brl(falta)}</b> para frete grátis`:'🎉 Você ganhou <b>frete grátis</b>!')+`<div class="bar"><i style="width:${Math.min(100,total/FRETE_GRATIS*100)}%"></i></div>`;
-  $('total').textContent=brl(total); $('count').textContent=n;
-  return {total,ids};
+  const ids=Object.keys(cart);let total=0,n=0;
+  $('lines').innerHTML=ids.length?ids.map(id=>{const p=PRODUTOS.find(x=>x.id==id);total+=p.preco*cart[id];n+=cart[id];
+    return `<div class="line"><img src="img/${p.img}.webp" alt="" width="56" height="56"><div><b>${p.nome}</b><small>${brl(p.preco)}</small></div>
+    <div class="qty"><button aria-label="Diminuir quantidade" data-m="${id}"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><span>${cart[id]}</span><button aria-label="Aumentar quantidade" data-p="${id}"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></div></div>`}).join('')
+    :'<p class="empty">Seu carrinho está vazio.</p>';
+  const falta=FRETE_GRATIS-total;
+  $('ship').innerHTML=(total===0?`Frete grátis acima de <b>${brl(FRETE_GRATIS)}</b>`:falta>0?`Faltam <b>${brl(falta)}</b> pro frete grátis`:'Você ganhou <b>frete grátis</b>!')+`<div class="bar"><i style="width:${Math.min(100,total/FRETE_GRATIS*100)}%"></i></div>`;
+  $('total').textContent=brl(total);$('totalPix').textContent=total?`${brl(total*.95)} no Pix`:'';$('count').textContent=n;
+  return total;
 }
-$('cats').onclick = e => { const b=e.target.closest('button'); if(!b) return; cat = cat===b.dataset.c?null:b.dataset.c; renderCats(); renderGrid(); };
-$('q').oninput = e => { q=e.target.value.trim(); renderGrid(); };
-$('grid').onclick = e => { const id=e.target.dataset.id; if(id){cart[id]=(cart[id]||0)+1;save();renderCart();toast('Adicionado ao carrinho ✓')} };
-$('lines').onclick = e => { const p=e.target.dataset.p,m=e.target.dataset.m; if(p)cart[p]++; if(m)cart[m]--; save(); renderCart(); };
-const toggle = on => document.body.classList.toggle('open',on);
-$('openBag').onclick=()=>toggle(true); $('closeBag').onclick=()=>toggle(false); $('overlay').onclick=()=>toggle(false);
-$('checkout').onsubmit = e => { e.preventDefault(); const {total,ids}=renderCart(); if(!ids.length) return toast('Seu carrinho está vazio');
-  const pix = $('pag').value.startsWith('Pix'); const final = pix? total*.95 : total;
-  const itens = ids.map(id=>{const p=PRODUTOS.find(x=>x.id==id);return `• ${cart[id]}x ${p.nome} — ${brl(p.preco*cart[id])}`}).join('\n');
-  wa(`Olá, ${LOJA}! Pedido pelo site:\n\n${itens}\n\nSubtotal: ${brl(total)}${pix?`\n*Total no Pix (5% off): ${brl(final)}*`:`\n*Total: ${brl(final)}*`}\nFrete: ${total>=FRETE_GRATIS?'grátis':'a calcular'}\n\nNome: ${$('nome').value}\nEndereço: ${$('endereco').value}\nPagamento: ${$('pag').value}`); };
-const hoje = new Date(); $('aData').min = hoje.toISOString().slice(0,10);
-$('agenda').onsubmit = e => { e.preventDefault(); const d=$('aData').value.split('-').reverse().join('/');
-  wa(`Olá! Quero agendar no ${LOJA}:\n\nServiço: ${$('aServ').value}\nPet: ${$('aPet').value}\nData: ${d} às ${$('aHora').value}\nLeva-e-traz: ${$('aLeva').checked?'sim':'não'}\nTutor(a): ${$('aTutor').value}`); };
-$('newsForm').onsubmit = e => { e.preventDefault(); toast('Pronto! Cupom enviado em breve 💚'); e.target.reset(); };
-const priv = e => { e.preventDefault(); $('priv').showModal(); };
-$('openPriv').onclick = priv; $('openPriv2').onclick = priv;
-let ok=false; try{ok=localStorage.getItem('cookie_ok')}catch(e){}
-if(!ok) $('cookie').classList.add('show');
-$('okCookie').onclick = () => { try{localStorage.setItem('cookie_ok','1')}catch(e){} $('cookie').classList.remove('show'); };
-document.querySelectorAll('.js-wa').forEach(a=>{a.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Olá! Vim pelo site 🐾')}`;a.target='_blank';a.rel='noopener'});
-$('ano').textContent = hoje.getFullYear();
-renderCats(); renderGrid(); renderCart();
+function toggleBag(on){document.body.classList.toggle('open',on);$('drawer').setAttribute('aria-hidden',!on);(on?$('closeBag'):$('openBag')).focus()}
+$('cats').onclick=e=>{const b=e.target.closest('.cat');if(!b)return;cat=cat===b.dataset.c?null:b.dataset.c;renderCats();renderGrid()};
+$('q').oninput=e=>{q=e.target.value.trim();renderGrid()};
+$('q').onkeydown=e=>{if(e.key==='Enter')document.getElementById('gridTitle').scrollIntoView({behavior:'smooth'})};
+$('grid').onclick=e=>{const b=e.target.closest('.add');if(!b)return;cart[b.dataset.id]=(cart[b.dataset.id]||0)+1;save();renderCart();toast('Adicionado ao carrinho')};
+$('lines').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.p)cart[b.dataset.p]++;if(b.dataset.m&&--cart[b.dataset.m]<1)delete cart[b.dataset.m];save();renderCart()};
+$('openBag').onclick=()=>toggleBag(true);$('closeBag').onclick=()=>toggleBag(false);$('overlay').onclick=()=>toggleBag(false);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('open'))toggleBag(false)});
+$('co').onsubmit=e=>{e.preventDefault();const total=renderCart();const ids=Object.keys(cart);
+  if(!ids.length)return toast('Seu carrinho está vazio');
+  if(!$('nome').value.trim()){$('nome').focus();return toast('Digite seu nome')}
+  if(!$('endereco').value.trim()){$('endereco').focus();return toast('Digite o endereço')}
+  const pix=$('pag').value.startsWith('Pix');
+  const itens=ids.map(id=>{const p=PRODUTOS.find(x=>x.id==id);return `• ${cart[id]}x ${p.nome} — ${brl(p.preco*cart[id])}`}).join('\n');
+  go(`Olá, ${LOJA}! Pedido pelo site:\n\n${itens}\n\nSubtotal: ${brl(total)}\n*Total${pix?' no Pix (5% off)':''}: ${brl(pix?total*.95:total)}*\nFrete: ${total>=FRETE_GRATIS?'grátis':'a calcular'}\n\nNome: ${$('nome').value}\nEndereço: ${$('endereco').value}\nPagamento: ${$('pag').value}`)};
+
+// agendamento com validação perto do campo
+const hoje=new Date();hoje.setMinutes(hoje.getMinutes()-hoje.getTimezoneOffset());$('aData').min=hoje.toISOString().slice(0,10);
+$('agenda').onsubmit=e=>{e.preventDefault();let ok=true;
+  [['aTutor'],['aPet']].forEach(([id])=>{const f=$(id).closest('.fld');const bad=!$(id).value.trim();f.classList.toggle('bad',bad);if(bad&&ok){$(id).focus();ok=false}});
+  const d=$('aData').value,fd=$('aData').closest('.fld');let msg='';
+  if(!d)msg='Escolha uma data';else if(new Date(d+'T12:00').getDay()===0)msg='Domingo estamos fechados';
+  $('aDataErr').textContent=msg;fd.classList.toggle('bad',!!msg);if(msg&&ok){$('aData').focus();ok=false}
+  if(!ok)return;
+  go(`Olá, ${LOJA}! Quero agendar:\n\nServiço: ${$('aServ').value}\nPet: ${$('aPet').value}\nData: ${d.split('-').reverse().join('/')} às ${$('aHora').value}\nLeva-e-traz: ${$('aLeva').checked?'sim':'não'}\nTutor(a): ${$('aTutor').value}`)};
+['aTutor','aPet','aData'].forEach(id=>$(id).addEventListener('input',()=>$(id).closest('.fld').classList.remove('bad')));
+$('newsForm').onsubmit=e=>{e.preventDefault();toast('Pronto! Cupom a caminho');e.target.reset()};
+document.querySelectorAll('.js-priv').forEach(a=>a.onclick=e=>{e.preventDefault();$('priv').showModal()});
+let ck=false;try{ck=localStorage.getItem('cookie_ok')}catch(e){}if(!ck)$('cookie').classList.add('show');
+$('okCookie').onclick=()=>{try{localStorage.setItem('cookie_ok','1')}catch(e){}$('cookie').classList.remove('show')};
+const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{rootMargin:'0px 0px -8% 0px'}):null;
+document.querySelectorAll('.rv:not(.in)').forEach(el=>io?io.observe(el):el.classList.add('in'));
+$('ano').textContent=new Date().getFullYear();
+renderCats();renderGrid();renderCart();
 </script>
 </body>
 </html>

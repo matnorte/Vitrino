@@ -26,7 +26,7 @@ Domínio próprio (ex.: `vitrino.com.br`): crie um arquivo `CNAME` com o domíni
 
 ## Antes de publicar
 
-- Troque `WHATSAPP = "5500000000000"` pelo seu número no `<script>` do final de cada arquivo (formato: 55 + DDD + número).
+- Os modelos usam o WhatsApp `5521994542037` (troque pelo do cliente ao copiar um modelo) no `<script>` do final de cada arquivo (formato: 55 + DDD + número).
 - Confira se o nome "Vitrino" está livre no INPI e se o domínio está disponível no Registro.br.
 
 ## Criar o site de um cliente novo
