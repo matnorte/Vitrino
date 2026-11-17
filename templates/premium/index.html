@@ -227,6 +227,13 @@ dialog h2{margin-bottom:12px}dialog p{color:var(--muted);margin-bottom:10px;font
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(var(--i,0)*70ms)}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none}*{transition-duration:0s!important;animation:none!important}}
+/* sacola: nada passa da largura da tela, mesmo em celulares de 320px */
+form.co{grid-template-columns:minmax(0,1fr)}
+form.co .row2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fld input,.fld select{width:100%;min-width:0}
+.pix span{min-width:0;overflow-wrap:anywhere}
+.line>div{min-width:0}
+@media(max-width:340px){form.co .row2{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
