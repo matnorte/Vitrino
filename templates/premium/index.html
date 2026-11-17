@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patas &amp; Cia — Pet Shop, Banho e Tosa</title>
+<meta name="description" content="Pet shop completo: rações, petiscos, acessórios e banho e tosa com agendamento online. Entrega rápida na cidade.">
+<!-- SEO / redes sociais -->
+<meta property="og:title" content="Patas & Cia — Pet Shop, Banho e Tosa">
+<meta property="og:description" content="Tudo pro seu pet, com entrega rápida e agendamento de banho e tosa online.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0E7C6B">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"PetStore","name":"Patas & Cia","telephone":"+55-00-00000-0000",
+ "address":{"@type":"PostalAddress","streetAddress":"Av. Exemplo, 789","addressLocality":"Sua Cidade","addressRegion":"UF","addressCountry":"BR"},
+ "openingHours":["Mo-Fr 08:00-19:00","Sa 08:00-14:00"],"priceRange":"$$"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ====== CONFIGURE AQUI (cores do cliente) ====== */
+:root{--bg:#F7FBFA;--ink:#0F2A26;--muted:#5D746F;--main:#0E7C6B;--main2:#0A5D50;--sun:#FFC845;--soft:#E3F3EF;--line:#DCEBE7;--radius:18px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+h1,h2,h3{font-family:Poppins,sans-serif;line-height:1.15}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input,select,textarea{font:inherit}
+.demo{background:#FF5A36;color:#fff;font-size:13px;text-align:center;padding:8px 12px}
+.demo a{text-decoration:underline;font-weight:600}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.announce{background:var(--sun);text-align:center;font-size:14px;font-weight:600;padding:8px}
+header{position:sticky;top:0;z-index:20;background:rgba(247,251,250,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{height:70px;display:flex;align-items:center;gap:20px}
+.brand{font-family:Poppins;font-weight:800;font-size:22px;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.brand .paw{width:36px;height:36px;border-radius:12px;background:var(--main);display:grid;place-items:center;font-size:18px}
+nav{display:flex;gap:22px;font-size:15px;color:var(--muted);margin-left:auto}
+nav a:hover{color:var(--ink)}
+.search{flex:1;max-width:320px;position:relative}
+.search input{width:100%;padding:10px 14px 10px 38px;border:1.5px solid var(--line);border-radius:999px;background:#fff}
+.search::before{content:"🔎";position:absolute;left:13px;top:9px;font-size:14px}
+.bag{display:flex;align-items:center;gap:8px;background:var(--main);color:#fff;padding:10px 16px;border-radius:999px;font-weight:600;font-size:14px}
+.bag .n{background:var(--sun);color:var(--ink);border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:12px}
+@media(max-width:900px){nav{display:none}.search{max-width:none}}
+@media(max-width:560px){.brand span.t{display:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--main);color:#fff;font-weight:600;padding:13px 22px;border-radius:999px;font-size:15px;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.sun{background:var(--sun);color:var(--ink)}
+.btn.line{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+.hero{background:linear-gradient(135deg,var(--main),var(--main2));color:#fff;border-radius:32px;margin:24px 0;padding:56px 48px;display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;overflow:hidden;position:relative}
+.hero h1{font-size:clamp(34px,5vw,58px);font-weight:800;letter-spacing:-1px}
+.hero p{opacity:.9;font-size:18px;margin:16px 0 26px;max-width:480px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero .art{font-size:clamp(110px,16vw,190px);text-align:center;filter:drop-shadow(0 20px 30px rgba(0,0,0,.25))}
+@media(max-width:780px){.hero{grid-template-columns:1fr;padding:36px 24px}.hero .art{order:-1;font-size:110px}}
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:56px}
+.benefits div{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;font-size:14px;color:var(--muted)}
+.benefits b{display:block;color:var(--ink);font-size:15px}
+@media(max-width:780px){.benefits{grid-template-columns:1fr 1fr}}
+section{margin-bottom:64px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.head h2{font-size:clamp(26px,3.5vw,36px);font-weight:800}
+.head p{color:var(--muted)}
+.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.cats button{background:#fff;border:1.5px solid var(--line);border-radius:var(--radius);padding:18px 8px;text-align:center;font-weight:600;font-size:14px;transition:.15s}
+.cats button span{display:block;font-size:34px;margin-bottom:4px}
+.cats button.on,.cats button:hover{border-color:var(--main);background:var(--soft)}
+@media(max-width:780px){.cats{grid-template-columns:repeat(3,1fr)}}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+@media(max-width:520px){.grid{grid-template-columns:1fr 1fr;gap:12px}}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
+.card .img{aspect-ratio:1;background:var(--soft);display:grid;place-items:center;font-size:64px;position:relative}
+.tag{position:absolute;top:10px;left:10px;background:var(--sun);font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px}
+.card .body{padding:14px;display:flex;flex-direction:column;flex:1}
+.card h3{font-family:Inter;font-size:15px;font-weight:600}
+.card .stars{font-size:12px;color:#E0A800}
+.card .price{font-size:18px;font-weight:700;margin:6px 0 2px}
+.card .pix{font-size:12px;color:var(--main);font-weight:600;margin-bottom:12px}
+.card .add{margin-top:auto;background:var(--main);color:#fff;border-radius:999px;padding:10px;font-weight:600;font-size:14px}
+.noresult{grid-column:1/-1;color:var(--muted);text-align:center;padding:30px}
+.groom{display:grid;grid-template-columns:1fr 1fr;gap:28px;background:#fff;border:1px solid var(--line);border-radius:28px;padding:40px}
+.groom ul{list-style:none;margin-top:16px;display:grid;gap:10px}
+.groom li{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:8px}
+.groom form{display:grid;gap:12px;background:var(--soft);padding:24px;border-radius:20px}
+.groom input,.groom select{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:12px;background:#fff}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:780px){.groom{grid-template-columns:1fr;padding:24px}}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.reviews div{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;font-size:15px}
+.reviews b{display:block;margin-top:12px;font-size:14px}
+.reviews small{color:var(--muted)}
+@media(max-width:780px){.reviews{grid-template-columns:1fr}}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:10px}
+.faq summary{font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+.faq summary::after{content:"+";font-size:20px;color:var(--main)}
+.faq details[open] summary::after{content:"−"}
+.faq p{color:var(--muted);margin-top:10px}
+.blog{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.blog a{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.blog .th{height:130px;display:grid;place-items:center;font-size:52px}
+.blog h3{font-family:Inter;font-size:16px;padding:16px 16px 4px}
+.blog p{font-size:13px;color:var(--muted);padding:0 16px 16px}
+@media(max-width:780px){.blog{grid-template-columns:1fr}}
+.insta{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.insta div{aspect-ratio:1;border-radius:12px;display:grid;place-items:center;font-size:40px}
+@media(max-width:780px){.insta{grid-template-columns:repeat(3,1fr)}}
+.news{background:var(--ink);color:#fff;border-radius:28px;padding:40px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.news h2{font-size:28px}
+.news form{display:flex;gap:10px;flex:1 1 280px;max-width:460px;min-width:0}
+.news input{flex:1;min-width:0;padding:13px 16px;border-radius:999px;border:0}
+footer{background:#fff;border-top:1px solid var(--line);padding:48px 0 28px;font-size:14px;color:var(--muted)}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px;margin-bottom:28px}
+footer h4{color:var(--ink);margin-bottom:10px;font-family:Poppins}
+footer a{display:block;margin-bottom:6px}
+@media(max-width:780px){footer .cols{grid-template-columns:1fr 1fr}}
+.pays{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.pays span{border:1px solid var(--line);border-radius:8px;padding:3px 9px;font-size:12px;font-weight:600}
+/* sacola */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:.2s;z-index:57}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:#fff;transform:translateX(100%);transition:.25s;display:flex;flex-direction:column;z-index:58}
+.open .overlay{opacity:1;pointer-events:auto}.open .drawer{transform:none}
+.drawer .dh{padding:0 20px;display:flex;justify-content:space-between;align-items:center;height:64px;border-bottom:1px solid var(--line)}
+.lines{flex:1;overflow:auto;padding:8px 20px}
+.lineitem{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.lineitem .th{width:52px;height:52px;border-radius:12px;background:var(--soft);display:grid;place-items:center;font-size:26px}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line)}
+.ship{font-size:13px;background:var(--soft);border-radius:10px;padding:8px 10px}
+.bar{height:6px;background:#fff;border-radius:9px;margin-top:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--main)}
+.checkout{padding:16px 20px 22px;border-top:1px solid var(--line);display:grid;gap:10px}
+.checkout input,.checkout select{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:12px}
+.total{display:flex;justify-content:space-between;font-weight:700;font-size:18px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(90px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:14px;transition:.25s;z-index:60;pointer-events:none;white-space:nowrap}
+.toast.show{transform:translateX(-50%)}
+.cookie{position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;margin:0 auto;background:#fff;border:1px solid var(--line);box-shadow:0 10px 40px rgba(0,0,0,.15);border-radius:18px;padding:16px 18px;display:none;gap:12px;align-items:center;z-index:55;font-size:14px}
+.cookie.show{display:flex}
+.wa{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:25}
+.wa svg{width:30px;height:30px;fill:#fff}
+dialog{border:0;border-radius:20px;padding:28px;max-width:560px;width:calc(100% - 32px)}
+dialog::backdrop{background:rgba(0,0,0,.4)}
+dialog h3{margin-bottom:10px}dialog p{color:var(--muted);font-size:14px;margin-bottom:10px}
+</style>
+</head>
+<body>
+<div class="demo">Template de demonstração · <b>Plano Premium</b> · feito pela Vitrino · <a href="../../index.html">voltar</a></div>
+<div class="announce">🚚 Entrega no mesmo dia em pedidos até 16h · Frete grátis acima de R$ 150</div>
+<header><div class="wrap">
+  <a class="brand" href="#"><span class="paw">🐾</span><span class="t">Patas &amp; Cia</span></a>
+  <label class="search"><input id="q" type="search" placeholder="Buscar ração, petisco..." aria-label="Buscar produtos"></label>
+  <nav><a href="#loja">Loja</a><a href="#banho">Banho &amp; Tosa</a><a href="#dicas">Dicas</a><a href="#faq">Dúvidas</a></nav>
+  <button class="bag" id="openBag">🛒 <span class="n" id="count">0</span></button>
+</div></header>
+
+<main class="wrap">
+  <section class="hero" style="margin-bottom:24px">
+    <div>
+      <h1>Tudo pro seu pet, sem sair de casa.</h1>
+      <p>Rações, petiscos e acessórios com entrega no mesmo dia. E banho &amp; tosa com agendamento em 30 segundos.</p>
+      <div class="ctas"><a href="#loja" class="btn sun">Comprar agora</a><a href="#banho" class="btn line">Agendar banho</a></div>
+    </div>
+    <div class="art">🐶</div>
+  </section>
+
+  <div class="benefits">
+    <div><b>🚚 Entrega rápida</b>No mesmo dia na cidade</div>
+    <div><b>💚 5% off no Pix</b>Desconto automático</div>
+    <div><b>💳 Até 3x sem juros</b>No cartão</div>
+    <div><b>🔒 Compra segura</b>Dados protegidos</div>
+  </div>
+
+  <section id="loja">
+    <div class="head"><div><h2>Compre por categoria</h2><p>Escolha uma categoria ou use a busca.</p></div></div>
+    <div class="cats" id="cats"></div>
+  </section>
+
+  <section>
+    <div class="head"><div><h2 id="gridTitle">Mais vendidos</h2></div></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="banho">
+    <div class="groom">
+      <div>
+        <div class="head" style="margin-bottom:6px"><h2>Banho &amp; Tosa 🛁</h2></div>
+        <p style="color:var(--muted)">Profissionais carinhosos, produtos hipoalergênicos e leva-e-traz opcional.</p>
+        <ul>
+          <li><span>Banho (pequeno porte)</span><b>R$ 55</b></li>
+          <li><span>Banho (médio porte)</span><b>R$ 70</b></li>
+          <li><span>Banho + tosa higiênica</span><b>R$ 85</b></li>
+          <li><span>Tosa completa</span><b>R$ 110</b></li>
+          <li><span>Leva-e-traz</span><b>R$ 15</b></li>
+        </ul>
+      </div>
+      <form id="agenda">
+        <h3>Agende agora</h3>
+        <input id="aTutor" placeholder="Seu nome" required>
+        <input id="aPet" placeholder="Nome e raça do pet" required>
+        <select id="aServ"><option>Banho</option><option>Banho + tosa higiênica</option><option>Tosa completa</option></select>
+        <div class="row"><input id="aData" type="date" required aria-label="Data"><select id="aHora"><option>08:00</option><option>10:00</option><option>13:00</option><option>15:00</option><option>17:00</option></select></div>
+        <label style="font-size:14px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="aLeva" style="width:auto"> Quero leva-e-traz</label>
+        <button class="btn" type="submit">Confirmar pelo WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><div><h2>Quem é cliente, volta</h2><p>Depoimentos de exemplo — troque pelos reais do cliente.</p></div></div>
+    <div class="reviews">
+      <div>⭐⭐⭐⭐⭐<br>“Entregaram a ração em 2 horas e ainda mandaram um petisco de brinde.”<b>Cliente exemplo</b><small>Tutor do Thor</small></div>
+      <div>⭐⭐⭐⭐⭐<br>“A Mel voltou cheirosa e calma. Agendar pelo site é muito prático.”<b>Cliente exemplo</b><small>Tutora da Mel</small></div>
+      <div>⭐⭐⭐⭐⭐<br>“Preço justo e atendimento que conhece o meu gato pelo nome.”<b>Cliente exemplo</b><small>Tutor do Frajola</small></div>
+    </div>
+  </section>
+
+  <section id="dicas">
+    <div class="head"><div><h2>Dicas do blog</h2><p>Conteúdo que ajuda o Google a encontrar a loja.</p></div></div>
+    <div class="blog">
+      <a href="#"><div class="th" style="background:#FFF1C9">🦴</div><h3>Como escolher a ração ideal</h3><p>Idade, porte e rotina: o que considerar.</p></a>
+      <a href="#"><div class="th" style="background:#E3F3EF">🛁</div><h3>De quanto em quanto tempo dar banho?</h3><p>A frequência certa para cada tipo de pelo.</p></a>
+      <a href="#"><div class="th" style="background:#F1E6FA">🐱</div><h3>Gatos e arranhadores</h3><p>Por que eles precisam e como escolher.</p></a>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><div><h2>@patasecia no Instagram</h2></div><a class="btn line" href="#">Seguir</a></div>
+    <div class="insta">
+      <div style="background:#FFF1C9">🐕</div><div style="background:#E3F3EF">🐈</div><div style="background:#FDE2E4">🐩</div>
+      <div style="background:#E8EEFB">🐾</div><div style="background:#F1E6FA">🐇</div><div style="background:#E3F3EF">🦮</div>
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <div class="head"><h2>Dúvidas frequentes</h2></div>
+    <details><summary>Qual o prazo de entrega?</summary><p>Pedidos feitos até 16h são entregues no mesmo dia dentro da cidade. Depois disso, no dia seguinte pela manhã.</p></details>
+    <details><summary>Quais formas de pagamento vocês aceitam?</summary><p>Pix (com 5% de desconto), cartão de crédito em até 3x sem juros e débito.</p></details>
+    <details><summary>Posso trocar um produto?</summary><p>Sim, em até 7 dias, com o produto lacrado e a nota.</p></details>
+    <details><summary>Vocês atendem gatos no banho e tosa?</summary><p>Sim! Temos horários exclusivos pra felinos, num ambiente mais calmo.</p></details>
+  </section>
+
+  <section class="news">
+    <div><h2>Ganhe 10% na primeira compra</h2><p style="opacity:.8">Receba ofertas e lembretes de vacina no seu WhatsApp.</p></div>
+    <form id="newsForm"><input id="newsTel" type="tel" placeholder="Seu WhatsApp" required aria-label="Seu WhatsApp"><button class="btn sun" type="submit">Quero</button></form>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><h4>Patas &amp; Cia</h4><p>Av. Exemplo, 789 — Centro, Sua Cidade/UF<br>Seg a Sex 8h–19h · Sáb 8h–14h<br>(00) 00000-0000</p>
+      <div class="pays"><span>Pix</span><span>Visa</span><span>Master</span><span>Elo</span></div></div>
+    <div><h4>Loja</h4><a href="#loja">Cães</a><a href="#loja">Gatos</a><a href="#loja">Petiscos</a></div>
+    <div><h4>Serviços</h4><a href="#banho">Banho &amp; Tosa</a><a href="#banho">Leva-e-traz</a></div>
+    <div><h4>Institucional</h4><a href="#" id="openPriv">Política de privacidade</a><a href="#faq">Trocas</a></div>
+  </div>
+  <p>© <span id="ano"></span> Patas &amp; Cia · CNPJ 00.000.000/0001-00 · Site por Vitrino</p>
+</div></footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" aria-label="Carrinho">
+  <div class="dh"><h3>Seu carrinho</h3><button id="closeBag" aria-label="Fechar" style="font-size:26px">×</button></div>
+  <div class="lines" id="lines"></div>
+  <form class="checkout" id="checkout">
+    <div class="ship" id="ship"></div>
+    <div class="total"><span>Total</span><span id="total">R$ 0,00</span></div>
+    <input id="nome" placeholder="Seu nome" required>
+    <input id="endereco" placeholder="Endereço de entrega" required>
+    <select id="pag"><option>Pix (5% off)</option><option>Cartão de crédito</option><option>Débito na entrega</option></select>
+    <button class="btn" type="submit">Finalizar pedido</button>
+  </form>
+</aside>
+
+<div class="cookie" id="cookie"><span>Usamos cookies para melhorar sua experiência. Veja nossa <a href="#" id="openPriv2" style="text-decoration:underline">política de privacidade</a>.</span><button class="btn" id="okCookie" style="padding:9px 16px">Aceitar</button></div>
+<dialog id="priv"><h3>Política de privacidade</h3>
+  <p>Modelo de texto: coletamos apenas os dados necessários para processar seus pedidos e agendamentos (nome, telefone e endereço), em conformidade com a LGPD (Lei 13.709/2018).</p>
+  <p>Você pode pedir a exclusão dos seus dados a qualquer momento pelo WhatsApp. Não vendemos nem compartilhamos seus dados com terceiros, exceto para entrega e pagamento.</p>
+  <p><b>Revise este texto com o cliente antes de publicar.</b></p>
+  <button class="btn" onclick="this.closest('dialog').close()">Fechar</button></dialog>
+<div class="toast" id="toast"></div>
+<a class="wa js-wa" href="#" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.8-4.2-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.4Z"/></svg></a>
+
+<script>
+// ====== CONFIGURE AQUI ======
+const WHATSAPP = "5521994542037";
+const LOJA = "Patas & Cia";
+const FRETE_GRATIS = 150;
+const CATEGORIAS = [["Cães","🐕"],["Gatos","🐈"],["Rações","🥣"],["Petiscos","🦴"],["Brinquedos","🧸"],["Higiene","🧴"]];
+const PRODUTOS = [
+  {id:1,nome:"Ração Premium Cães Adultos 15kg",cat:["Cães","Rações"],preco:229.9,em:"🥣",tag:"Mais vendido"},
+  {id:2,nome:"Ração Gatos Castrados 10kg",cat:["Gatos","Rações"],preco:189.9,em:"🥣"},
+  {id:3,nome:"Bifinho Sabor Carne 500g",cat:["Cães","Petiscos"],preco:29.9,em:"🦴"},
+  {id:4,nome:"Sachê Gatos Salmão (cx 12)",cat:["Gatos","Rações"],preco:39.9,em:"🐟",tag:"Oferta"},
+  {id:5,nome:"Bolinha Mordedor Resistente",cat:["Cães","Brinquedos"],preco:24.9,em:"🎾"},
+  {id:6,nome:"Arranhador Torre 70cm",cat:["Gatos","Brinquedos"],preco:149.9,em:"🐈"},
+  {id:7,nome:"Shampoo Neutro Hipoalergênico",cat:["Higiene","Cães","Gatos"],preco:34.9,em:"🧴"},
+  {id:8,nome:"Areia Sanitária 12kg",cat:["Gatos","Higiene"],preco:44.9,em:"🪣"},
+  {id:9,nome:"Coleira Peitoral Ajustável",cat:["Cães"],preco:59.9,em:"🦮"},
+  {id:10,nome:"Petisco Gatos Crocante",cat:["Gatos","Petiscos"],preco:14.9,em:"🍪",tag:"Novo"}
+];
+// ============================
+const $ = id => document.getElementById(id);
+const brl = v => v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+let cart = {}; try{cart = JSON.parse(localStorage.getItem('cart_'+LOJA))||{}}catch(e){}
+const save = () => {try{localStorage.setItem('cart_'+LOJA,JSON.stringify(cart))}catch(e){}};
+let cat = null, q = "";
+const wa = msg => window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank');
+function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1800)}
+function renderCats(){ $('cats').innerHTML = CATEGORIAS.map(([c,e])=>`<button class="${c===cat?'on':''}" data-c="${c}"><span>${e}</span>${c}</button>`).join(''); }
+function renderGrid(){
+  const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+  const list = PRODUTOS.filter(p=>(!cat||p.cat.includes(cat)) && (!q||norm(p.nome).includes(norm(q))));
+  $('gridTitle').textContent = q ? `Resultados para “${q}”` : cat ? cat : 'Mais vendidos';
+  $('grid').innerHTML = list.length ? list.map(p=>`<div class="card"><div class="img">${p.tag?`<span class="tag">${p.tag}</span>`:''}${p.em}</div>
+    <div class="body"><span class="stars">★★★★★</span><h3>${p.nome}</h3><div class="price">${brl(p.preco)}</div>
+    <div class="pix">${brl(p.preco*.95)} no Pix</div><button class="add" data-id="${p.id}">Adicionar</button></div></div>`).join('')
+    : '<p class="noresult">Nada encontrado. Tente outra busca ou chame no WhatsApp 😉</p>';
+}
+function renderCart(){
+  const ids = Object.keys(cart).filter(id=>cart[id]>0 && PRODUTOS.find(x=>x.id==id));
+  let total=0,n=0;
+  $('lines').innerHTML = ids.length ? ids.map(id=>{const p=PRODUTOS.find(x=>x.id==id);total+=p.preco*cart[id];n+=cart[id];
+    return `<div class="lineitem"><div class="th">${p.em}</div><div><b style="font-size:14px">${p.nome}</b><br><small style="color:var(--muted)">${brl(p.preco)}</small></div>
+    <div class="qty"><button data-m="${id}">−</button>${cart[id]}<button data-p="${id}">+</button></div></div>`}).join('')
+    : '<p style="color:var(--muted);text-align:center;padding:40px 0">Carrinho vazio 🐾</p>';
+  const falta = FRETE_GRATIS-total;
+  $('ship').innerHTML = (falta>0?`Faltam <b>${brl(falta)}</b> para frete grátis`:'🎉 Você ganhou <b>frete grátis</b>!')+`<div class="bar"><i style="width:${Math.min(100,total/FRETE_GRATIS*100)}%"></i></div>`;
+  $('total').textContent=brl(total); $('count').textContent=n;
+  return {total,ids};
+}
+$('cats').onclick = e => { const b=e.target.closest('button'); if(!b) return; cat = cat===b.dataset.c?null:b.dataset.c; renderCats(); renderGrid(); };
+$('q').oninput = e => { q=e.target.value.trim(); renderGrid(); };
+$('grid').onclick = e => { const id=e.target.dataset.id; if(id){cart[id]=(cart[id]||0)+1;save();renderCart();toast('Adicionado ao carrinho ✓')} };
+$('lines').onclick = e => { const p=e.target.dataset.p,m=e.target.dataset.m; if(p)cart[p]++; if(m)cart[m]--; save(); renderCart(); };
+const toggle = on => document.body.classList.toggle('open',on);
+$('openBag').onclick=()=>toggle(true); $('closeBag').onclick=()=>toggle(false); $('overlay').onclick=()=>toggle(false);
+$('checkout').onsubmit = e => { e.preventDefault(); const {total,ids}=renderCart(); if(!ids.length) return toast('Seu carrinho está vazio');
+  const pix = $('pag').value.startsWith('Pix'); const final = pix? total*.95 : total;
+  const itens = ids.map(id=>{const p=PRODUTOS.find(x=>x.id==id);return `• ${cart[id]}x ${p.nome} — ${brl(p.preco*cart[id])}`}).join('\n');
+  wa(`Olá, ${LOJA}! Pedido pelo site:\n\n${itens}\n\nSubtotal: ${brl(total)}${pix?`\n*Total no Pix (5% off): ${brl(final)}*`:`\n*Total: ${brl(final)}*`}\nFrete: ${total>=FRETE_GRATIS?'grátis':'a calcular'}\n\nNome: ${$('nome').value}\nEndereço: ${$('endereco').value}\nPagamento: ${$('pag').value}`); };
+const hoje = new Date(); $('aData').min = hoje.toISOString().slice(0,10);
+$('agenda').onsubmit = e => { e.preventDefault(); const d=$('aData').value.split('-').reverse().join('/');
+  wa(`Olá! Quero agendar no ${LOJA}:\n\nServiço: ${$('aServ').value}\nPet: ${$('aPet').value}\nData: ${d} às ${$('aHora').value}\nLeva-e-traz: ${$('aLeva').checked?'sim':'não'}\nTutor(a): ${$('aTutor').value}`); };
+$('newsForm').onsubmit = e => { e.preventDefault(); toast('Pronto! Cupom enviado em breve 💚'); e.target.reset(); };
+const priv = e => { e.preventDefault(); $('priv').showModal(); };
+$('openPriv').onclick = priv; $('openPriv2').onclick = priv;
+let ok=false; try{ok=localStorage.getItem('cookie_ok')}catch(e){}
+if(!ok) $('cookie').classList.add('show');
+$('okCookie').onclick = () => { try{localStorage.setItem('cookie_ok','1')}catch(e){} $('cookie').classList.remove('show'); };
+document.querySelectorAll('.js-wa').forEach(a=>{a.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Olá! Vim pelo site 🐾')}`;a.target='_blank';a.rel='noopener'});
+$('ano').textContent = hoje.getFullYear();
+renderCats(); renderGrid(); renderCart();
+</script>
+</body>
+</html>

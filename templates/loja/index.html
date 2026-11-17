@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flor de Lis Boutique — Moda feminina</title>
+<meta name="description" content="Moda feminina com entrega para toda a cidade. Escolha, monte sua sacola e finalize pelo WhatsApp com Pix.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ====== CONFIGURE AQUI (cores do cliente) ====== */
+:root{--bg:#FFF9F7;--ink:#1E1B1B;--muted:#7A6E6C;--rose:#C9566B;--blush:#F6DDE0;--line:#EEDFDC;--radius:16px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.15}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.demo{background:#FF5A36;color:#fff;font-size:13px;text-align:center;padding:8px 12px}
+.demo a{text-decoration:underline;font-weight:600}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.top{background:var(--ink);color:#fff;font-size:13px;text-align:center;padding:7px}
+header{position:sticky;top:0;z-index:20;background:rgba(255,249,247,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{height:68px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'Playfair Display';font-size:24px;font-weight:700;letter-spacing:.5px}
+.brand i{color:var(--rose);font-style:normal}
+.bag{position:relative;display:flex;align-items:center;gap:8px;background:var(--ink);color:#fff;padding:10px 16px;border-radius:999px;font-weight:600;font-size:14px}
+.bag .n{background:var(--rose);border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:12px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;padding:48px 0}
+.hero h1{font-size:clamp(36px,5.5vw,60px)}
+.hero p{color:var(--muted);font-size:17px;margin:16px 0 24px;max-width:440px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--rose);color:#fff;font-weight:600;padding:13px 22px;border-radius:999px;font-size:15px}
+.btn.dark{background:var(--ink)}
+.hero>*{min-width:0}
+.hero-art{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.hero-art div{border-radius:24px;aspect-ratio:3/4;display:grid;place-items:center;font-size:72px}
+.hero-art div:nth-child(2){margin-top:40px}
+@media(max-width:780px){.hero{grid-template-columns:1fr;padding:28px 0}.hero-art div{font-size:56px}}
+.filters{display:flex;gap:10px;overflow-x:auto;padding:4px 0 18px;scrollbar-width:none}
+.chip{white-space:nowrap;border:1.5px solid var(--line);padding:8px 16px;border-radius:999px;font-size:14px;font-weight:500;background:#fff}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;padding-bottom:64px}
+@media(max-width:520px){.grid{grid-template-columns:1fr 1fr;gap:12px}}
+.card{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column}
+.card .img{aspect-ratio:4/5;display:grid;place-items:center;font-size:64px;position:relative}
+.tag{position:absolute;top:10px;left:10px;background:var(--ink);color:#fff;font-size:11px;font-weight:600;padding:4px 9px;border-radius:999px}
+.card .body{padding:14px;display:flex;flex-direction:column;flex:1}
+.card h3{font-family:Inter;font-size:15px;font-weight:600}
+.card .cat{font-size:12px;color:var(--muted)}
+.card .price{font-weight:700;font-size:17px;margin:8px 0 12px}
+.card .price s{color:var(--muted);font-weight:400;font-size:13px;margin-left:6px}
+.card .add{margin-top:auto;border:1.5px solid var(--ink);border-radius:999px;padding:9px;font-weight:600;font-size:14px;transition:.15s}
+.card .add:hover{background:var(--ink);color:#fff}
+.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;padding:8px 0 56px}
+.perks div{background:var(--blush);border-radius:var(--radius);padding:20px;font-size:14px}
+.perks b{display:block;font-size:16px;margin-bottom:4px}
+footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted);font-size:14px}
+/* sacola */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:.2s;z-index:57}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:#fff;transform:translateX(100%);transition:.25s;display:flex;flex-direction:column;z-index:58}
+.open .overlay{opacity:1;pointer-events:auto}.open .drawer{transform:none}
+.drawer header{position:static;padding:0 20px;display:flex;justify-content:space-between;align-items:center;height:64px}
+.drawer h2{font-size:22px}
+.lines{flex:1;overflow:auto;padding:12px 20px}
+.line{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.line .th{width:56px;height:56px;border-radius:12px;display:grid;place-items:center;font-size:28px}
+.line small{color:var(--muted)}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line)}
+.empty{color:var(--muted);text-align:center;padding:40px 0}
+.checkout{padding:16px 20px 22px;border-top:1px solid var(--line);display:grid;gap:10px}
+.checkout input,.checkout select{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:12px;font:inherit}
+.total{display:flex;justify-content:space-between;font-weight:700;font-size:18px}
+.pix{font-size:13px;background:var(--blush);padding:10px 12px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.pix button{font-weight:600;color:var(--rose)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:14px;transition:.25s;z-index:60;pointer-events:none;white-space:nowrap}
+.toast.show{transform:translateX(-50%)}
+</style>
+</head>
+<body>
+<div class="demo">Template de demonstração · <b>Plano Loja</b> · feito pela Vitrino · <a href="../../index.html">voltar</a></div>
+<div class="top">🚚 Frete grátis na cidade acima de R$ 199 · Pague com Pix</div>
+<header><div class="wrap">
+  <a class="brand" href="#">Flor de <i>Lis</i></a>
+  <button class="bag" id="openBag">Sacola <span class="n" id="count">0</span></button>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <h1>Nova coleção de verão</h1>
+      <p>Peças leves, cortes que valorizam e preço justo. Monte sua sacola e finalize pelo WhatsApp em 1 minuto.</p>
+      <a href="#produtos" class="btn">Ver peças</a>
+    </div>
+    <div class="hero-art"><div style="background:#F6DDE0">👗</div><div style="background:#E9E3F5">👒</div></div>
+  </section>
+
+  <section id="produtos">
+    <h2 style="font-size:32px;margin-bottom:14px">Produtos</h2>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="perks">
+    <div><b>💳 Pix ou cartão</b>Pix com 5% off ou cartão na entrega.</div>
+    <div><b>🔁 Troca fácil</b>Até 7 dias para trocar, sem burocracia.</div>
+    <div><b>🛍️ Retire na loja</b>Rua Exemplo, 456 — Centro.</div>
+  </section>
+</main>
+<footer>© <span id="ano"></span> Flor de Lis Boutique · CNPJ 00.000.000/0001-00 · Site por Vitrino</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" aria-label="Sacola">
+  <header><h2>Sua sacola</h2><button id="closeBag" aria-label="Fechar" style="font-size:26px">×</button></header>
+  <div class="lines" id="lines"></div>
+  <form class="checkout" id="checkout">
+    <div class="total"><span>Total</span><span id="total">R$ 0,00</span></div>
+    <input id="nome" placeholder="Seu nome" required>
+    <select id="entrega"><option>Entrega</option><option>Retirar na loja</option></select>
+    <input id="endereco" placeholder="Endereço (se for entrega)">
+    <select id="pag"><option>Pix</option><option>Cartão na entrega</option><option>Dinheiro</option></select>
+    <div class="pix"><span>Chave Pix: <b id="pixKey"></b></span><button type="button" id="copyPix">Copiar</button></div>
+    <button class="btn dark" type="submit">Finalizar pelo WhatsApp</button>
+  </form>
+</aside>
+<div class="toast" id="toast"></div>
+
+<script>
+// ====== CONFIGURE AQUI ======
+const WHATSAPP = "5521994542037";
+const PIX = "contato@flordelis.com.br";
+const LOJA = "Flor de Lis";
+const PRODUTOS = [
+  {id:1,nome:"Vestido Midi Floral",cat:"Vestidos",preco:189.9,de:229.9,em:"👗",bg:"#F6DDE0",tag:"Mais vendido"},
+  {id:2,nome:"Chapéu de Palha",cat:"Acessórios",preco:79.9,em:"👒",bg:"#F3EBD8"},
+  {id:3,nome:"Blusa de Linho",cat:"Blusas",preco:119.9,em:"👚",bg:"#E3EEF0"},
+  {id:4,nome:"Saia Plissada",cat:"Saias",preco:139.9,em:"🩱",bg:"#E9E3F5",tag:"Novo"},
+  {id:5,nome:"Bolsa Tiracolo",cat:"Acessórios",preco:159.9,de:189.9,em:"👜",bg:"#F2E2D6"},
+  {id:6,nome:"Sandália Rasteira",cat:"Calçados",preco:99.9,em:"👡",bg:"#F6DDE0"},
+  {id:7,nome:"Vestido Longo Liso",cat:"Vestidos",preco:219.9,em:"👗",bg:"#DDEBDF"},
+  {id:8,nome:"Óculos de Sol",cat:"Acessórios",preco:69.9,em:"🕶️",bg:"#E3EEF0"}
+];
+// ============================
+const brl = v => v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+let cart = {};
+try{cart = JSON.parse(localStorage.getItem('cart_'+LOJA)) || {}}catch(e){}
+const save = () => {try{localStorage.setItem('cart_'+LOJA, JSON.stringify(cart))}catch(e){}};
+const $ = id => document.getElementById(id);
+let filtro = "Todos";
+function renderFilters(){
+  const cats = ["Todos",...new Set(PRODUTOS.map(p=>p.cat))];
+  $('filters').innerHTML = cats.map(c=>`<button class="chip ${c===filtro?'on':''}" data-c="${c}">${c}</button>`).join('');
+}
+function renderGrid(){
+  $('grid').innerHTML = PRODUTOS.filter(p=>filtro==="Todos"||p.cat===filtro).map(p=>`
+    <div class="card"><div class="img" style="background:${p.bg}">${p.tag?`<span class="tag">${p.tag}</span>`:''}${p.em}</div>
+    <div class="body"><span class="cat">${p.cat}</span><h3>${p.nome}</h3>
+    <div class="price">${brl(p.preco)}${p.de?`<s>${brl(p.de)}</s>`:''}</div>
+    <button class="add" data-id="${p.id}">Adicionar à sacola</button></div></div>`).join('');
+}
+function renderCart(){
+  const ids = Object.keys(cart).filter(id=>cart[id]>0);
+  let total = 0, n = 0;
+  $('lines').innerHTML = ids.length ? ids.map(id=>{
+    const p = PRODUTOS.find(x=>x.id==id); if(!p) return '';
+    total += p.preco*cart[id]; n += cart[id];
+    return `<div class="line"><div class="th" style="background:${p.bg}">${p.em}</div>
+      <div><b style="font-size:14px">${p.nome}</b><br><small>${brl(p.preco)}</small></div>
+      <div class="qty"><button data-m="${id}">−</button>${cart[id]}<button data-p="${id}">+</button></div></div>`;
+  }).join('') : '<p class="empty">Sua sacola está vazia 🛍️</p>';
+  ids.forEach(id=>{ if(!PRODUTOS.find(x=>x.id==id)) delete cart[id]; });
+  $('total').textContent = brl(total); $('count').textContent = n;
+  return {total, ids};
+}
+function toast(t){ $('toast').textContent=t; $('toast').classList.add('show'); setTimeout(()=>$('toast').classList.remove('show'),1800); }
+$('filters').onclick = e => { if(e.target.dataset.c){ filtro=e.target.dataset.c; renderFilters(); renderGrid(); } };
+$('grid').onclick = e => { const id=e.target.dataset.id; if(id){ cart[id]=(cart[id]||0)+1; save(); renderCart(); toast('Adicionado à sacola ✓'); } };
+$('lines').onclick = e => { const p=e.target.dataset.p, m=e.target.dataset.m;
+  if(p) cart[p]++; if(m) cart[m]--; save(); renderCart(); };
+const toggle = on => document.body.classList.toggle('open', on);
+$('openBag').onclick = () => toggle(true); $('closeBag').onclick = () => toggle(false); $('overlay').onclick = () => toggle(false);
+$('pixKey').textContent = PIX;
+$('copyPix').onclick = () => { navigator.clipboard?.writeText(PIX).then(()=>toast('Chave Pix copiada'),()=>toast(PIX)); };
+$('checkout').onsubmit = e => {
+  e.preventDefault();
+  const {total, ids} = renderCart();
+  if(!ids.length) return toast('Adicione algum produto primeiro');
+  const itens = ids.map(id=>{const p=PRODUTOS.find(x=>x.id==id);return `• ${cart[id]}x ${p.nome} — ${brl(p.preco*cart[id])}`}).join('\n');
+  const msg = `Olá, ${LOJA}! Quero fazer um pedido:\n\n${itens}\n\n*Total: ${brl(total)}*\n\nNome: ${$('nome').value}\n${$('entrega').value}${$('endereco').value?': '+$('endereco').value:''}\nPagamento: ${$('pag').value}`;
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank');
+};
+$('ano').textContent = new Date().getFullYear();
+renderFilters(); renderGrid(); renderCart();
+</script>
+</body>
+</html>

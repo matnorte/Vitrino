@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brasa &amp; Pão — Hamburgueria Artesanal</title>
+<meta name="description" content="Hambúrguer artesanal na brasa. Peça pelo WhatsApp ou retire no balcão.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ====== CONFIGURE AQUI (cores do cliente) ====== */
+:root{--bg:#1A1410;--card:#261D17;--text:#FBF3E8;--muted:#C9B8A6;--accent:#F5A623;--accent2:#E8552B;--radius:18px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+h1,h2,h3{font-family:Poppins,sans-serif;line-height:1.15}
+a{color:inherit;text-decoration:none}
+.demo{background:#FF5A36;color:#fff;font-size:13px;text-align:center;padding:8px 12px}
+.demo a{text-decoration:underline;font-weight:600}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:10;background:rgba(26,20,16,.92);backdrop-filter:blur(8px);border-bottom:1px solid #3a2e25}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-family:Poppins;font-weight:800;font-size:20px;letter-spacing:-.5px}
+.brand span{color:var(--accent)}
+nav a{margin-left:22px;font-size:15px;color:var(--muted)}
+nav a:hover{color:var(--text)}
+@media(max-width:640px){nav a:not(.btn){display:none}}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#1A1410;font-weight:600;padding:12px 20px;border-radius:999px;font-size:15px;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--text);border:1.5px solid #5a4838}
+nav .btn{padding:9px 16px;margin-left:16px;color:#1A1410}
+.hero{padding-top:72px;padding-bottom:64px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(38px,6vw,64px);font-weight:800;letter-spacing:-1.5px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{color:var(--muted);font-size:18px;margin:18px 0 28px;max-width:480px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-art{aspect-ratio:1;border-radius:32px;background:radial-gradient(circle at 30% 30%,#F5A623 0,#E8552B 45%,#7a2a12 100%);display:grid;place-items:center;font-size:clamp(120px,20vw,200px);box-shadow:0 30px 80px rgba(232,85,43,.35)}
+.badges{display:flex;gap:18px;margin-top:28px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:40px}.hero-art{max-width:320px;margin:0 auto;order:-1}}
+section{padding:64px 0}
+.title{font-size:clamp(28px,4vw,40px);font-weight:800;margin-bottom:8px}
+.sub{color:var(--muted);margin-bottom:32px}
+.menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.item{background:var(--card);border-radius:var(--radius);padding:22px;border:1px solid #3a2e25;display:flex;flex-direction:column}
+.item .em{font-size:44px}
+.item h3{font-size:19px;margin:10px 0 4px}
+.item p{color:var(--muted);font-size:14px;flex:1}
+.item .price{font-family:Poppins;font-weight:700;color:var(--accent);font-size:20px;margin-top:14px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.about .box{background:var(--card);border-radius:24px;padding:32px;border:1px solid #3a2e25}
+.stat{display:flex;gap:28px;margin-top:22px}
+.stat b{display:block;font-family:Poppins;font-size:30px;color:var(--accent)}
+.stat span{font-size:13px;color:var(--muted)}
+@media(max-width:800px){.about{grid-template-columns:1fr}}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.info .item h3{display:flex;gap:10px;align-items:center}
+.cta{background:linear-gradient(135deg,var(--accent2),var(--accent));border-radius:28px;padding:48px 32px;text-align:center;color:#1A1410}
+.cta h2{font-size:clamp(26px,4vw,38px);font-weight:800}
+.cta p{margin:10px 0 24px;font-weight:500}
+.cta .btn{background:#1A1410;color:#fff}
+footer{padding:36px 0;color:var(--muted);font-size:14px;text-align:center;border-top:1px solid #3a2e25}
+.wa{position:fixed;right:18px;bottom:18px;width:60px;height:60px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.4);z-index:20}
+.wa svg{width:32px;height:32px;fill:#fff}
+</style>
+</head>
+<body>
+<div class="demo">Template de demonstração · <b>Plano Básico</b> · feito pela Vitrino · <a href="../../index.html">voltar</a></div>
+<header><div class="wrap">
+  <a href="#" class="brand">Brasa <span>&amp;</span> Pão</a>
+  <nav><a href="#cardapio">Cardápio</a><a href="#sobre">Sobre</a><a href="#onde">Onde estamos</a><a class="btn js-wa" href="#">Pedir agora</a></nav>
+</div></header>
+
+<main>
+<div class="wrap hero">
+  <div>
+    <h1>Hambúrguer na <em>brasa</em>, do jeito certo.</h1>
+    <p>Blend artesanal de 160g, pão brioche da casa e molhos feitos aqui. Peça pelo WhatsApp e receba quentinho.</p>
+    <div class="ctas"><a class="btn js-wa" href="#">🍔 Pedir pelo WhatsApp</a><a class="btn ghost" href="#cardapio">Ver cardápio</a></div>
+    <div class="badges"><span>🛵 Entrega em até 40 min</span><span>💳 Pix e cartão</span><span>⭐ 4,9 no iFood</span></div>
+  </div>
+  <div class="hero-art">🍔</div>
+</div>
+
+<section id="cardapio"><div class="wrap">
+  <h2 class="title">Cardápio</h2>
+  <p class="sub">Os favoritos da casa. Todos acompanham batata rústica.</p>
+  <div class="menu">
+    <div class="item"><div class="em">🍔</div><h3>Clássico Brasa</h3><p>Blend 160g, queijo prato, alface, tomate e maionese da casa.</p><div class="price">R$ 32,90</div></div>
+    <div class="item"><div class="em">🥓</div><h3>Bacon Duplo</h3><p>Dois blends, cheddar, bacon crocante e cebola caramelizada.</p><div class="price">R$ 42,90</div></div>
+    <div class="item"><div class="em">🌶️</div><h3>Picante</h3><p>Blend 160g, pepper jack, jalapeño e molho chipotle.</p><div class="price">R$ 36,90</div></div>
+    <div class="item"><div class="em">🥗</div><h3>Veggie</h3><p>Burger de grão-de-bico, rúcula, tomate seco e maionese verde.</p><div class="price">R$ 34,90</div></div>
+    <div class="item"><div class="em">🍟</div><h3>Batata Rústica</h3><p>Porção grande com alecrim e páprica defumada.</p><div class="price">R$ 18,90</div></div>
+    <div class="item"><div class="em">🥤</div><h3>Bebidas</h3><p>Refrigerantes, sucos naturais e chás gelados.</p><div class="price">a partir de R$ 6,00</div></div>
+  </div>
+</div></section>
+
+<section id="sobre"><div class="wrap about">
+  <div>
+    <h2 class="title">Feito na brasa desde 2019</h2>
+    <p class="sub" style="margin-bottom:0">Começamos numa garagem com uma churrasqueira e uma ideia: hambúrguer de verdade, sem pressa. Hoje atendemos o bairro todo, mas o carvão continua o mesmo.</p>
+    <div class="stat"><div><b>+12 mil</b><span>pedidos entregues</span></div><div><b>100%</b><span>carne fresca</span></div></div>
+  </div>
+  <div class="box">
+    <h3 style="font-size:22px;margin-bottom:12px">Por que pedir direto com a gente?</h3>
+    <p style="color:var(--muted)">✔ Preço melhor que nos apps<br>✔ Atendimento direto com a casa<br>✔ Promoções exclusivas pra clientes do WhatsApp</p>
+  </div>
+</div></section>
+
+<section id="onde"><div class="wrap">
+  <h2 class="title">Onde estamos</h2>
+  <p class="sub">Retire no balcão ou peça pra entregar.</p>
+  <div class="info">
+    <div class="item"><h3>📍 Endereço</h3><p>Rua Exemplo, 123 — Centro<br>Sua Cidade / UF</p></div>
+    <div class="item"><h3>🕒 Horários</h3><p>Ter a Dom · 18h às 23h30<br>Segunda: fechado</p></div>
+    <div class="item"><h3>📞 Contato</h3><p>(00) 00000-0000<br>@brasaepao</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap"><div class="cta">
+  <h2>Bateu a fome?</h2>
+  <p>Chama no WhatsApp que a gente já coloca na brasa.</p>
+  <a class="btn js-wa" href="#">Fazer pedido</a>
+</div></div></section>
+</main>
+
+<footer>© <span id="ano"></span> Brasa &amp; Pão · Site por Vitrino</footer>
+<a class="wa js-wa" href="#" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.8-4.2-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.4Z"/></svg></a>
+<script>
+// ====== CONFIGURE AQUI ======
+const WHATSAPP = "5521994542037"; // DDI+DDD+número, só dígitos
+const MSG = "Olá! Vim pelo site e quero fazer um pedido 🍔";
+document.querySelectorAll('.js-wa').forEach(a=>{a.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(MSG)}`;a.target="_blank";a.rel="noopener"});
+document.getElementById('ano').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
