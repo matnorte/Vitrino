@@ -163,17 +163,59 @@ footer a{display:inline-flex;align-items:center;gap:6px}
   .marquee .track{animation:none}
   *{transition-duration:0s!important}
 }
+/* pedido (carrinho) */
+.bagbtn{position:relative}
+.bagbtn .n{min-width:22px;height:22px;border-radius:999px;background:var(--gold);color:var(--bg);display:grid;place-items:center;font-size:12px;padding:0 6px;font-family:var(--display)}
+.bagbtn.bump{animation:bump .4s var(--ease)}
+@keyframes bump{40%{transform:scale(1.08)}}
+.step{display:inline-flex;align-items:center;gap:4px;background:var(--red);border-radius:999px;padding:4px;color:#fff}
+.step button{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;transition:background-color .15s}
+.step button:hover{background:rgba(255,255,255,.18)}
+.step .ic{width:18px;height:18px}
+.step b{min-width:22px;text-align:center;font:700 16px var(--display)}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:opacity .25s;z-index:57}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(440px,100%);background:var(--surface);border-left:1px solid var(--line);z-index:58;transform:translateX(100%);transition:transform .3s var(--ease);display:flex;flex-direction:column}
+body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:0 20px;height:68px;border-bottom:1px solid var(--line);flex-shrink:0}
+.dh h2{font:700 26px var(--display);text-transform:uppercase}
+.iconbtn{width:44px;height:44px;border-radius:50%;display:grid;place-items:center}.iconbtn:hover{background:var(--surface-2)}
+.closed{margin:12px 20px 0;padding:10px 12px;border-radius:12px;background:rgba(245,184,46,.12);color:var(--gold);font-size:14px;font-weight:600;display:none}
+.closed.show{display:block}
+.lines{flex:1;overflow:auto;padding:4px 20px}
+.line{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.line img{width:56px;height:56px;border-radius:12px;object-fit:cover}
+.line b{display:block;font-size:15px;line-height:1.3}.line small{color:var(--muted);font-size:14px}
+.line .step{background:var(--surface-2);border:1px solid var(--line);padding:2px}
+.line .step button{width:32px;height:32px}
+.empty{text-align:center;color:var(--muted);padding:48px 10px}
+.empty .ic{width:40px;height:40px;margin:0 auto 12px;color:var(--line)}
+form.co{border-top:1px solid var(--line);padding:16px 20px 20px;display:grid;grid-template-columns:minmax(0,1fr);gap:12px;background:var(--bg);flex-shrink:0}
+.sum{display:grid;gap:4px;font-size:15px;color:var(--muted)}
+.sum div{display:flex;justify-content:space-between}
+.sum .tot{color:var(--text);font:700 22px var(--display);margin-top:4px}
+.fld{display:grid;gap:6px;min-width:0}
+.fld label{font-size:14px;font-weight:700}
+.fld input,.fld select,.fld textarea{width:100%;min-width:0;min-height:46px;border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--surface);color:var(--text);font:inherit;font-size:16px}
+.fld textarea{min-height:64px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--gold);outline:none}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(max-width:340px){.row2{grid-template-columns:minmax(0,1fr)}}
+@media(max-height:860px){.drawer{overflow-y:auto}.lines{flex:0 0 auto;overflow:visible}}
+.toast{position:fixed;left:50%;bottom:88px;transform:translate(-50%,20px);opacity:0;background:var(--text);color:var(--bg);padding:12px 20px;border-radius:999px;font-weight:700;font-size:15px;z-index:70;transition:transform .3s var(--ease),opacity .3s;pointer-events:none;white-space:nowrap;display:flex;gap:8px;align-items:center}
+.toast.show{transform:translate(-50%,0);opacity:1}
+.toast .ic{width:18px;height:18px;color:#16A34A}
+.mbar .btn .n{margin-left:auto;font-size:14px;opacity:.9}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol><symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></symbol><symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol><symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol><symbol id="i-insta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol><symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></symbol><symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol><symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.8-4.2-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.4Z"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol><symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol><symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol><symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol><symbol id="i-insta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol><symbol id="i-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></symbol><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol><symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></symbol><symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol><symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.8-4.2-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.4Z"/></symbol></svg>
 <div class="demo">Modelo de demonstração · <b>Plano Básico</b> · Vitrino · <a href="../../index.html">voltar para os planos</a></div>
 
 <header><div class="wrap">
   <a href="#" class="logo" aria-label="Brasa e Pão, início"><svg class="ic" aria-hidden="true"><use href="#i-flame"/></svg>Brasa <b>&amp;</b> Pão</a>
   <nav aria-label="Principal">
     <a class="lk" href="#cardapio">Cardápio</a><a class="lk" href="#sobre">A casa</a><a class="lk" href="#onde">Onde estamos</a>
-    <a class="btn btn-red js-wa" href="#"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Pedir</a>
+    <button class="btn btn-red bagbtn" id="openBag" aria-label="Abrir seu pedido"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg>Pedido<span class="n" id="count">0</span></button>
   </nav>
 </div></header>
 
@@ -183,10 +225,10 @@ footer a{display:inline-flex;align-items:center;gap:6px}
   <div class="wrap">
     <p class="eyebrow rv">Hamburgueria artesanal</p>
     <h1 id="t-hero" class="display rv" style="--i:1;margin-top:14px">Smash na <span>brasa.</span></h1>
-    <p class="rv" style="--i:2">Blend de 160 g prensado na chapa quente, pão brioche feito aqui e molhos da casa. Peça pelo WhatsApp e receba quentinho.</p>
+    <p class="rv" style="--i:2">Blend de 160 g prensado na chapa quente, pão brioche feito aqui e molhos da casa. Monte seu pedido aqui e ele chega pronto no nosso WhatsApp.</p>
     <div class="ctas rv" style="--i:3">
-      <a class="btn btn-red js-wa" href="#"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Pedir pelo WhatsApp</a>
-      <a class="btn btn-ghost" href="#cardapio">Ver cardápio</a>
+      <a class="btn btn-red" href="#cardapio"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg>Montar meu pedido</a>
+      <a class="btn btn-ghost js-wa" href="#"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Tirar uma dúvida</a>
     </div>
     <div class="chips rv" style="--i:4">
       <span class="chip"><span class="status-dot" id="dot" aria-hidden="true"></span><span id="status">Ter a dom · 18h às 23h30</span></span>
@@ -234,21 +276,42 @@ footer a{display:inline-flex;align-items:center;gap:6px}
 </div></section>
 
 <section style="padding-top:0"><div class="wrap"><div class="cta rv">
-  <div><h2 class="display">Bateu a fome?</h2><p>Chama no WhatsApp que a gente já coloca na brasa.</p></div>
-  <a class="btn js-wa" href="#"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Fazer pedido</a>
+  <div><h2 class="display">Bateu a fome?</h2><p>Monte o pedido com tudo que quiser e mande de uma vez só.</p></div>
+  <a class="btn" href="#cardapio"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg>Montar meu pedido</a>
 </div></div></section>
 </main>
 
 <footer><div class="wrap"><span>© <span id="ano"></span> Brasa &amp; Pão</span><span>Site feito pela Vitrino</span></div></footer>
 
-<a class="fab js-wa" href="#" aria-label="Pedir pelo WhatsApp"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg></a>
-<div class="mbar"><a class="btn btn-red js-wa" href="#"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Pedir pelo WhatsApp</a></div>
+<a class="fab js-wa" href="#" aria-label="Falar no WhatsApp"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg></a>
+<div class="mbar"><button class="btn btn-red" id="mbarBtn"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg><span id="mbarTxt">Montar meu pedido</span><span class="n" id="mbarTot"></span></button></div>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Seu pedido" aria-hidden="true">
+  <div class="dh"><h2>Seu pedido</h2><button class="iconbtn" id="closeBag" aria-label="Fechar pedido"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <p class="closed" id="closedNote">Estamos fechados agora. Pode mandar o pedido que a gente prepara assim que abrir, às 18h.</p>
+  <div class="lines" id="lines"></div>
+  <form class="co" id="co" novalidate>
+    <div class="fld"><label for="obs">Observações (opcional)</label><textarea id="obs" placeholder="Ex.: sem cebola no Clássico, ponto bem passado"></textarea></div>
+    <div class="fld"><label for="nome">Seu nome</label><input id="nome" autocomplete="name"></div>
+    <div class="row2">
+      <div class="fld"><label for="receber">Receber</label><select id="receber"><option>Entrega</option><option>Retirar no balcão</option></select></div>
+      <div class="fld"><label for="pag">Pagamento</label><select id="pag"><option>Pix</option><option>Cartão na entrega</option><option>Dinheiro</option></select></div>
+    </div>
+    <div class="fld" id="endBox"><label for="endereco">Endereço de entrega</label><input id="endereco" autocomplete="street-address"></div>
+    <div class="fld" id="trocoBox" hidden><label for="troco">Troco pra quanto?</label><input id="troco" inputmode="decimal" placeholder="Ex.: 100"></div>
+    <div class="sum"><div><span>Itens</span><span id="sub">R$ 0,00</span></div><div id="feeRow"><span>Entrega</span><span id="fee"></span></div><div class="tot"><span>Total</span><span id="total">R$ 0,00</span></div></div>
+    <button class="btn btn-red" type="submit"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>Enviar pedido pelo WhatsApp</button>
+  </form>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 // ====== CONFIGURE AQUI ======
 const WHATSAPP = "5521994542037";            // 55 + DDD + número
 const LOJA = "Brasa & Pão";
 const HORARIO = { dias:[0,2,3,4,5,6], abre:18, fecha:23.5 }; // 0 = domingo
+const TAXA_ENTREGA = 6;                       // em reais; 0 = grátis
 const CARDAPIO = [
   {cat:"Burgers", nome:"Clássico Brasa", desc:"Blend 160 g, queijo prato, alface, tomate e maionese da casa.", preco:32.9, img:"sobre", tag:"Mais pedido"},
   {cat:"Burgers", nome:"Bacon Duplo", desc:"Dois blends, cheddar, bacon crocante e cebola caramelizada.", preco:42.9, img:"bacon"},
@@ -261,7 +324,13 @@ const CARDAPIO = [
 const $ = id => document.getElementById(id);
 const brl = v => v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 const wa = msg => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
-document.querySelectorAll('.js-wa').forEach(a=>{a.href=wa(`Olá, ${LOJA}! Vim pelo site e quero fazer um pedido.`);a.target='_blank';a.rel='noopener'});
+document.querySelectorAll('.js-wa').forEach(a=>{a.href=wa(`Olá, ${LOJA}! Vim pelo site e tenho uma dúvida.`);a.target='_blank';a.rel='noopener'});
+let cart={}; try{cart=JSON.parse(localStorage.getItem('cart_'+LOJA))||{}}catch(e){}
+Object.keys(cart).forEach(k=>{if(!CARDAPIO.some(i=>i.nome===k)||!(cart[k]>0))delete cart[k]});
+const save=()=>{try{localStorage.setItem('cart_'+LOJA,JSON.stringify(cart))}catch(e){}};
+const find=n=>CARDAPIO.find(i=>i.nome===n);
+function toast(t){$('toast').innerHTML=`<svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>${t}`;$('toast').classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>$('toast').classList.remove('show'),1600)}
+const stepper=(n,q,lbl)=>`<span class="step"><button type="button" data-m="${n}" aria-label="Tirar um ${lbl}"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><b aria-live="polite">${q}</b><button type="button" data-p="${n}" aria-label="Adicionar mais um ${lbl}"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></span>`;
 
 const cats = ["Todos", ...new Set(CARDAPIO.map(i=>i.cat))];
 let atual = "Todos";
@@ -274,18 +343,63 @@ function renderMenu(){
       <figure>${i.tag?`<span class="tag">${i.tag}</span>`:''}<img src="img/${i.img}.webp" alt="${i.nome}" width="800" height="600" loading="lazy"></figure>
       <div class="body"><h3>${i.nome}</h3><p>${i.desc}</p>
         <div class="row"><span class="price">${brl(i.preco)}</span>
-        <a class="add" href="${wa(`Olá, ${LOJA}! Quero pedir: 1x ${i.nome} (${brl(i.preco)}).`)}" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg>Pedir</a></div>
+        ${cart[i.nome]?stepper(i.nome,cart[i.nome],i.nome):`<button type="button" class="add" data-p="${i.nome}"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg>Adicionar</button>`}</div>
       </div>
     </article>`).join('');
 }
 $('tabs').addEventListener('click', e=>{const b=e.target.closest('.tab'); if(!b) return; atual=b.dataset.c; renderTabs(); renderMenu();});
-renderTabs(); renderMenu();
+
+function totals(){
+  let sub=0,n=0; Object.keys(cart).forEach(k=>{sub+=find(k).preco*cart[k];n+=cart[k]});
+  const fee=(n&&$('receber').value==='Entrega')?TAXA_ENTREGA:0;
+  return {sub,n,fee,total:sub+fee};
+}
+function renderCart(){
+  const ks=Object.keys(cart);
+  $('lines').innerHTML = ks.length ? ks.map(k=>{const i=find(k);return `<div class="line"><img src="img/${i.img}.webp" alt="" width="56" height="56"><div><b>${i.nome}</b><small>${brl(i.preco*cart[k])}</small></div>${stepper(k,cart[k],i.nome)}</div>`}).join('')
+    : `<div class="empty"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg>Seu pedido está vazio.<br>Escolha no cardápio o que você quer.</div>`;
+  const t=totals();
+  $('sub').textContent=brl(t.sub);
+  $('feeRow').style.display=$('receber').value==='Entrega'?'':'none';
+  $('fee').textContent=TAXA_ENTREGA?brl(t.n?TAXA_ENTREGA:0):'Grátis';
+  $('total').textContent=brl(t.total);
+  $('count').textContent=t.n;
+  $('mbarTxt').textContent=t.n?`Ver pedido (${t.n} ${t.n===1?'item':'itens'})`:'Montar meu pedido';
+  $('mbarTot').textContent=t.n?brl(t.total):'';
+}
+function change(name,delta){
+  cart[name]=(cart[name]||0)+delta; if(cart[name]<=0) delete cart[name];
+  save(); renderMenu(); renderCart();
+  if(delta>0){toast(`${name} no pedido`);$('openBag').classList.remove('bump');void $('openBag').offsetWidth;$('openBag').classList.add('bump')}
+}
+function onStep(e){const b=e.target.closest('button[data-p],button[data-m]');if(!b)return;b.dataset.p?change(b.dataset.p,1):change(b.dataset.m,-1)}
+$('menu').addEventListener('click',onStep);
+$('lines').addEventListener('click',onStep);
+function toggleBag(on){document.body.classList.toggle('open',on);$('drawer').setAttribute('aria-hidden',!on);(on?$('closeBag'):$('openBag')).focus({preventScroll:true})}
+$('openBag').onclick=()=>toggleBag(true);$('closeBag').onclick=()=>toggleBag(false);$('overlay').onclick=()=>toggleBag(false);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('open'))toggleBag(false)});
+$('mbarBtn').onclick=()=>totals().n?toggleBag(true):document.getElementById('cardapio').scrollIntoView({behavior:'smooth'});
+$('receber').onchange=()=>{$('endBox').hidden=$('receber').value!=='Entrega';renderCart()};
+$('pag').onchange=()=>{$('trocoBox').hidden=$('pag').value!=='Dinheiro'};
+$('co').onsubmit=e=>{
+  e.preventDefault(); const t=totals();
+  if(!t.n) return toast('Escolha pelo menos um item');
+  if(!$('nome').value.trim()){$('nome').focus();return toast('Digite seu nome')}
+  const ent=$('receber').value==='Entrega';
+  if(ent&&!$('endereco').value.trim()){$('endereco').focus();return toast('Digite o endereço')}
+  const itens=Object.keys(cart).map(k=>`• ${cart[k]}x ${k} — ${brl(find(k).preco*cart[k])}`).join('\n');
+  const obs=$('obs').value.trim(), troco=$('troco').value.trim();
+  const msg=`Olá, ${LOJA}! Quero fazer um pedido:\n\n${itens}\n${obs?`\nObs.: ${obs}\n`:''}\nItens: ${brl(t.sub)}${ent?`\nEntrega: ${TAXA_ENTREGA?brl(t.fee):'grátis'}`:''}\n*Total: ${brl(t.total)}*\n\nNome: ${$('nome').value.trim()}\n${ent?'Endereço: '+$('endereco').value.trim():'Vou retirar no balcão'}\nPagamento: ${$('pag').value}${$('pag').value==='Dinheiro'&&troco?` (troco pra R$ ${troco})`:''}`;
+  window.open(wa(msg),'_blank');
+};
+renderTabs(); renderMenu(); renderCart();
 
 // aberto agora?
 (function(){
   const d=new Date(), h=d.getHours()+d.getMinutes()/60, aberto=HORARIO.dias.includes(d.getDay()) && h>=HORARIO.abre && h<HORARIO.fecha;
   $('status').textContent = aberto ? 'Aberto agora · até 23h30' : 'Fechado agora · abre às 18h';
   $('dot').classList.toggle('off', !aberto);
+  $('closedNote').classList.toggle('show', !aberto);
 })();
 
 // entrada suave ao rolar
